@@ -1,0 +1,17 @@
+{
+  "name": "Assessment",
+  "sections": {
+    "custom_banner_section": {
+      "type": "custom-banner",
+      "settings": {}
+    },
+    "custom_grid_section": {
+      "type": "custom-grid",
+      "settings": {}
+    }
+  },
+  "order": [
+    "custom_banner_section",
+    "custom_grid_section"
+  ]
+}
