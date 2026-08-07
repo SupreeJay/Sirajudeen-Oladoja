@@ -1,0 +1,22 @@
+<div class="custom-grid-wrapper">
+  <h2>{{ section.settings.grid_heading }}</h2>
+</div>
+
+{% schema %}
+{
+  "name": "Custom Grid",
+  "settings": [
+    {
+      "type": "text",
+      "id": "grid_heading",
+      "label": "Grid Heading",
+      "default": "Featured Products"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Grid"
+    }
+  ]
+}
+{% endschema %}

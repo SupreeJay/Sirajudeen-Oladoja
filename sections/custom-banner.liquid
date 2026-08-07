@@ -1,0 +1,22 @@
+<div class="custom-banner-wrapper">
+  <h2>{{ section.settings.banner_heading }}</h2>
+</div>
+
+{% schema %}
+{
+  "name": "Custom Banner",
+  "settings": [
+    {
+      "type": "text",
+      "id": "banner_heading",
+      "label": "Heading Text",
+      "default": "The Gift"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Banner"
+    }
+  ]
+}
+{% endschema %}
