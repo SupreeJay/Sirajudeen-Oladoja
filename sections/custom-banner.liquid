@@ -14,7 +14,7 @@
   white-space: nowrap;
 }
 
-{% comment %} This is the overall style for the Custom banner container {% endcomment %}
+{% comment %} Overall style for the Custom banner container {% endcomment %}
   .custom-banner-{{ section.id }} {
     width: 100%;
     max-width: 1440px;
@@ -25,61 +25,64 @@
     opacity: 1;
     overflow: hidden;
     background-color: #F5F5F5;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     height: auto;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: space-between;
+    padding: 0 0 20px 0;
   }
 
-{% comment %}  This is the beginning of the style for navbar {% endcomment %}
+{% comment %} Style for navbar {% endcomment %}
   /* Header Bar */
   .custom-banner-{{ section.id }} .banner-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  max-width: 1440px;
-  min-height: 64px;
-  padding: 10px 50px;
-  background-color: #F5F5F5;
-  box-sizing: border-box;
-  opacity: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1440px;
+    min-height: 64px;
+    padding: 10px 50px;
+    background-color: transparent;
+    box-sizing: border-box;
+    opacity: 1;
   }
 
   .custom-banner-{{ section.id }} .brand-title {
-  font-family: 'Jost', sans-serif;
-  font-size: 20px;
-  font-weight: 700;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  color: #000000;
-  white-space: nowrap;
-  width: 151.44px;
-  height: 19px;
-  color: #000000;
-  opacity: 1;
-  display: flex;
-  align-items: center;
-  box-sizing: border-box;
+    font-family: 'Jost', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #000000;
+    white-space: nowrap;
+    width: 151.44px;
+    height: 19px;
+    opacity: 1;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
   }
 
   .custom-banner-{{ section.id }} .top-announcement {
-  width: auto;
-  height: 14px;
-  font-family: 'Jost', sans-serif;
-  font-weight: 400;
-  font-style: normal;
-  font-size: 16px;
-  line-height: 13.42px;
-  letter-spacing: 0px;
-  text-align: center;
-  color: #000000;
-  opacity: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-sizing: border-box;
-  white-space: nowrap;
+    width: auto;
+    height: 14px;
+    font-family: 'Jost', sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 16px;
+    line-height: 13.42px;
+    letter-spacing: 0px;
+    text-align: center;
+    color: #000000;
+    opacity: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    white-space: nowrap;
   }
 
   .custom-banner-{{ section.id }} .btn-choose-gift {
@@ -87,68 +90,62 @@
     align-items: center;
     gap: 10px;
     background-color: #fffb00;
-    color: #000;
+    color: #000000;
     padding: 12px 24px;
     font-weight: 700;
     font-size: 14px;
     letter-spacing: 1px;
     text-decoration: none;
     text-transform: uppercase;
-    border: 1px solid #000;
+    border: 1px solid #000000;
     transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), background-color 0.3s ease, box-shadow 0.3s ease;
   }
 
-
   /* Hover Animation for Top Button */
   .custom-banner-{{ section.id }} .btn-choose-gift:hover {
-color: #fff;
-background-color : #000;
+    color: #ffffff;
+    background-color: #000000;
   }
 
-.custom-banner-{{ section.id }} .btn-choose-gift > span:first-child {
-  font-family: 'Jost', sans-serif;
-  font-size: 16px;
-  font-weight: 400;
-  font-style: normal;
-  line-height: 20.48px;
-  letter-spacing: 0px;
-  text-transform: uppercase;
-  color: #000000;
-  opacity: 1;
-}
+  .custom-banner-{{ section.id }} .btn-choose-gift > span:first-child {
+    font-family: 'Jost', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    font-style: normal;
+    line-height: 20.48px;
+    letter-spacing: 0px;
+    text-transform: uppercase;
+    color: #000000;
+    opacity: 1;
+    transition: color 0.3s ease;
+  }
 
-.custom-banner-{{ section.id }} .btn-choose-gift:hover > span:first-child{
-  color: #ffffff;
-}
+  .custom-banner-{{ section.id }} .btn-choose-gift:hover > span:first-child {
+    color: #ffffff;
+  }
 
   .custom-banner-{{ section.id }} .btn-choose-gift .arrow-icon {
-  display: inline-block;
-  width: 24px;
-  height: 0;
-  color: #fff;
-  opacity: 1;
-  line-height: 1;
-  width: 24px;
-  height: auto;
-  object-fit: contain;
-transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), filter 0.3s ease;
-filter: brightness(0);
+    display: inline-block;
+    width: 24px;
+    height: auto;
+    opacity: 1;
+    line-height: 1;
+    object-fit: contain;
+    will-change: transform, filter;
+    transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), filter 0.3s ease;
+    filter: brightness(0);
   }
 
   .custom-banner-{{ section.id }} .btn-choose-gift:hover .arrow-icon {
-   transform: translateX(6px);
-filter: brightness(0) invert(1);
+    transform: translateX(6px);
+    filter: brightness(0) invert(1);
   }
 
-{% comment %}  This is the end of the style for navbar {% endcomment %}
-
-{% comment %}  This is the beginning of the style for the Hero content {% endcomment %}
-
-  /* Hero Content Area (Hug vertical content layout) */
+  /* Hero Content Area */
   .custom-banner-{{ section.id }} .banner-hero-content {
     max-width: 520px;
     z-index: 2;
-    padding: 60px 0;
+    padding: 60px 50px;
     margin: auto 0;
   }
 
@@ -156,14 +153,14 @@ filter: brightness(0) invert(1);
     font-size: clamp(2.5rem, 5vw, 4.5rem);
     font-weight: 700;
     line-height: 1.1;
-    color: #000;
+    color: #000000;
     margin: 0 0 20px 0;
   }
 
   .custom-banner-{{ section.id }} .hero-description {
     font-size: 16px;
     line-height: 1.5;
-    color: #333;
+    color: #333333;
     margin-bottom: 30px;
   }
 
@@ -173,8 +170,8 @@ filter: brightness(0) invert(1);
     align-items: center;
     justify-content: space-between;
     gap: 20px;
-    background-color: #000;
-    color: #fff;
+    background-color: #000000;
+    color: #ffffff;
     padding: 16px 32px;
     font-weight: 600;
     font-size: 14px;
@@ -187,7 +184,7 @@ filter: brightness(0) invert(1);
   }
 
   .custom-banner-{{ section.id }} .btn-shop-now:hover {
-    background-color: #222;
+    background-color: #222222;
     transform: translateY(-2px);
     box-shadow: 0 6px 18px rgba(0,0,0,0.25);
   }
@@ -199,10 +196,6 @@ filter: brightness(0) invert(1);
   .custom-banner-{{ section.id }} .btn-shop-now:hover .arrow {
     transform: translateX(6px);
   }
-
-{% comment %}  This is the end of the style for the Hero content {% endcomment %}
-
-{% comment %}  This is the beginning of the style for the Footer {% endcomment %}
 
   /* Footer Tagline */
   .custom-banner-{{ section.id }} .banner-footer {
@@ -216,15 +209,11 @@ filter: brightness(0) invert(1);
     font-weight: 700;
     letter-spacing: 1.5px;
     text-transform: uppercase;
-    color: #000;
+    color: #000000;
     background: rgba(255, 255, 255, 0.9);
     padding: 6px 16px;
-    border: 1px solid #000;
+    border: 1px solid #000000;
   }
-
-{% comment %}  This is the end of the style for the Footer {% endcomment %}
-
-
 
   /* Responsive Rules */
   @media screen and (max-width: 768px) {
@@ -238,6 +227,7 @@ filter: brightness(0) invert(1);
       gap: 12px;
       align-items: stretch;
       text-align: center;
+      padding: 10px 0;
     }
 
     .custom-banner-{{ section.id }} .banner-hero-content {
@@ -251,13 +241,9 @@ filter: brightness(0) invert(1);
   }
 </style>
 
-
-
-{% comment %} Beginning of The HTML Files {% endcomment %}
-{% comment %} Overall Div conainer for the Custom Banner Section {% endcomment %}
-
-<div class="custom-banner-{{ section.id }}">
-{% comment %} The Navigation Header {% endcomment %}
+<div class="custom-banner-{{ section.id }}" style="{% if section.settings.bg_image != blank %}background-image: url('{{ section.settings.bg_image | image_url: width: 2000 }}');{% endif %}">
+  
+  {% comment %} The Navigation Header {% endcomment %}
   <div class="banner-header">
     <div class="brand-title">
       {{ section.settings.brand_text }}
@@ -272,36 +258,42 @@ filter: brightness(0) invert(1);
     <a href="{{ section.settings.button_top_url | default: '#' }}" class="btn-choose-gift">
       <span>{{ section.settings.button_top_text }}</span>
       <img 
-    src="{{ 'arrow.svg' | asset_url }}" 
-    alt="arrow-icon" 
-    class="arrow-icon"
-    width="20"
-    height="20"
-    loading="lazy"
-  >
+        src="{{ 'arrow.svg' | asset_url }}" 
+        alt="arrow-icon" 
+        class="arrow-icon"
+        width="20"
+        height="20"
+        loading="lazy"
+      >
     </a>
   </div>
 
   {% comment %} Main Hero Content {% endcomment %}
   <div class="banner-hero-content">
-    <h1 class="hero-title">{{ section.settings.hero_title }}</h1>
-    <div class="hero-description">{{ section.settings.hero_description }}</div>
-    <a href="{{ section.settings.button_main_url | default: '#' }}" class="btn-shop-now">
-      <span>{{ section.settings.button_main_text }}</span>
-      <span class="arrow">&rarr;</span>
-    </a>
+    {% if section.settings.hero_title != blank %}
+      <h1 class="hero-title">{{ section.settings.hero_title }}</h1>
+    {% endif %}
+    {% if section.settings.hero_description != blank %}
+      <div class="hero-description">{{ section.settings.hero_description }}</div>
+    {% endif %}
+    {% if section.settings.button_main_text != blank %}
+      <a href="{{ section.settings.button_main_url | default: '#' }}" class="btn-shop-now">
+        <span>{{ section.settings.button_main_text }}</span>
+        <span class="arrow">&rarr;</span>
+      </a>
+    {% endif %}
   </div>
 
   {% comment %} The Bottom Tagline {% endcomment %}
   <div class="banner-footer">
-    <div class="footer-tagline">
-      {{ section.settings.footer_tagline }}
-    </div>
+    {% if section.settings.footer_tagline != blank %}
+      <div class="footer-tagline">
+        {{ section.settings.footer_tagline }}
+      </div>
+    {% endif %}
   </div>
 
 </div>
-
-{% comment %} End of The HTML Files {% endcomment %}
 
 {% schema %}
 {
