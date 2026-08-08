@@ -1,5 +1,20 @@
-<div class="custom-grid-wrapper">
-  <h2>{{ section.settings.grid_heading }}</h2>
+<div class="custom-grid-section" style="padding: 40px 20px; max-width: 1200px; margin: 0 auto;">
+  {% if section.settings.title != blank %}
+    <h2 style="text-align: center; margin-bottom: 30px;">{{ section.settings.title }}</h2>
+  {% endif %}
+
+  <div class="custom-grid-container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+    {% for block in section.blocks %}
+      <div class="custom-grid-card" {{ block.shopify_attributes }} style="border: 1px solid #e0e0e0; padding: 20px; border-radius: 8px; text-align: center;">
+        {% if block.settings.card_title != blank %}
+          <h3>{{ block.settings.card_title }}</h3>
+        {% endif %}
+        {% if block.settings.card_text != blank %}
+          <p>{{ block.settings.card_text }}</p>
+        {% endif %}
+      </div>
+    {% endfor %}
+  </div>
 </div>
 
 {% schema %}
@@ -8,14 +23,45 @@
   "settings": [
     {
       "type": "text",
-      "id": "grid_heading",
-      "label": "Grid Heading",
-      "default": "Featured Products"
+      "id": "title",
+      "label": "Section Title",
+      "default": "Featured Items"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "grid_card",
+      "name": "Grid Card",
+      "settings": [
+        {
+          "type": "text",
+          "id": "card_title",
+          "label": "Card Title",
+          "default": "Grid Item Title"
+        },
+        {
+          "type": "textarea",
+          "id": "card_text",
+          "label": "Card Text",
+          "default": "Add a short description for this card."
+        }
+      ]
     }
   ],
   "presets": [
     {
-      "name": "Custom Grid"
+      "name": "Custom Grid",
+      "blocks": [
+        {
+          "type": "grid_card"
+        },
+        {
+          "type": "grid_card"
+        },
+        {
+          "type": "grid_card"
+        }
+      ]
     }
   ]
 }

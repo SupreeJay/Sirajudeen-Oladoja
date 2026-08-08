@@ -1,5 +1,19 @@
-<div class="custom-banner-wrapper">
-  <h2>{{ section.settings.banner_heading }}</h2>
+<div class="custom-banner-section" style="background-color: {{ section.settings.bg_color }}; padding: 40px 20px; text-align: center;">
+  <div class="custom-banner-content" style="max-width: 800px; margin: 0 auto;">
+    {% if section.settings.heading != blank %}
+      <h2 style="font-size: 2.5rem; margin-bottom: 10px;">{{ section.settings.heading }}</h2>
+    {% endif %}
+
+    {% if section.settings.subheading != blank %}
+      <p style="font-size: 1.2rem; color: #555;">{{ section.settings.subheading }}</p>
+    {% endif %}
+
+    {% if section.settings.button_label != blank and section.settings.button_link != blank %}
+      <a href="{{ section.settings.button_link }}" class="button" style="display: inline-block; margin-top: 15px; padding: 10px 20px; background-color: #000; color: #fff; text-decoration: none;">
+        {{ section.settings.button_label }}
+      </a>
+    {% endif %}
+  </div>
 </div>
 
 {% schema %}
@@ -8,9 +22,32 @@
   "settings": [
     {
       "type": "text",
-      "id": "banner_heading",
-      "label": "Heading Text",
-      "default": "The Gift"
+      "id": "heading",
+      "label": "Heading",
+      "default": "Welcome to Our Store"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Discover our latest custom collection and deals."
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button Label",
+      "default": "Shop Now"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#f4f4f4"
     }
   ],
   "presets": [
