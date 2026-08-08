@@ -2,15 +2,18 @@
   .custom-banner-{{ section.id }} {
     position: relative;
     width: 100%;
+    max-width: 1440px;
+    height: auto;
     min-height: 878px;
+    margin: 0 auto;
     background-color: #f7f7f7;
     {% if section.settings.bg_image != blank %}
       background-image: url('{{ section.settings.bg_image | image_url: width: 3840 }}');
-      background-size: contain;
+      background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
     {% endif %}
-    padding: 24px 40px;
+    padding: 32px 48px;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
@@ -76,12 +79,12 @@
     transform: translateX(5px);
   }
 
-  /* Hero Content Area */
+  /* Hero Content Area (Hug vertical content layout) */
   .custom-banner-{{ section.id }} .banner-hero-content {
     max-width: 520px;
     z-index: 2;
-    margin-top: 100px;
-    margin-bottom: auto;
+    padding: 60px 0;
+    margin: auto 0;
   }
 
   .custom-banner-{{ section.id }} .hero-title {
@@ -136,7 +139,6 @@
   .custom-banner-{{ section.id }} .banner-footer {
     text-align: center;
     z-index: 2;
-    margin-top: 40px;
   }
 
   .custom-banner-{{ section.id }} .footer-tagline {
@@ -166,19 +168,12 @@
     }
 
     .custom-banner-{{ section.id }} .banner-hero-content {
-      margin-top: 40px;
+      padding: 30px 0;
     }
 
     .custom-banner-{{ section.id }} .btn-shop-now {
       width: 100%;
       box-sizing: border-box;
-    }
-  }
-
-  @media screen and (min-width: 2560px) {
-    .custom-banner-{{ section.id }} {
-      max-width: 2200px;
-      margin: 0 auto;
     }
   }
 </style>
@@ -279,7 +274,6 @@
       "type": "text",
       "id": "footer_tagline",
       "label": "Footer Tagline",
-      
       "default": "SUSTAINABLE, ETHICALLY MADE CLOTHES IN SIZES XXS TO 6XL"
     }
   ],
