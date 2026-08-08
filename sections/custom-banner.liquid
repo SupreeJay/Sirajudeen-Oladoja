@@ -1,51 +1,62 @@
 <style>
+{% comment %} This is the overall style for the Custom banner container {% endcomment %}
   .custom-banner-{{ section.id }} {
-    position: relative;
     width: 100%;
     max-width: 1440px;
-    height: auto;
     min-height: 878px;
     margin: 0 auto;
-    background-color: #f7f7f7;
-    {% if section.settings.bg_image != blank %}
-      background-image: url('{{ section.settings.bg_image | image_url: width: 3840 }}');
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-    {% endif %}
-    padding: 32px 48px;
+    position: relative;
     box-sizing: border-box;
+    opacity: 1;
+    overflow: hidden;
+    background-color: #F5F5F5;
+    height: auto;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    overflow: hidden;
+    justify-content: flex-start;
   }
 
+{% comment %}  This is the beginning of the style for navbar {% endcomment %}
   /* Header Bar */
   .custom-banner-{{ section.id }} .banner-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1440px;
+  min-height: 64px;
+  padding: 10px 50px;
+  background-color: #F5F5F5;
+  box-sizing: border-box;
+  opacity: 1;
   }
 
   .custom-banner-{{ section.id }} .brand-title {
-    font-size: 24px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: #000;
-    border: 2px solid #000;
-    padding: 6px 12px;
+  width: 151.44px;
+  height: 19px;
+  color: #000000;
+  opacity: 1;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
   }
 
   .custom-banner-{{ section.id }} .top-announcement {
-    font-size: 14px;
-    color: #000;
-    border: 1px solid #000;
-    padding: 8px 16px;
-    background: #fff;
+  width: 260px;
+  height: 14px;
+  font-family: 'Jost', sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 16px;
+  line-height: 13.42px;
+  letter-spacing: 0px;
+  text-align: center;
+  color: #000000;
+  opacity: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
   }
 
   .custom-banner-{{ section.id }} .btn-choose-gift {
@@ -64,20 +75,49 @@
     transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), background-color 0.3s ease, box-shadow 0.3s ease;
   }
 
+
   /* Hover Animation for Top Button */
   .custom-banner-{{ section.id }} .btn-choose-gift:hover {
-    background-color: #f2ee00;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+   display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 207px;
+  height: 44px;
+  background-color: #FFF544;
+  opacity: 1;
+  text-decoration: none;
+  box-sizing: border-box;
   }
 
+.custom-banner-{{ section.id }} .btn-choose-gift > span:first-child {
+  font-family: 'Jost', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 20.48px;
+  letter-spacing: 0px;
+  text-transform: uppercase;
+  color: #000000;
+  opacity: 1;
+}
+
   .custom-banner-{{ section.id }} .btn-choose-gift .arrow {
-    transition: transform 0.3s ease;
+  display: inline-block;
+  width: 24px;
+  height: 0;
+  border-top: 1.5px solid #000000;
+  color: #000000;
+  opacity: 1;
+  line-height: 1;
   }
 
   .custom-banner-{{ section.id }} .btn-choose-gift:hover .arrow {
     transform: translateX(5px);
   }
+
+{% comment %}  This is the end of the style for navbar {% endcomment %}
+
+{% comment %}  This is the beginning of the style for the Hero content {% endcomment %}
 
   /* Hero Content Area (Hug vertical content layout) */
   .custom-banner-{{ section.id }} .banner-hero-content {
@@ -135,6 +175,10 @@
     transform: translateX(6px);
   }
 
+{% comment %}  This is the end of the style for the Hero content {% endcomment %}
+
+{% comment %}  This is the beginning of the style for the Footer {% endcomment %}
+
   /* Footer Tagline */
   .custom-banner-{{ section.id }} .banner-footer {
     text-align: center;
@@ -152,6 +196,10 @@
     padding: 6px 16px;
     border: 1px solid #000;
   }
+
+{% comment %}  This is the end of the style for the Footer {% endcomment %}
+
+
 
   /* Responsive Rules */
   @media screen and (max-width: 768px) {
@@ -178,8 +226,13 @@
   }
 </style>
 
+
+
+{% comment %} Beginning of The HTML Files {% endcomment %}
+{% comment %} Overall Div conainer for the Custom Banner Section {% endcomment %}
+
 <div class="custom-banner-{{ section.id }}">
-  <!-- Top Navigation Header -->
+{% comment %} The Navigation Header {% endcomment %}
   <div class="banner-header">
     <div class="brand-title">
       {{ section.settings.brand_text }}
@@ -197,7 +250,7 @@
     </a>
   </div>
 
-  <!-- Main Hero Content -->
+  {% comment %} Main Hero Content {% endcomment %}
   <div class="banner-hero-content">
     <h1 class="hero-title">{{ section.settings.hero_title }}</h1>
     <div class="hero-description">{{ section.settings.hero_description }}</div>
@@ -207,13 +260,16 @@
     </a>
   </div>
 
-  <!-- Bottom Tagline -->
+  {% comment %} The Bottom Tagline {% endcomment %}
   <div class="banner-footer">
     <div class="footer-tagline">
       {{ section.settings.footer_tagline }}
     </div>
   </div>
+
 </div>
+
+{% comment %} End of The HTML Files {% endcomment %}
 
 {% schema %}
 {
