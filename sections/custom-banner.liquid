@@ -101,15 +101,8 @@
 
   /* Hover Animation for Top Button */
   .custom-banner-{{ section.id }} .btn-choose-gift:hover {
-   display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 207px;
-  height: 44px;
-  background-color: #FFF544;
-  opacity: 1;
-  text-decoration: none;
-  box-sizing: border-box;
+color: #fff;
+background-color : #000;
   }
 
 .custom-banner-{{ section.id }} .btn-choose-gift > span:first-child {
@@ -134,11 +127,13 @@
   width: 24px;
   height: auto;
   object-fit: contain;
-  transition: transform 0.2s ease;
+transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), filter 0.3s ease;
+filter: brightness(0);
   }
 
-  .custom-banner-{{ section.id }} .btn-choose-gift:hover .arrow {
-    transform: translateX(5px);
+  .custom-banner-{{ section.id }} .btn-choose-gift:hover .arrow-icon {
+   transform: translateX(6px);
+filter: brightness(0) invert(1);
   }
 
 {% comment %}  This is the end of the style for navbar {% endcomment %}
@@ -277,7 +272,7 @@
     alt="arrow-icon" 
     class="arrow-icon"
     width="20"
-    height="0"
+    height="20"
     loading="lazy"
   >
     </a>
