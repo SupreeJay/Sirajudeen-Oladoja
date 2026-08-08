@@ -274,21 +274,79 @@
     </a>
   </div>
 
-  {% comment %} Main Hero Content {% endcomment %}
-  <div class="banner-hero-content">
-    {% if section.settings.hero_title != blank %}
-      <h1 class="hero-title">{{ section.settings.hero_title }}</h1>
-    {% endif %}
-    {% if section.settings.hero_description != blank %}
-      <div class="hero-description">{{ section.settings.hero_description }}</div>
-    {% endif %}
-    {% if section.settings.button_main_text != blank %}
-      <a href="{{ section.settings.button_main_url | default: '#' }}" class="btn-shop-now">
-        <span>{{ section.settings.button_main_text }}</span>
-        <span class="arrow">&rarr;</span>
+<div class="custom-banner-hero">
+  
+  {% comment %} Top Navigation Bar {% endcomment %}
+  <div class="banner-top-bar">
+    <div class="banner-logo">
+      {% if section.settings.logo != blank %}
+        <img src="{{ section.settings.logo | image_url: width: 300 }}" alt="{{ shop.name }}">
+      {% else %}
+        <span>{{ shop.name | uppercase }}</span>
+      {% endif %}
+    </div>
+
+    {% if section.settings.button_top_text != blank %}
+      <div class="banner-top-subtext">{{ section.settings.subheading_top }}</div>
+      <a href="{{ section.settings.button_top_url | default: '#' }}" class="btn-choose-gift">
+        <span>{{ section.settings.button_top_text }}</span>
+        <img 
+          src="{{ 'arrow.svg' | asset_url }}" 
+          alt="arrow-icon" 
+          class="arrow-icon"
+          width="20"
+          height="20"
+          loading="lazy"
+        >
       </a>
     {% endif %}
   </div>
+
+  {% comment %} 1. Upper Image (Full Width) {% endcomment %}
+  <div class="banner-top-image">
+    {% if section.settings.top_image != blank %}
+      <img src="{{ section.settings.top_image | image_url: width: 2000 }}" alt="Hero Top Illustration" loading="eager">
+    {% endif %}
+  </div>
+
+  {% comment %} 2. Lower Row: Left Text Box + Right Image (~3/4 Width) {% endcomment %}
+  <div class="banner-bottom-row">
+    
+    {% comment %} Left Hero Text Content {% endcomment %}
+    <div class="banner-hero-content">
+      {% if section.settings.hero_title != blank %}
+        <h1 class="hero-title">{{ section.settings.hero_title }}</h1>
+      {% endif %}
+      
+      {% if section.settings.hero_description != blank %}
+        <div class="hero-description">{{ section.settings.hero_description }}</div>
+      {% endif %}
+
+      {% if section.settings.button_main_text != blank %}
+        <a href="{{ section.settings.button_main_url | default: '#' }}" class="btn-shop-now">
+          <span>{{ section.settings.button_main_text }}</span>
+          <span class="arrow">&rarr;</span>
+        </a>
+      {% endif %}
+    </div>
+
+    {% comment %} Right Image Container {% endcomment %}
+    <div class="banner-bottom-image">
+      {% if section.settings.bottom_image != blank %}
+        <img src="{{ section.settings.bottom_image | image_url: width: 1600 }}" alt="Hero Bottom Illustration" loading="lazy">
+      {% endif %}
+    </div>
+
+  </div>
+
+  {% comment %} Bottom Marquee / Subtext Strip {% endcomment %}
+  {% if section.settings.footer_strip_text != blank %}
+    <div class="banner-footer-strip">
+      <p>{{ section.settings.footer_strip_text }}</p>
+    </div>
+  {% endif %}
+
+</div>
 
   {% comment %} The Bottom Tagline {% endcomment %}
   <div class="banner-footer">
@@ -368,5 +426,72 @@
       "name": "Custom Banner"
     }
   ]
+}{
+  "name": "Custom Banner",
+  "settings": [
+    {
+      "type": "text",
+      "id": "subheading_top",
+      "label": "Top Subheading",
+      "default": "Find the ideal gift for your loved ones."
+    },
+    {
+      "type": "text",
+      "id": "button_top_text",
+      "label": "Top Button Text",
+      "default": "CHOOSE GIFT"
+    },
+    {
+      "type": "url",
+      "id": "button_top_url",
+      "label": "Top Button Link"
+    },
+    {
+      "type": "image_picker",
+      "id": "top_image",
+      "label": "Upper Full-Width Image"
+    },
+    {
+      "type": "text",
+      "id": "hero_title",
+      "label": "Hero Title",
+      "default": "The Gift Guide"
+    },
+    {
+      "type": "textarea",
+      "id": "hero_description",
+      "label": "Hero Description",
+      "default": "Discover Joy: Your Ultimate Holiday Gift Destination. Explore our curated selection and find the perfect gifts to delight your loved ones this holiday season."
+    },
+    {
+      "type": "text",
+      "id": "button_main_text",
+      "label": "Main Button Text",
+      "default": "SHOP NOW"
+    },
+    {
+      "type": "url",
+      "id": "button_main_url",
+      "label": "Main Button Link"
+    },
+    {
+      "type": "image_picker",
+      "id": "bottom_image",
+      "label": "Lower Right Image"
+    },
+    {
+      "type": "text",
+      "id": "footer_strip_text",
+      "label": "Footer Strip Text",
+      "default": "SUSTAINABLE, ETHICALLY MADE CLOTHES IN SIZES XXS TO 6XL"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Banner"
+    }
+  ]
 }
+
+
 {% endschema %}
