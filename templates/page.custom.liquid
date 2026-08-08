@@ -1,0 +1,26 @@
+<style>
+  .fixed-page-container {
+    width: 1440px;
+    height: 2000px;
+    margin: 0 auto;
+    overflow: hidden;
+    position: relative;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  @media screen and (max-width: 1440px) {
+    .fixed-page-container {
+      width: 100%;
+      height: auto;
+      min-height: 2000px;
+    }
+  }
+</style>
+
+<div class="fixed-page-container">
+  {% section 'custom-banner' %}
+  {% section 'custom-grid' %}
+</div>
