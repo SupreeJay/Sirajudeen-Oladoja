@@ -1,19 +1,187 @@
-<div class="custom-grid-section" style="padding: 40px 20px; max-width: 1200px; margin: 0 auto;">
-  {% if section.settings.title != blank %}
-    <h2 style="text-align: center; margin-bottom: 30px;">{{ section.settings.title }}</h2>
+<style>
+  .custom-grid-{{ section.id }} {
+    max-width: 1337px;
+    margin: 60px auto;
+    padding: 0 20px;
+    box-sizing: border-box;
+  }
+
+  .custom-grid-{{ section.id }} .grid-heading {
+    font-size: 28px;
+    font-weight: 400;
+    font-family: serif, Georgia, sans-serif;
+    color: #111;
+    margin-bottom: 30px;
+  }
+
+  .custom-grid-{{ section.id }} .grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .custom-grid-{{ section.id }} .grid-card {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    background-color: #f4f4f4;
+  }
+
+  .custom-grid-{{ section.id }} .grid-card-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* Hotspot Plus Button */
+  .custom-grid-{{ section.id }} .hotspot-btn {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background-color: #ffffff;
+    border: none;
+    color: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+    transform: translate(-50%, -50%);
+    transition: transform 0.2s ease, background-color 0.2s ease;
+    z-index: 3;
+    padding: 0;
+  }
+
+  .custom-grid-{{ section.id }} .hotspot-btn:hover {
+    transform: translate(-50%, -50%) scale(1.15);
+    background-color: #000000;
+    color: #ffffff;
+  }
+
+  .custom-grid-{{ section.id }} .hotspot-btn svg {
+    width: 12px;
+    height: 12px;
+    fill: currentColor;
+    pointer-events: none;
+  }
+
+  /* Modal Backdrop & Popup Container */
+  .custom-grid-modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .custom-grid-modal-backdrop.is-active {
+    display: flex;
+    opacity: 1;
+  }
+
+  .custom-grid-modal {
+    background-color: #fff;
+    width: 90%;
+    max-width: 480px;
+    padding: 24px;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    border-radius: 4px;
+  }
+
+  .custom-grid-modal .modal-close-btn {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    line-height: 1;
+  }
+
+  /* Responsive Adjustments */
+  @media screen and (max-width: 900px) {
+    .custom-grid-{{ section.id }} .grid-container {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+  }
+
+  @media screen and (max-width: 550px) {
+    .custom-grid-{{ section.id }} .grid-container {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<div class="custom-grid-{{ section.id }}">
+  {% if section.settings.heading != blank %}
+    <h2 class="grid-heading">{{ section.settings.heading }}</h2>
   {% endif %}
 
-  <div class="custom-grid-container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+  <div class="grid-container">
     {% for block in section.blocks %}
-      <div class="custom-grid-card" {{ block.shopify_attributes }} style="border: 1px solid #e0e0e0; padding: 20px; border-radius: 8px; text-align: center;">
-        {% if block.settings.card_title != blank %}
-          <h3>{{ block.settings.card_title }}</h3>
+      {% assign product = block.settings.product %}
+      
+      <div class="grid-card" {{ block.shopify_attributes }}>
+        {% if block.settings.custom_image != blank %}
+          <img 
+            src="{{ block.settings.custom_image | image_url: width: 800 }}" 
+            alt="{{ product.title | default: 'Grid Image' | escape }}"
+            class="grid-card-image"
+            loading="lazy"
+          >
+        {% elsif product.featured_image != blank %}
+          <img 
+            src="{{ product.featured_image | image_url: width: 800 }}" 
+            alt="{{ product.title | escape }}"
+            class="grid-card-image"
+            loading="lazy"
+          >
+        {% else %}
+          {{ 'product-1' | placeholder_svg_tag: 'grid-card-image' }}
         {% endif %}
-        {% if block.settings.card_text != blank %}
-          <p>{{ block.settings.card_text }}</p>
+
+        {% if product != blank %}
+          <button 
+            type="button" 
+            class="hotspot-btn js-open-modal"
+            style="top: {{ block.settings.hotspot_y }}%; left: {{ block.settings.hotspot_x }}%;"
+            data-product-title="{{ product.title | escape }}"
+            data-product-price="{{ product.price | money }}"
+            data-product-image="{{ product.featured_image | image_url: width: 600 }}"
+            data-product-description="{{ product.description | strip_html | truncate: 120 | escape }}"
+            data-variant-id="{{ product.selected_or_first_available_variant.id }}"
+            aria-label="View product details for {{ product.title | escape }}"
+          >
+            <svg viewBox="0 0 12 12">
+              <path d="M6 0v12M0 6h12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </button>
         {% endif %}
       </div>
     {% endfor %}
+  </div>
+</div>
+
+<!-- Global Popup Modal Shell -->
+<div class="custom-grid-modal-backdrop js-grid-modal-backdrop">
+  <div class="custom-grid-modal">
+    <button type="button" class="modal-close-btn js-close-modal">&times;</button>
+    <div class="modal-content js-modal-content">
+      <!-- Populated dynamically via assets/custom-script.js -->
+    </div>
   </div>
 </div>
 
@@ -23,27 +191,46 @@
   "settings": [
     {
       "type": "text",
-      "id": "title",
-      "label": "Section Title",
-      "default": "Featured Items"
+      "id": "heading",
+      "label": "Grid Section Heading",
+      "default": "Tisso vison in the wild"
     }
   ],
   "blocks": [
     {
-      "type": "grid_card",
-      "name": "Grid Card",
+      "type": "product_block",
+      "name": "Product Block",
+      "limit": 6,
       "settings": [
         {
-          "type": "text",
-          "id": "card_title",
-          "label": "Card Title",
-          "default": "Grid Item Title"
+          "type": "product",
+          "id": "product",
+          "label": "Select Product"
         },
         {
-          "type": "textarea",
-          "id": "card_text",
-          "label": "Card Text",
-          "default": "Add a short description for this card."
+          "type": "image_picker",
+          "id": "custom_image",
+          "label": "Custom Image (Overrides Product Image)"
+        },
+        {
+          "type": "range",
+          "id": "hotspot_x",
+          "min": 5,
+          "max": 95,
+          "step": 1,
+          "unit": "%",
+          "label": "Hotspot Horizontal Position (X)",
+          "default": 50
+        },
+        {
+          "type": "range",
+          "id": "hotspot_y",
+          "min": 5,
+          "max": 95,
+          "step": 1,
+          "unit": "%",
+          "label": "Hotspot Vertical Position (Y)",
+          "default": 50
         }
       ]
     }
@@ -52,15 +239,12 @@
     {
       "name": "Custom Grid",
       "blocks": [
-        {
-          "type": "grid_card"
-        },
-        {
-          "type": "grid_card"
-        },
-        {
-          "type": "grid_card"
-        }
+        { "type": "product_block" },
+        { "type": "product_block" },
+        { "type": "product_block" },
+        { "type": "product_block" },
+        { "type": "product_block" },
+        { "type": "product_block" }
       ]
     }
   ]
