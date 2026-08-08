@@ -1,4 +1,19 @@
 <style>
+
+/* Paste this at the VERY top of your CSS file */
+@import url('https://fonts.googleapis.com/css2?family=Jost:wght@400;500;700&display=swap');
+
+/* Brand Title CSS */
+.brand-title {
+  font-family: 'Jost', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #000000;
+  white-space: nowrap;
+}
+
 {% comment %} This is the overall style for the Custom banner container {% endcomment %}
   .custom-banner-{{ section.id }} {
     width: 100%;
