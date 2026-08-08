@@ -1,6 +1,6 @@
 {
   "type": "header",
-  "name": "t:names.header",
+  "name": "Header Group",
   "sections": {
     "header_section": {
       "type": "header",
