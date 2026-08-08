@@ -199,6 +199,7 @@
 {% schema %}
 {
   "name": "Custom Grid",
+  "max_blocks": 6,
   "settings": [
     {
       "type": "text",
@@ -209,9 +210,8 @@
   ],
   "blocks": [
     {
-      "type": "product_block",
+      "type": "grid_card",
       "name": "Product Block",
-      "limit": 6,
       "settings": [
         {
           "type": "product",
@@ -250,12 +250,12 @@
     {
       "name": "Custom Grid",
       "blocks": [
-        { "type": "product_block" },
-        { "type": "product_block" },
-        { "type": "product_block" },
-        { "type": "product_block" },
-        { "type": "product_block" },
-        { "type": "product_block" }
+        { "type": "grid_card" },
+        { "type": "grid_card" },
+        { "type": "grid_card" },
+        { "type": "grid_card" },
+        { "type": "grid_card" },
+        { "type": "grid_card" }
       ]
     }
   ]
