@@ -197,6 +197,7 @@
   box-sizing: border-box;
   opacity: 1;
   transform: rotate(0deg);
+  z-index: 2;          /* Ensures the image is behind the left content box */
 }
 
 /* Inner Graphic - Scaled and Positioned Natively */
