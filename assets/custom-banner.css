@@ -208,10 +208,11 @@ top: 0;
 left: 0;
 border: 3px solid green;
 left: 0 !important;
-  width: 100% !important;
-  height: 100% !important;
+  width: 1052px !important;
+  height: 400px !important;
   object-fit: cover !important;
   object-position: left top !important;
+  transform: scale(1.5) !important;
 }
 
 
