@@ -206,10 +206,11 @@ left: 0 !important;
   width: 1052px !important;
   height: 400px !important;
   object-position: left top !important;
-  transform: scale(1.3) !important;
+  transform: scale(1.4) !important;
   object-fit: fill !important; 
   transform-origin: 0 0 !important;
 }
+
 
 
 /* Left Content Box (1440px - 890px = 550px) */
