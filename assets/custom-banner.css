@@ -141,6 +141,7 @@
 
 .btn-choose-gift:hover span {
   color: #FFFFFF;
+  background-color: #000000;
 }
 
 .btn-choose-gift:hover .arrow-icon {
