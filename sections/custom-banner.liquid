@@ -27,75 +27,70 @@
     </a>
   </div>
 
-  {% comment %} Main Graphic Area {% endcomment %}
-  <div class="custom-banner-hero">
+{% comment %} 1. Upper Image (Full Width) - Direct Child {% endcomment %}
+<div class="banner-top-image">
+  {% if section.settings.top_image != blank %}
+    <img 
+      src="{{ section.settings.top_image | image_url: width: 2000 }}" 
+      alt="{{ section.settings.top_image.alt | default: 'Hero Top Graphic' | escape }}" 
+      width="{{ section.settings.top_image.width }}"
+      height="{{ section.settings.top_image.height }}"
+      loading="eager"
+    >
+  {% else %}
+    <img 
+      src="{{ 'Hero-Background.svg' | asset_url }}" 
+      alt="Hero Top Graphic" 
+      width="1440"
+      height="390"
+      loading="eager"
+    >
+  {% endif %}
+</div>
 
-    {% comment %} 1. Upper Image (Full Width) {% endcomment %}
-    <div class="banner-top-image">
-      {% if section.settings.top_image != blank %}
-        <img 
-          src="{{ section.settings.top_image | image_url: width: 2000 }}" 
-          alt="{{ section.settings.top_image.alt | default: 'Hero Top Graphic' | escape }}" 
-          width="{{ section.settings.top_image.width }}"
-          height="{{ section.settings.top_image.height }}"
-          loading="eager"
-        >
-      {% else %}
-        <img 
-          src="{{ 'Hero-Background.svg' | asset_url }}" 
-          alt="Hero Top Graphic" 
-          width="1440"
-          height="400"
-          loading="eager"
-        >
-      {% endif %}
-    </div>
+{% comment %} 2. Lower Row (Left Content + Right Image) - Direct Child {% endcomment %}
+<div class="banner-bottom-row">
+  
+  {% comment %} Lower Left Text Box {% endcomment %}
+  <div class="banner-hero-content">
+    {% if section.settings.hero_title != blank %}
+      <h1 class="hero-title">{{ section.settings.hero_title }}</h1>
+    {% endif %}
+    
+    {% if section.settings.hero_description != blank %}
+      <div class="hero-description">{{ section.settings.hero_description }}</div>
+    {% endif %}
 
-    {% comment %} 2. Lower Row (Left Content + Right Image) {% endcomment %}
-    <div class="banner-bottom-row">
-      
-      {% comment %} Lower Left Text Box {% endcomment %}
-      <div class="banner-hero-content">
-        {% if section.settings.hero_title != blank %}
-          <h1 class="hero-title">{{ section.settings.hero_title }}</h1>
-        {% endif %}
-        
-        {% if section.settings.hero_description != blank %}
-          <div class="hero-description">{{ section.settings.hero_description }}</div>
-        {% endif %}
-
-        {% if section.settings.button_main_text != blank %}
-          <a href="{{ section.settings.button_main_url | default: '#' }}" class="btn-shop-now">
-            <span>{{ section.settings.button_main_text }}</span>
-            <span class="arrow">&rarr;</span>
-          </a>
-        {% endif %}
-      </div>
-
-      {% comment %} Lower Right Image {% endcomment %}
-      <div class="banner-bottom-image">
-        {% if section.settings.bottom_image != blank %}
-          <img 
-            src="{{ section.settings.bottom_image | image_url: width: 1600 }}" 
-            alt="{{ section.settings.bottom_image.alt | default: 'Hero Bottom Graphic' | escape }}" 
-            width="{{ section.settings.bottom_image.width }}"
-            height="{{ section.settings.bottom_image.height }}"
-            loading="lazy"
-          >
-        {% else %}
-          <img 
-            src="{{ 'Hero-Background.svg' | asset_url }}" 
-            alt="Hero Bottom Graphic" 
-            width="1000"
-            height="500"
-            loading="lazy"
-          >
-        {% endif %}
-      </div>
-
-    </div>
-
+    {% if section.settings.button_main_text != blank %}
+      <a href="{{ section.settings.button_main_url | default: '#' }}" class="btn-shop-now">
+        <span>{{ section.settings.button_main_text }}</span>
+        <span class="arrow">&rarr;</span>
+      </a>
+    {% endif %}
   </div>
+
+  {% comment %} Lower Right Image {% endcomment %}
+  <div class="banner-bottom-image">
+    {% if section.settings.bottom_image != blank %}
+      <img 
+        src="{{ section.settings.bottom_image | image_url: width: 1600 }}" 
+        alt="{{ section.settings.bottom_image.alt | default: 'Hero Bottom Graphic' | escape }}" 
+        width="{{ section.settings.bottom_image.width }}"
+        height="{{ section.settings.bottom_image.height }}"
+        loading="lazy"
+      >
+    {% else %}
+      <img 
+        src="{{ 'Hero-Background.svg' | asset_url }}" 
+        alt="Hero Bottom Graphic" 
+        width="1000"
+        height="500"
+        loading="lazy"
+      >
+    {% endif %}
+  </div>
+
+</div>
 
   {% comment %} Bottom Tagline {% endcomment %}
   <div class="banner-footer">

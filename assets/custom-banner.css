@@ -148,17 +148,6 @@
 }
 
 /* --- HERO GRAPHIC LAYOUT --- */
-.custom-banner-hero {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-}
-
-
-
-/* Upper Full-Width Image */
-/* Upper Full-Width Image Container */
-/* Upper Full-Width Image Container */
 .banner-top-image {
   width: 100%;
   max-width: 1440px;
@@ -172,84 +161,8 @@
 .banner-top-image img {
   width: 100%;
   height: 100%;
-  object-fit: contain; /* Prevents cropping by fitting the entire image inside the 390px height */
-  display: block;
-}
-/* Lower Split Row */
-.banner-bottom-row {
-  display: flex;
-  width: 100%;
-  align-items: stretch;
-}
-
-/* Lower Left Text Content Box */
-.banner-hero-content {
-  flex: 0 0 35%;
-  padding: 50px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  box-sizing: border-box;
-}
-
-.hero-title {
-  font-family: 'Jost', sans-serif;
-  font-size: clamp(2rem, 4vw, 3.5rem);
-  font-weight: 700;
-  line-height: 1.1;
-  color: #000000;
-  margin: 0 0 20px 0;
-}
-
-.hero-description {
-  font-size: 15px;
-  line-height: 1.5;
-  color: #333333;
-  margin-bottom: 30px;
-}
-
-/* Shop Now Button */
-.btn-shop-now {
-  display: inline-flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-  background-color: #000000;
-  color: #FFFFFF;
-  padding: 16px 32px;
-  font-weight: 600;
-  font-size: 14px;
-  letter-spacing: 1.5px;
-  text-decoration: none;
-  text-transform: uppercase;
-  transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-.btn-shop-now:hover {
-  background-color: #222222;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 18px rgba(0,0,0,0.25);
-}
-
-.btn-shop-now .arrow {
-  transition: transform 0.3s ease;
-}
-
-.btn-shop-now:hover .arrow {
-  transform: translateX(6px);
-}
-
-/* Lower Right Image */
-.banner-bottom-image {
-  flex: 0 0 65%;
-  overflow: hidden;
-}
-
-.banner-bottom-image img {
-  width: 100%;
-  height: 100%;
   object-fit: cover;
+  object-position: center;
   display: block;
 }
 
