@@ -13,7 +13,6 @@
   flex-direction: column;
   opacity: 1;
   transform: rotate(0deg); /* Angle: 0 deg */
-  background-color:#000000;
 }
 /* --- HEADER BAR --- */
 .banner-header {
