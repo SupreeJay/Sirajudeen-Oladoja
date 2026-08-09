@@ -207,14 +207,12 @@ top: 0;
 left: 0;
 border: 3px solid green;
 left: 0 !important;
-  width: 965px !important;    /* Forces full un-squished width (1440px/600px * 402px) */
+  width: 1052px !important;    /* Forces full un-squished width (1440px/600px * 402px) */
   height: 402px !important;  
   object-position: left top !important;
   transform: scale(1.3) !important;
   object-fit: fill !important; 
   transform-origin: 0 0 !important;
-    max-width: none !important;  /* Overrides Shopify/theme image compression */
-  max-height: none !important;
   display: block;
 }
 
