@@ -151,10 +151,27 @@
 /* --- HERO GRAPHIC LAYOUT --- */
 
 /* Image position inside the mask frame */
+.banner-top-image {
+  position: relative;
+  width: 100%;
+  max-width: 1440px;
+  height: 390px;
+  margin: 0 auto;
+  overflow: hidden; /* Crops out anything shifted beyond the 390px boundary */
+  box-sizing: border-box;
+  opacity: 1;
+  transform: rotate(0deg);
+}
 
-
-
-
+/* Image is positioned absolutely to shift the crop window */
+.banner-top-image img {
+  position: absolute;
+  width: 100%;
+  height: auto;
+  bottom: 0; /* Anchors the image to the bottom, pushing top elements up out of view */
+  left: 0;
+  display: block;
+}
 
 /* Container matching top image width (1440px) */
 .banner-bottom-row {
@@ -182,30 +199,34 @@
   align-items: flex-start;
   box-sizing: border-box;
 }
-/* Container: Acts as the Figma viewport mask (890px x 402px) */
-/* Container: Positioned relative to create the 890x402 mask frame */
-/* Container Frame: Fixed Figma Viewport Mask (890px x 402px) */
+
+/* Container Frame: Fixed Figma Viewport Mask */
 .banner-bottom-image {
   position: relative;
   width: 890px;
   height: 402px;
   flex-shrink: 0;
-  overflow: hidden; /* Clips horizontal overflow past 890px and vertical overflow past 402px */
+  overflow: hidden;
   box-sizing: border-box;
   opacity: 1;
   transform: rotate(0deg);
 }
 
-/* Image: Pinned Top-Left with Exact Combined Dimensions */
+/* Inner Graphic: Scaled & Transformed */
 .banner-bottom-image img {
   position: absolute;
   top: 0;
-  left: 0;
-  width: 965px;       /* Fixed horizontal width from Snippet 1 */
-  height: auto;       /* Proportional height scaling from Snippet 2 (evaluates to ~402px) */
-  max-width: none;    /* Prevents Shopify theme rules from squeezing the image width */
-  max-height: none;   /* Prevents theme rules from constraining height */
+  left: 0 !important;
+  width: 1052px !important;  /* Prioritized larger width (1052px > 965px) */
+  height: 400px !important;   /* Explicit height setting */
+  max-width: none;
+  max-height: none;
   display: block;
+  border: 3px solid green;
+  object-fit: fill !important;
+  object-position: left top !important;
+  transform: scale(1.3) !important;
+  transform-origin: 0 0 !important; /* Anchors 1.3x zoom to the top-left corner */
 }
 /* --- FOOTER TAGLINE --- */
 .banner-footer {
