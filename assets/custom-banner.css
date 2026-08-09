@@ -154,15 +154,24 @@
   flex-direction: column;
 }
 
+
+
 /* Upper Full-Width Image */
+/* Upper Full-Width Image Container */
 .banner-top-image {
   width: 100%;
+  max-width: 1440px;
+  height: 390px;
+  opacity: 1;
+  transform: rotate(0deg); /* Angle: 0 deg */
   overflow: hidden;
+  box-sizing: border-box;
 }
 
 .banner-top-image img {
   width: 100%;
-  height: auto;
+  height: 100%;
+  object-fit: contain; /* Prevents cropping by fitting the entire image inside the 390px height */
   display: block;
 }
 
