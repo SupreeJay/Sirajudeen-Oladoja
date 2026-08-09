@@ -196,6 +196,7 @@
   border: 3px solid red;
 }
 
+
 .banner-hero-content .hero-title {
   width: 459px;
   height: 70px;
@@ -212,7 +213,6 @@
   transform: rotate(0deg);
   box-sizing: border-box;
 }
-
 .banner-hero-content .hero_description {
   width: 483px;
   height: 84px;
