@@ -171,6 +171,47 @@
   display: block;
 }
 
+
+/* Container matching top image width (1440px) */
+.banner-bottom-row {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  gap: 0; /* Zero spacing between left and right side */
+  box-sizing: border-box;
+}
+
+/* Left Content Box (1440px - 890px = 550px) */
+.banner-hero-content {
+  width: 550px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+/* Right Image Container (890px x 402px) */
+.banner-bottom-image {
+  width: 890px;
+  height: 402px;
+  flex-shrink: 0;
+  overflow: hidden;
+  box-sizing: border-box;
+  opacity: 1;
+  transform: rotate(0deg);
+}
+
+/* Image scaling inside the right box */
+.banner-bottom-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
 /* --- FOOTER TAGLINE --- */
 .banner-footer {
   text-align: center;
