@@ -76,20 +76,39 @@
   gap: 10px;
   width: 207px;
   height: 44px;
-  padding: 0; /* Cleared inner padding to respect exact fixed dimensions */
-  background-color: #FFF544;
+  padding: 0;
+  background-color: #FFF544; /* Initial yellow background */
   text-decoration: none;
   overflow: hidden;
   border: none;
   cursor: pointer;
   z-index: 1;
   opacity: 1;
-  transform: rotate(0deg); /* Angle: 0 deg */
   box-sizing: border-box;
-  color:#000000
+  color: #000000;
+  isolation: isolate;
 }
 
+/* Sliding dark background layer on hover */
+.btn-choose-gift::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  height: calc(100% + 2px);
+  background-color: #000000; /* Dark sliding fill color */
+  z-index: 1;
+  transform: scaleX(0); /* Hidden by default */
+  transform-origin: left;
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
+}
+
+/* Button Text */
 .btn-choose-gift span:first-child {
+  position: relative;
   font-family: 'Jost', sans-serif;
   font-weight: 400;
   font-style: normal;
@@ -98,57 +117,40 @@
   letter-spacing: 0px;
   text-transform: uppercase;
   color: #000000;
-  width: 102px;
-  height: 21px;
-  opacity: 1;
-  transform: rotate(0deg); /* Angle: 0 deg */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-sizing: border-box;
   white-space: nowrap;
   transition: color 0.35s ease-in-out;
   z-index: 2;
 }
 
+/* Arrow Icon */
 .btn-choose-gift .arrow-icon {
+  position: relative;
   width: 24px;
   height: 24px;
   display: inline-block;
   opacity: 1;
-  transform: rotate(0deg); /* Angle: -0 deg */
   box-sizing: border-box;
   z-index: 2;
   transition: transform 0.35s ease-in-out, filter 0.35s ease-in-out;
 }
 
-.btn-choose-gift::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: #FFF544;
-  z-index: 1;
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-    transform: scaleX(1);
+/* --- HOVER STATES --- */
+
+/* 1. Slide dark overlay across */
+.btn-choose-gift:hover::before {
+  transform: scaleX(1);
 }
 
-
-
-.btn-choose-gift:hover span {
+/* 2. Transition text to white */
+.btn-choose-gift:hover span:first-child {
   color: #FFFFFF;
-  background-color: #000000;
 }
 
+/* 3. Shift arrow right and turn white */
 .btn-choose-gift:hover .arrow-icon {
   transform: translateX(6px);
   filter: brightness(0) invert(1);
 }
-
 /* --- HERO GRAPHIC LAYOUT --- */
 
 /* Image position inside the mask frame */
