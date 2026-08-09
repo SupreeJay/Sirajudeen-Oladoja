@@ -360,7 +360,6 @@
   opacity: 1;
   box-sizing: border-box;
   margin: 0 auto;
-  border: 1px solid blue;
   text-align: center; /* Centers container on screens wider than 1440px */
 }
 
