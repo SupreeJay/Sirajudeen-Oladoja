@@ -290,7 +290,7 @@
   box-sizing: border-box;
   z-index: 2;
   transition: transform 0.35s ease-in-out, filter 0.35s ease-in-out;
-  
+  color:white;
 }
 
 /* --- HOVER STATES --- */
