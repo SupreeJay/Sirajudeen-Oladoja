@@ -196,6 +196,53 @@
   border: 3px solid red;
 }
 
+.banner-hero-content .hero-title {
+  width: 459px;
+  height: 70px;
+  font-family: 'Jost', sans-serif;
+  font-style: normal;
+  font-weight: 500; /* Medium */
+  font-size: 70px;
+  line-height: 100%; /* Or 70px */
+  letter-spacing: 0px;
+  color: #000000;
+  margin: 0;
+  padding: 0;
+  opacity: 1;
+  transform: rotate(0deg);
+  box-sizing: border-box;
+}
+
+.banner-hero-content .hero_description {
+  width: 483px;
+  height: 84px;
+  font-family: 'Jost', sans-serif;
+  font-style: normal;
+  font-weight: 400; /* Regular */
+  font-size: 20px;
+  line-height: 140%; /* 28px height per line */
+  letter-spacing: 0px;
+  color: #000000;
+  margin: 0;
+  padding: 0;
+  opacity: 1;
+  transform: rotate(0deg);
+  box-sizing: border-box;
+}
+.banner-hero-content .btn-shop-now {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 220px;
+  height: 50px;
+  box-sizing: border-box;
+  text-decoration: none;
+  opacity: 1;
+  transform: rotate(0deg);
+}
+
+
+
 
 /* Container Frame: Fixed Figma Viewport Mask */
 .banner-bottom-image {
