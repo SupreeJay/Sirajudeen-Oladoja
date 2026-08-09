@@ -380,160 +380,208 @@
    ========================================================== */
 @media screen and (max-width: 768px) {
 
-  /* Mobile Header Top Bar */
+  /* Main Container Layout */
+  .custom-banner-section {
+    position: relative;
+    width: 100%;
+    background-color: #ffffff;
+    border-top: 1px solid #000000; /* Black border top */
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* 1. Navbar Header Container */
   .custom-banner-section .banner-header {
     position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 12px 16px;
+    padding: 14px 16px;
     background-color: #f7f7f7;
     border-bottom: 1px solid #e5e5e5;
+    order: 1; /* Keep header at the top */
+    transition: all 0.3s ease;
   }
 
-  /* Hamburger / Close Toggle Button */
-  .custom-banner-section .mobile-menu-toggle {
+  /* Static Hamburger Icon Visual via Pure CSS */
+  .custom-banner-section .banner-header::before {
+    content: '';
     position: absolute;
     left: 16px;
-    top: 14px;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    padding: 4px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 10;
-  }
-
-  .custom-banner-section .icon-hamburger {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    top: 18px;
     width: 18px;
-    height: 12px;
-  }
-
-  .custom-banner-section .icon-hamburger .line {
-    width: 100%;
     height: 2px;
-    background-color: #000000;
-    display: block;
+    background: #000000;
+    box-shadow: 0 5px 0 #000000, 0 10px 0 #000000; /* Creates 3 burger lines */
   }
 
-  .custom-banner-section .icon-close {
-    display: none;
-    font-size: 22px;
-    line-height: 1;
+  /* Brand Title Text */
+  .custom-banner-section .brand-title {
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
     color: #000000;
   }
 
-  /* Default Hidden State (Unhovered / Collapsed State) */
+  /* Hidden State: Menu items inside header */
   .custom-banner-section .top-announcement,
   .custom-banner-section .btn-choose-gift {
     display: none;
     opacity: 0;
-    transition: opacity 0.3s ease-in-out;
   }
 
-  /* Hero Content Layout adjustments for Mobile */
-  .custom-banner-section .banner-bottom-row {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    padding: 24px 16px;
-  }
-
-  .custom-banner-section .hero-title {
-    font-size: 26px;
-    font-weight: 600;
-    margin-bottom: 8px;
-  }
-
-  .custom-banner-section .hero-description {
-    font-size: 13px;
-    line-height: 1.4;
-    color: #555555;
-    margin-bottom: 20px;
-    max-width: 280px;
-  }
-
-  /* Shop Now Button Styling on Mobile */
-  .custom-banner-section .btn-shop-now {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-    width: 200px;
-    height: 44px;
-    background-color: #000000;
-    color: #ffffff;
-    text-decoration: none;
-    font-size: 12px;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-  }
-
-  /* Bottom Tagline Footer Bar */
-  .custom-banner-section .banner-footer {
-    background-color: #f7f7f7;
-    padding: 10px 16px;
-    text-align: center;
-    font-size: 10px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    color: #444444;
-  }
-
-  /* ==========================================================
-     ACTIVE EXPANDED STATE (.menu-open triggered via JS)
-     ========================================================== */
-
-  /* Hide hamburger icon, show close 'X' icon */
-  .custom-banner-section.menu-open .icon-hamburger {
+  /* 2. Hide Upper Image Container completely as Figma merges graphic at bottom */
+  .custom-banner-section .banner-top-image {
     display: none;
   }
 
-  .custom-banner-section.menu-open .icon-close {
+  /* 3. Lower Content Row Re-ordered with Flexbox */
+  .custom-banner-section .banner-bottom-row {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 32px 20px 0 20px;
+    text-align: center;
+    order: 2;
+  }
+
+  /* Re-ordering elements inside the bottom row */
+  .custom-banner-section .banner-hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    order: 1; /* Hero text comes first */
+  }
+
+  .custom-banner-section .hero-title {
+    font-size: 24px;
+    font-weight: 700;
+    color: #000000;
+    margin: 0 0 8px 0;
+    letter-spacing: -0.5px;
+  }
+
+  .custom-banner-section .hero-description {
+    font-size: 11px;
+    line-height: 1.4;
+    color: #333333;
+    max-width: 240px;
+    margin: 0 0 20px 0;
+  }
+
+  /* Illustration Wrapper placed below text */
+  .custom-banner-section .banner-bottom-image {
+    position: relative;
+    width: 100%;
+    max-width: 320px;
+    margin: 0 auto;
+    order: 2;
+  }
+
+  .custom-banner-section .banner-bottom-image img {
+    width: 100%;
+    height: auto;
     display: block;
   }
 
-  /* Reveal top announcement text */
-  .custom-banner-section.menu-open .top-announcement {
+  /* Overlay Shop Now Button over the Graphic */
+  .custom-banner-section .btn-shop-now {
+    position: absolute;
+    bottom: 30%; /* Overlay directly on top of graphic */
+    left: 50%;
+    transform: translateX(-50%);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 160px;
+    height: 38px;
+    background-color: #000000;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    z-index: 5;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  }
+
+  .custom-banner-section .btn-shop-now .arrow {
+    width: 14px;
+    height: 14px;
+    filter: invert(1);
+  }
+
+  /* 4. Footer Tagline Bar */
+  .custom-banner-section .banner-footer {
+    order: 3;
+    background-color: #f7f7f7;
+    padding: 12px 16px;
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  .custom-banner-section .footer-tagline {
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    color: #333333;
+  }
+
+  /* ==========================================================
+     PURE CSS HOVER MENU STATE
+     ========================================================== */
+
+  /* Trigger state on header hover */
+  .custom-banner-section .banner-header:hover {
+    padding-bottom: 20px;
+  }
+
+  /* Replace hamburger icon with Close 'X' icon on hover */
+  .custom-banner-section .banner-header:hover::before {
+    content: '✕';
+    font-size: 18px;
+    line-height: 1;
+    box-shadow: none;
+    top: 14px;
+  }
+
+  /* Reveal Announcement Text on hover */
+  .custom-banner-section .banner-header:hover .top-announcement {
     display: block;
     opacity: 1;
-    font-size: 12px;
+    font-size: 11px;
     color: #333333;
-    margin-top: 10px;
-    margin-bottom: 8px;
+    margin: 12px 0 10px 0;
     text-align: center;
   }
 
-  /* Reveal yellow "CHOOSE GIFT" button */
-  .custom-banner-section.menu-open .btn-choose-gift {
+  /* Reveal Yellow 'CHOOSE GIFT' button on hover */
+  .custom-banner-section .banner-header:hover .btn-choose-gift {
     display: inline-flex;
     opacity: 1;
     align-items: center;
     justify-content: center;
     gap: 8px;
     width: 100%;
-    max-width: 280px;
-    height: 42px;
-    background-color: #ffe600; /* Bright Yellow */
+    max-width: 240px;
+    height: 38px;
+    background-color: #ffe600;
     color: #000000;
     text-decoration: none;
-    font-size: 13px;
-    font-weight: 600;
+    font-size: 11px;
+    font-weight: 700;
     letter-spacing: 1px;
     text-transform: uppercase;
   }
-  
-  .custom-banner-section.menu-open .btn-choose-gift .arrow-icon {
-    width: 16px;
-    height: 16px;
-    object-fit: contain;
-  }
 
+  .custom-banner-section .banner-header:hover .btn-choose-gift .arrow-icon {
+    width: 14px;
+    height: 14px;
+  }
 }
