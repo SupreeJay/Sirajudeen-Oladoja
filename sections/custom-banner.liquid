@@ -105,3 +105,78 @@
   </div>
 
 </div>
+
+{% schema %}
+{
+  "name": "Custom Banner",
+  "settings": [
+    {
+      "type": "text",
+      "id": "brand_text",
+      "label": "Brand Logo Text",
+      "default": "TISSO VISON"
+    },
+    {
+      "type": "text",
+      "id": "announcement_text",
+      "label": "Top Announcement Text",
+      "default": "Find the ideal gift for your loved ones."
+    },
+    {
+      "type": "text",
+      "id": "button_top_text",
+      "label": "Top Button Label",
+      "default": "CHOOSE GIFT"
+    },
+    {
+      "type": "url",
+      "id": "button_top_url",
+      "label": "Top Button Link"
+    },
+    {
+      "type": "image_picker",
+      "id": "top_image",
+      "label": "Upper Full-Width Image"
+    },
+    {
+      "type": "text",
+      "id": "hero_title",
+      "label": "Hero Title",
+      "default": "The Gift Guide"
+    },
+    {
+      "type": "textarea",
+      "id": "hero_description",
+      "label": "Hero Description",
+      "default": "Discover Joy: Your Ultimate Holiday Gift Destination. Explore our curated selection and find the perfect gifts to delight your loved ones this holiday season."
+    },
+    {
+      "type": "text",
+      "id": "button_main_text",
+      "label": "Main Button Label",
+      "default": "SHOP NOW"
+    },
+    {
+      "type": "url",
+      "id": "button_main_url",
+      "label": "Main Button Link"
+    },
+    {
+      "type": "image_picker",
+      "id": "bottom_image",
+      "label": "Lower Right Image"
+    },
+    {
+      "type": "text",
+      "id": "footer_tagline",
+      "label": "Footer Tagline",
+      "default": "SUSTAINABLE, ETHICALLY MADE CLOTHES IN SIZES XXS TO 6XL"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Banner"
+    }
+  ]
+}
+{% endschema %}
