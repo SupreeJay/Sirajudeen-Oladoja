@@ -250,7 +250,7 @@
   overflow: hidden; /* Keeps the animated overlay contained within the button border */
 }
 
-/* Sliding background layer (Yellow) */
+/* Sliding background layer (Yellow matching Figma #FFF544) */
 .banner-hero-content .btn-shop-now::before {
   content: "";
   position: absolute;
@@ -258,7 +258,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: #FFF544; /* Hover yellow background */
+  background-color: #FFF544; /* Corrected yellow color code */
   z-index: 1;
   transform: scaleX(0);
   transform-origin: left;
@@ -282,14 +282,16 @@
 
 /* Arrow icon styling */
 .banner-hero-content .btn-shop-now .arrow {
-  width: 24px;
-  height: 24px;
+  position: relative;
+  z-index: 2;
+  width: 25.5px; /* Restored size matching Figma */
+  height: auto;
   display: inline-block;
   opacity: 1;
-  transform: rotate(0deg); /* Angle: -0 deg */
+  stroke: #FFFFFF;
+  color: #FFFFFF;
   box-sizing: border-box;
-  z-index: 2;
-  transition: transform 0.35s ease-in-out, filter 0.35s ease-in-out;
+  transition: transform 0.35s ease-in-out, filter 0.35s ease-in-out, stroke 0.35s ease-in-out, color 0.35s ease-in-out;
 }
 
 /* --- HOVER STATES --- */
@@ -304,13 +306,12 @@
   color: #000000;
 }
 
-/* 3. Shift arrow horizontally & change stroke/color to black */
+/* 3. Shift arrow horizontally & change color to black */
 .banner-hero-content .btn-shop-now:hover .arrow {
   transform: translateX(6px);
   stroke: #000000;
   color: #000000;
-  filter: brightness(0); /* Ensures image-based arrows invert cleanly to black */
-  filter: brightness(0) invert(1);
+  filter: brightness(0); /* Clean black tint without invert */
 }
 
 
