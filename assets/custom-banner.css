@@ -207,6 +207,8 @@ position: absolute;
 top: 0;
 left: 0;
 border: 3px solid green;
+left: 0 !important;
+  width: 965px !important;
 }
 
 
