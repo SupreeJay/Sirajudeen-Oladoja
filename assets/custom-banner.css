@@ -187,18 +187,15 @@
 }
 .banner-hero-content{
     width: 550px;
-}
-
-/* Left Content Box (1440px - 890px = 550px) */
-.banner-hero-content {
-  width: 550px;
   flex-shrink: 0;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: flex-start;
   box-sizing: border-box;
+  border: 3px solid red;
 }
+
 
 /* Container Frame: Fixed Figma Viewport Mask */
 .banner-bottom-image {
