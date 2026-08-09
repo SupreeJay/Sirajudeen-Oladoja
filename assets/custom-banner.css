@@ -383,15 +383,16 @@
 @media screen and (max-width: 768px) {
 
   /* Main Container Layout */
-  .custom-banner-section {
+.custom-banner-section {
     position: relative;
-    width: 100%;
-    background-color: #ffffff;
-    border-top: 1px solid #000000; /* Black border top */
-    display: flex;
-    flex-direction: column;
+    width: 375.44px;
+    height: 520px;
+    opacity: 1;
+    transform: rotate(0deg);
+    box-sizing: border-box;
+    overflow: hidden;
+    border: 3px solid violet; /* Ensures content doesn't spill past the 520px height boundary */
   }
-
   /* 1. Navbar Header Container */
   .custom-banner-section .banner-header {
     position: relative;
@@ -585,7 +586,6 @@
     margin: 12px 0 10px 0;
     text-align: center;
   }
-
   /* Reveal Yellow 'CHOOSE GIFT' button on hover */
   .custom-banner-section .banner-header:hover .btn-choose-gift {
     display: inline-flex;
@@ -604,7 +604,6 @@
     letter-spacing: 1px;
     text-transform: uppercase;
   }
-
   .custom-banner-section .banner-header:hover .btn-choose-gift .arrow-icon {
     width: 14px;
     height: 14px;
