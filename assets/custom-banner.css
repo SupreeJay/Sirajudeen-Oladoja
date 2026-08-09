@@ -148,30 +148,31 @@
 }
 
 /* --- HERO GRAPHIC LAYOUT --- */
-/* Container acts as the cropping frame / viewport mask */
-/* Lower Right Image Container - Frame Mask */
-.banner-bottom-image {
-  position: relative;
-  width: 890px;
-  height: 402px;
-  flex-shrink: 0;
-  overflow: hidden; /* Clips any part of the image extending beyond 890x402 */
-  box-sizing: border-box;
-  opacity: 1;
-  transform: rotate(0deg); /* Angle: 0 deg */
-}
 
 /* Image position inside the mask frame */
-.banner-bottom-image img {
-  position: absolute;
-  top: 0;
-  left: 0;
+.banner-top-image {
+  position: relative;
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
+  max-width: 1440px;
+  height: 390px;
+  margin: 0 auto;
+  overflow: hidden; /* Crops out anything shifted beyond the 390px boundary */
+  box-sizing: border-box;
+  opacity: 1;
+  transform: rotate(0deg);
+}
+
+/* Image is positioned absolutely to shift the crop window */
+.banner-top-image img {
+  position: absolute;
+  width: 100%;
+  height: auto;
+  bottom: 0; /* Anchors the image to the bottom, pushing top elements up out of view */
+  left: 0;
   display: block;
 }
+
+
 
 
 /* Container matching top image width (1440px) */
@@ -195,24 +196,28 @@
   box-sizing: border-box;
 }
 
-/* Right Image Container (890px x 402px) */
+/* Lower Right Image Container - Frame Mask */
 .banner-bottom-image {
+  position: relative;
   width: 890px;
   height: 402px;
   flex-shrink: 0;
-  overflow: hidden;
+  overflow: hidden; /* Clips out the bottom map/compass section beyond 402px height */
   box-sizing: border-box;
   opacity: 1;
   transform: rotate(0deg);
 }
 
-/* Image scaling inside the right box */
+/* Image absolute placement to snap top-left crop */
 .banner-bottom-image img {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto; /* Preserves natural height so bottom gets clipped by overflow: hidden */
   display: block;
 }
+
 
 /* --- FOOTER TAGLINE --- */
 .banner-footer {
