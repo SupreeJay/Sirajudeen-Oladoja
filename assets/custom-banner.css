@@ -347,7 +347,6 @@
   transform-origin: 0 0 !important; /* Anchors 1.3x zoom to the top-left corner */
 }
 
-
 /* --- FOOTER TAGLINE --- */
 .banner-footer {
   display: block; /* Spacing out footer contents */
@@ -362,8 +361,6 @@
   margin: 0 auto;
   text-align: center; /* Centers container on screens wider than 1440px */
 }
-
-
 .banner-footer .footer_tagline {
   font-family: 'Jost', sans-serif;
   font-size: 16px;
@@ -378,31 +375,165 @@
   width: 100%;
 }
 
-/* --- MOBILE RESPONSIVE --- */
+/* ==========================================================
+   MOBILE MEDIA QUERY (Screens 768px and smaller)
+   ========================================================== */
 @media screen and (max-width: 768px) {
-  .banner-header {
+
+  /* Mobile Header Top Bar */
+  .custom-banner-section .banner-header {
+    position: relative;
+    display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 16px;
+    background-color: #f7f7f7;
+    border-bottom: 1px solid #e5e5e5;
+  }
+
+  /* Hamburger / Close Toggle Button */
+  .custom-banner-section .mobile-menu-toggle {
+    position: absolute;
+    left: 16px;
+    top: 14px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+  }
+
+  .custom-banner-section .icon-hamburger {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 18px;
+    height: 12px;
+  }
+
+  .custom-banner-section .icon-hamburger .line {
+    width: 100%;
+    height: 2px;
+    background-color: #000000;
+    display: block;
+  }
+
+  .custom-banner-section .icon-close {
+    display: none;
+    font-size: 22px;
+    line-height: 1;
+    color: #000000;
+  }
+
+  /* Default Hidden State (Unhovered / Collapsed State) */
+  .custom-banner-section .top-announcement,
+  .custom-banner-section .btn-choose-gift {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+  }
+
+  /* Hero Content Layout adjustments for Mobile */
+  .custom-banner-section .banner-bottom-row {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 24px 16px;
+  }
+
+  .custom-banner-section .hero-title {
+    font-size: 26px;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+
+  .custom-banner-section .hero-description {
+    font-size: 13px;
+    line-height: 1.4;
+    color: #555555;
+    margin-bottom: 20px;
+    max-width: 280px;
+  }
+
+  /* Shop Now Button Styling on Mobile */
+  .custom-banner-section .btn-shop-now {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     gap: 12px;
-    padding: 20px;
+    width: 200px;
+    height: 44px;
+    background-color: #000000;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+
+  /* Bottom Tagline Footer Bar */
+  .custom-banner-section .banner-footer {
+    background-color: #f7f7f7;
+    padding: 10px 16px;
+    text-align: center;
+    font-size: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #444444;
+  }
+
+  /* ==========================================================
+     ACTIVE EXPANDED STATE (.menu-open triggered via JS)
+     ========================================================== */
+
+  /* Hide hamburger icon, show close 'X' icon */
+  .custom-banner-section.menu-open .icon-hamburger {
+    display: none;
+  }
+
+  .custom-banner-section.menu-open .icon-close {
+    display: block;
+  }
+
+  /* Reveal top announcement text */
+  .custom-banner-section.menu-open .top-announcement {
+    display: block;
+    opacity: 1;
+    font-size: 12px;
+    color: #333333;
+    margin-top: 10px;
+    margin-bottom: 8px;
     text-align: center;
   }
 
-  .banner-bottom-row {
-    flex-direction: column;
-  }
-
-  .banner-hero-content, 
-  .banner-bottom-image {
-    flex: 0 0 100%;
+  /* Reveal yellow "CHOOSE GIFT" button */
+  .custom-banner-section.menu-open .btn-choose-gift {
+    display: inline-flex;
+    opacity: 1;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
     width: 100%;
+    max-width: 280px;
+    height: 42px;
+    background-color: #ffe600; /* Bright Yellow */
+    color: #000000;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  
+  .custom-banner-section.menu-open .btn-choose-gift .arrow-icon {
+    width: 16px;
+    height: 16px;
+    object-fit: contain;
   }
 
-  .banner-hero-content {
-    padding: 30px 20px;
-  }
-
-  .btn-shop-now {
-    width: 100%;
-    box-sizing: border-box;
-  }
 }
