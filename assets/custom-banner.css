@@ -196,26 +196,29 @@
   box-sizing: border-box;
 }
 /* Container: Acts as the Figma viewport mask (890px x 402px) */
+/* Container: Positioned relative to create the 890x402 mask frame */
 .banner-bottom-image {
+  position: relative;
   width: 890px;
   height: 402px;
   flex-shrink: 0;
-  overflow: hidden;
+  overflow: hidden; /* Crops out the extra 75px on the right edge */
   box-sizing: border-box;
   opacity: 1;
   transform: rotate(0deg);
-  position: relative;
 }
 
-/* Image: Handled natively via object-fit & object-position */
+/* Image: Pinned top-left inside the mask frame */
 .banner-bottom-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: left top; /* Locks focus to upper-left corner */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 965px !important;    /* Forces full un-squished width (1440px/600px * 402px) */
+  height: 402px !important;   /* Matches container height exactly */
+  max-width: none !important;  /* Overrides Shopify/theme image compression */
+  max-height: none !important;
   display: block;
 }
-
 
 /* --- FOOTER TAGLINE --- */
 .banner-footer {
