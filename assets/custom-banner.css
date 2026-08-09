@@ -210,9 +210,13 @@ border: 3px solid green;
 left: 0 !important;
   width: 1052px !important;
   height: 400px !important;
-  object-fit: cover !important;
   object-position: left top !important;
   transform: scale(1.5) !important;
+  /* Disables object-fit calculation conflict */
+  object-fit: fill !important; 
+  
+  /* Forces scale expansion exclusively downwards and to the right */
+  transform-origin: 0 0 !important; /* Alternatively: left top */
 }
 
 
