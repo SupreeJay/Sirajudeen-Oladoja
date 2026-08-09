@@ -148,21 +148,26 @@
 }
 
 /* --- HERO GRAPHIC LAYOUT --- */
+/* Container acts as the cropping frame / viewport mask */
 .banner-top-image {
+  position: relative;
   width: 100%;
   max-width: 1440px;
   height: 390px;
-  opacity: 1;
-  transform: rotate(0deg); /* Angle: 0 deg */
-  overflow: hidden;
+  margin: 0 auto;
+  overflow: hidden; /* Crops out anything shifted beyond the 390px boundary */
   box-sizing: border-box;
+  opacity: 1;
+  transform: rotate(0deg);
 }
 
+/* Image is positioned absolutely to shift the crop window */
 .banner-top-image img {
+  position: absolute;
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
+  height: auto;
+  bottom: 0; /* Anchors the image to the bottom, pushing top elements up out of view */
+  left: 0;
   display: block;
 }
 
