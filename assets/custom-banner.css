@@ -134,11 +134,10 @@
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    transform: scaleX(1);
 }
 
-.btn-choose-gift:hover::before {
-  transform: scaleX(1);
-}
+
 
 .btn-choose-gift:hover span {
   color: #FFFFFF;
@@ -311,8 +310,6 @@
 /* 3. Shift arrow horizontally & change color to black */
 .banner-hero-content .btn-shop-now:hover .arrow {
   transform: translateX(6px);
-  stroke: #000000;
-  color: #000000;
   filter: brightness(0); /* Clean black tint without invert */
 }
 
@@ -350,7 +347,7 @@
 
 /* --- FOOTER TAGLINE --- */
 .banner-footer {
-  display: inline-flex; /* Spacing out footer contents */
+  display: block; /* Spacing out footer contents */
   width: 100%;
   max-width: 1440px; /* Constrains full width to Figma design max */
   min-height: 34px;
@@ -360,7 +357,7 @@
   opacity: 1;
   box-sizing: border-box;
   margin: 0 auto;
-  border: 1px solid #F5F5F5;
+  border: 1px solid blue;
   text-align: center; /* Centers container on screens wider than 1440px */
 }
 
