@@ -174,6 +174,8 @@
 }
 
 
+
+
 /* Container matching top image width (1440px) */
 .banner-bottom-row {
   overflow: hidden; /* Crops out anything shifted beyond the 1440px boundary */
@@ -194,10 +196,6 @@ width:890px;
 height:402px;
 overflow:hidden;
 position:relative;
-  box-sizing: border-box;
-  opacity: 1;
-  transform: rotate(0deg);
-
 }
 
 /* 3. Inner Graphic - Sized to Fill Frame Cleanly */
@@ -207,13 +205,12 @@ top: 0;
 left: 0;
 border: 3px solid green;
 left: 0 !important;
-  width: 1052px !important;    /* Forces full un-squished width (1440px/600px * 402px) */
-  height: 402px !important;  
+  width: 1052px !important;
+  height: 400px !important;
   object-position: left top !important;
-  transform: scale(1.4) !important;
+  transform: scale(1.3) !important;
   object-fit: fill !important; 
   transform-origin: 0 0 !important;
-  display: block;
 }
 
 
@@ -226,9 +223,31 @@ left: 0 !important;
   justify-content: space-around;
   align-items: flex-start;
   box-sizing: border-box;
-  border: 3px solid indigo;
+}
+/* Container: Acts as the Figma viewport mask (890px x 402px) */
+/* Container: Positioned relative to create the 890x402 mask frame */
+.banner-bottom-image {
+  position: relative;
+  width: 890px;
+  height: 402px;
+  flex-shrink: 0;
+  overflow: hidden; /* Crops out the extra 75px on the right edge */
+  box-sizing: border-box;
+  opacity: 1;
+  transform: rotate(0deg);
 }
 
+/* Image: Pinned top-left inside the mask frame */
+.banner-bottom-image img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 965px !important;    /* Forces full un-squished width (1440px/600px * 402px) */
+  height: 402px !important;   /* Matches container height exactly */
+  max-width: none !important;  /* Overrides Shopify/theme image compression */
+  max-height: none !important;
+  display: block;
+}
 
 /* --- FOOTER TAGLINE --- */
 .banner-footer {
