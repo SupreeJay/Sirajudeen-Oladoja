@@ -186,17 +186,14 @@
   margin: 0 auto;
   gap: 0; /* Zero spacing between left and right side */
   box-sizing: border-box;
-  height: 402px;
-  border: 3px solid black; /* Matches the height of the bottom image */
+  height: 402px;/* Matches the height of the bottom image */
 }
 .banner-hero-content{
     width: 550px;
-    border: 3px solid red;
 }
 .banner-bottom-image {
 width:890px;
 height:402px;
-border: 3px solid blue;
 overflow:hidden;
 position:relative;
 }
