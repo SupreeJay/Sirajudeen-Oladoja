@@ -375,6 +375,8 @@
   width: 100%;
 }
 
+
+
 /* ==========================================================
    MOBILE MEDIA QUERY (Screens 768px and smaller)
    ========================================================== */
@@ -404,16 +406,39 @@
     transition: all 0.3s ease;
   }
 
-  /* Static Hamburger Icon Visual via Pure CSS */
-  .custom-banner-section .banner-header::before {
-    content: '';
+  /* Target the HTML Toggle Button */
+  .custom-banner-section .mobile-menu-toggle {
     position: absolute;
     left: 16px;
-    top: 18px;
+    top: 16px;
+    background: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    z-index: 2;
+  }
+
+  /* Hamburger Container */
+  .custom-banner-section .icon-hamburger {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+
+  /* Reference the .hamburger-line class directly */
+  .custom-banner-section .icon-hamburger .hamburger-line {
+    display: block;
     width: 18px;
     height: 2px;
-    background: #000000;
-    box-shadow: 0 5px 0 #000000, 0 10px 0 #000000; /* Creates 3 burger lines */
+    background-color: #000000;
+  }
+
+  /* Hide Close Icon by Default */
+  .custom-banner-section .icon-close {
+    display: none;
+    font-size: 20px;
+    line-height: 1;
+    color: #000000;
   }
 
   /* Brand Title Text */
@@ -534,7 +559,7 @@
   }
 
   /* ==========================================================
-     PURE CSS HOVER MENU STATE
+     HOVER / OPEN MENU STATE
      ========================================================== */
 
   /* Trigger state on header hover */
@@ -542,13 +567,13 @@
     padding-bottom: 20px;
   }
 
-  /* Replace hamburger icon with Close 'X' icon on hover */
-  .custom-banner-section .banner-header:hover::before {
-    content: '✕';
-    font-size: 18px;
-    line-height: 1;
-    box-shadow: none;
-    top: 14px;
+  /* Swap hamburger lines for close icon on hover */
+  .custom-banner-section .banner-header:hover .icon-hamburger {
+    display: none;
+  }
+
+  .custom-banner-section .banner-header:hover .icon-close {
+    display: block;
   }
 
   /* Reveal Announcement Text on hover */
