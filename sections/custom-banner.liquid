@@ -1,259 +1,6 @@
-<style>
-
-/* Paste this at the VERY top of your CSS file */
-@import url('https://fonts.googleapis.com/css2?family=Jost:wght@400;500;700&display=swap');
-
-/* Brand Title CSS */
-.brand-title {
-  font-family: 'Jost', sans-serif;
-  font-size: 20px;
-  font-weight: 700;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  color: #000000;
-  white-space: nowrap;
-}
-
-{% comment %} Overall style for the Custom banner container {% endcomment %}
-  .custom-banner-{{ section.id }} {
-    width: 100%;
-    max-width: 1440px;
-    min-height: 878px;
-    margin: 0 auto;
-    position: relative;
-    box-sizing: border-box;
-    opacity: 1;
-    overflow: hidden;
-    background-color: #F5F5F5;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    height: auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 0 0 20px 0;
-  }
-
-{% comment %} Style for navbar {% endcomment %}
-  /* Header Bar */
-  .custom-banner-{{ section.id }} .banner-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    max-width: 1440px;
-    min-height: 64px;
-    padding: 10px 50px;
-    background-color: transparent;
-    box-sizing: border-box;
-    opacity: 1;
-  }
-
-  .custom-banner-{{ section.id }} .brand-title {
-    font-family: 'Jost', sans-serif;
-    font-size: 20px;
-    font-weight: 700;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    color: #000000;
-    white-space: nowrap;
-    width: 151.44px;
-    height: 19px;
-    opacity: 1;
-    display: flex;
-    align-items: center;
-    box-sizing: border-box;
-  }
-
-  .custom-banner-{{ section.id }} .top-announcement {
-    width: auto;
-    height: 14px;
-    font-family: 'Jost', sans-serif;
-    font-weight: 400;
-    font-style: normal;
-    font-size: 16px;
-    line-height: 13.42px;
-    letter-spacing: 0px;
-    text-align: center;
-    color: #000000;
-    opacity: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-sizing: border-box;
-    white-space: nowrap;
-  }
-
-  .custom-banner-{{ section.id }} .btn-choose-gift {
-    position: relative;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px; /* Space between text and arrow icon */
-  padding: 12px 24px;
-  background-color: #fffb00; /* Yellow base color */
-  text-decoration: none;
-  overflow: hidden;
-  border: none;
-  cursor: pointer;
-  z-index: 1;
-  }
-
-  /* Hover Animation for Top Button */
-  .custom-banner-{{ section.id }} .btn-choose-gift:hover {
-    color: #ffffff;
-    background-color: #000000;
-  }
-
-  .custom-banner-{{ section.id }} .btn-choose-gift > span:first-child {
- font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  color: #121212; /* Dark initial text */
-  transition: color 0.35s ease-in-out;
-  }
-
-  .custom-banner-{{ section.id }} .btn-choose-gift:hover > span:first-child {
-    color: #ffffff;
-  }
-
-  .custom-banner-{{ section.id }} .btn-choose-gift .arrow-icon {
-    display: inline-block;
-  width: 20px;
-  height: 20px;
-  transition: filter 0.35s ease-in-out;
-  }
-.btn-choose-gift:hover::before {
-  transform: scaleX(1);
-}
-    .custom-banner-{{ section.id }} .btn-choose-gift::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: #2D3032; /* Dark hover color */
-  z-index: -1;
-  transform: scaleX(0);
-  transform-origin: top;
-  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-  .custom-banner-{{ section.id }} .btn-choose-gift:hover .arrow-icon {
-    transform: translateX(6px);
-  filter: brightness(0) invert(1);
-  }
-
-  /* Hero Content Area */
-  .custom-banner-{{ section.id }} .banner-hero-content {
-    max-width: 520px;
-    z-index: 2;
-    padding: 60px 50px;
-    margin: auto 0;
-  }
-
-  .custom-banner-{{ section.id }} .hero-title {
-    font-size: clamp(2.5rem, 5vw, 4.5rem);
-    font-weight: 700;
-    line-height: 1.1;
-    color: #000000;
-    margin: 0 0 20px 0;
-  }
-
-  .custom-banner-{{ section.id }} .hero-description {
-    font-size: 16px;
-    line-height: 1.5;
-    color: #333333;
-    margin-bottom: 30px;
-  }
-
-  /* Shop Now Button Animation */
-  .custom-banner-{{ section.id }} .btn-shop-now {
-    display: inline-flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 20px;
-    background-color: #000000;
-    color: #ffffff;
-    padding: 16px 32px;
-    font-weight: 600;
-    font-size: 14px;
-    letter-spacing: 1.5px;
-    text-decoration: none;
-    text-transform: uppercase;
-    border: none;
-    min-width: 200px;
-    transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
-  }
-
-  .custom-banner-{{ section.id }} .btn-shop-now:hover {
-    background-color: #222222;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 18px rgba(0,0,0,0.25);
-  }
-
-  .custom-banner-{{ section.id }} .btn-shop-now .arrow {
-    transition: transform 0.3s ease;
-  }
-
-  .custom-banner-{{ section.id }} .btn-shop-now:hover .arrow {
-    transform: translateX(6px);
-  }
-
-  /* Footer Tagline */
-  .custom-banner-{{ section.id }} .banner-footer {
-    text-align: center;
-    z-index: 2;
-  }
-
-  .custom-banner-{{ section.id }} .footer-tagline {
-    display: inline-block;
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    color: #000000;
-    background: rgba(255, 255, 255, 0.9);
-    padding: 6px 16px;
-    border: 1px solid #000000;
-  }
-
-  /* Responsive Rules */
-  @media screen and (max-width: 768px) {
-    .custom-banner-{{ section.id }} {
-      min-height: auto;
-      padding: 20px 16px;
-    }
-
-    .custom-banner-{{ section.id }} .banner-header {
-      flex-direction: column;
-      gap: 12px;
-      align-items: stretch;
-      text-align: center;
-      padding: 10px 0;
-    }
-
-    .custom-banner-{{ section.id }} .banner-hero-content {
-      padding: 30px 0;
-    }
-
-    .custom-banner-{{ section.id }} .btn-shop-now {
-      width: 100%;
-      box-sizing: border-box;
-    }
-  }
-</style>
-
-<div class="custom-banner-{{ section.id }}" style="{% if section.settings.bg_image != blank %}background-image: url('{{ section.settings.bg_image | image_url: width: 2000 }}');{% endif %}">
+<div class="custom-banner-section">
   
-
-
-
-  
-  {% comment %} The Navigation Header {% endcomment %}
+  {% comment %} Top Header Bar {% endcomment %}
   <div class="banner-header">
     <div class="brand-title">
       {{ section.settings.brand_text }}
@@ -278,81 +25,77 @@
     </a>
   </div>
 
-<div class="custom-banner-hero">
-  
-  {% comment %} Top Navigation Bar {% endcomment %}
-  <div class="banner-top-bar">
-    <div class="banner-logo">
-      {% if section.settings.logo != blank %}
-        <img src="{{ section.settings.logo | image_url: width: 300 }}" alt="{{ shop.name }}">
-      {% else %}
-        <span>{{ shop.name | uppercase }}</span>
-      {% endif %}
-    </div>
+  {% comment %} Main Graphic Area {% endcomment %}
+  <div class="custom-banner-hero">
 
-    {% if section.settings.button_top_text != blank %}
-      <div class="banner-top-subtext">{{ section.settings.subheading_top }}</div>
-      <a href="{{ section.settings.button_top_url | default: '#' }}" class="btn-choose-gift">
-        <span>{{ section.settings.button_top_text }}</span>
+    {% comment %} 1. Upper Image (Full Width) {% endcomment %}
+    <div class="banner-top-image">
+      {% if section.settings.top_image != blank %}
         <img 
-          src="{{ 'arrow.svg' | asset_url }}" 
-          alt="arrow-icon" 
-          class="arrow-icon"
-          width="20"
-          height="20"
-          loading="lazy"
+          src="{{ section.settings.top_image | image_url: width: 2000 }}" 
+          alt="{{ section.settings.top_image.alt | default: 'Hero Top Graphic' | escape }}" 
+          width="{{ section.settings.top_image.width }}"
+          height="{{ section.settings.top_image.height }}"
+          loading="eager"
         >
-      </a>
-    {% endif %}
-  </div>
-
-  {% comment %} 1. Upper Image (Full Width) {% endcomment %}
-  <div class="banner-top-image">
-    {% if section.settings.top_image != blank %}
-      <img src="{{ 'Hero-Background.svg' | image_url: width: 2000 }}" alt="Hero Top Illustration" loading="eager">
-    {% endif %}
-  </div>
-
-  {% comment %} 2. Lower Row: Left Text Box + Right Image (~3/4 Width) {% endcomment %}
-  <div class="banner-bottom-row">
-    
-    {% comment %} Left Hero Text Content {% endcomment %}
-    <div class="banner-hero-content">
-      {% if section.settings.hero_title != blank %}
-        <h1 class="hero-title">{{ section.settings.hero_title }}</h1>
+      {% else %}
+        <img 
+          src="{{ 'Hero-Background.svg' | asset_url }}" 
+          alt="Hero Top Graphic" 
+          width="1440"
+          height="400"
+          loading="eager"
+        >
       {% endif %}
+    </div>
+
+    {% comment %} 2. Lower Row (Left Content + Right Image) {% endcomment %}
+    <div class="banner-bottom-row">
       
-      {% if section.settings.hero_description != blank %}
-        <div class="hero-description">{{ section.settings.hero_description }}</div>
-      {% endif %}
+      {% comment %} Lower Left Text Box {% endcomment %}
+      <div class="banner-hero-content">
+        {% if section.settings.hero_title != blank %}
+          <h1 class="hero-title">{{ section.settings.hero_title }}</h1>
+        {% endif %}
+        
+        {% if section.settings.hero_description != blank %}
+          <div class="hero-description">{{ section.settings.hero_description }}</div>
+        {% endif %}
 
-      {% if section.settings.button_main_text != blank %}
-        <a href="{{ section.settings.button_main_url | default: '#' }}" class="btn-shop-now">
-          <span>{{ section.settings.button_main_text }}</span>
-          <span class="arrow">&rarr;</span>
-        </a>
-      {% endif %}
-    </div>
+        {% if section.settings.button_main_text != blank %}
+          <a href="{{ section.settings.button_main_url | default: '#' }}" class="btn-shop-now">
+            <span>{{ section.settings.button_main_text }}</span>
+            <span class="arrow">&rarr;</span>
+          </a>
+        {% endif %}
+      </div>
 
-    {% comment %} Right Image Container {% endcomment %}
-    <div class="banner-bottom-image">
-      {% if section.settings.bottom_image != blank %}
-        <img src="{{ 'Hero-Background.svg' | image_url: width: 1600 }}" alt="Hero Bottom Illustration" loading="lazy">
-      {% endif %}
+      {% comment %} Lower Right Image {% endcomment %}
+      <div class="banner-bottom-image">
+        {% if section.settings.bottom_image != blank %}
+          <img 
+            src="{{ section.settings.bottom_image | image_url: width: 1600 }}" 
+            alt="{{ section.settings.bottom_image.alt | default: 'Hero Bottom Graphic' | escape }}" 
+            width="{{ section.settings.bottom_image.width }}"
+            height="{{ section.settings.bottom_image.height }}"
+            loading="lazy"
+          >
+        {% else %}
+          <img 
+            src="{{ 'Hero-Background.svg' | asset_url }}" 
+            alt="Hero Bottom Graphic" 
+            width="1000"
+            height="500"
+            loading="lazy"
+          >
+        {% endif %}
+      </div>
+
     </div>
 
   </div>
 
-  {% comment %} Bottom Marquee / Subtext Strip {% endcomment %}
-  {% if section.settings.footer_strip_text != blank %}
-    <div class="banner-footer-strip">
-      <p>{{ section.settings.footer_strip_text }}</p>
-    </div>
-  {% endif %}
-
-</div>
-
-  {% comment %} The Bottom Tagline {% endcomment %}
+  {% comment %} Bottom Tagline {% endcomment %}
   <div class="banner-footer">
     {% if section.settings.footer_tagline != blank %}
       <div class="footer-tagline">
@@ -362,140 +105,3 @@
   </div>
 
 </div>
-
-{% schema %}
-{
-  "name": "Custom Banner",
-  "settings": [
-    {
-      "type": "image_picker",
-      "id": "bg_image",
-      "label": "Background Illustration Graphic"
-    },
-    {
-      "type": "text",
-      "id": "brand_text",
-      "label": "Brand Logo Text",
-      "default": "TISSO VISON"
-    },
-    {
-      "type": "text",
-      "id": "announcement_text",
-      "label": "Top Announcement Text",
-      "default": "Find the ideal gift for your loved ones."
-    },
-    {
-      "type": "text",
-      "id": "button_top_text",
-      "label": "Top Button Label",
-      "default": "CHOOSE GIFT"
-    },
-    {
-      "type": "url",
-      "id": "button_top_url",
-      "label": "Top Button Link"
-    },
-    {
-      "type": "text",
-      "id": "hero_title",
-      "label": "Main Hero Title",
-      "default": "The Gift Guide"
-    },
-    {
-      "type": "textarea",
-      "id": "hero_description",
-      "label": "Hero Description",
-      "default": "Discover Joy: Your Ultimate Holiday Gift Destination. Explore our curated selection and find the perfect gifts to delight your loved ones this holiday season."
-    },
-    {
-      "type": "text",
-      "id": "button_main_text",
-      "label": "Main Button Label",
-      "default": "SHOP NOW"
-    },
-    {
-      "type": "url",
-      "id": "button_main_url",
-      "label": "Main Button Link"
-    },
-    {
-      "type": "text",
-      "id": "footer_tagline",
-      "label": "Footer Tagline",
-      "default": "SUSTAINABLE, ETHICALLY MADE CLOTHES IN SIZES XXS TO 6XL"
-    }
-  ],
-  "presets": [
-    {
-      "name": "Custom Banner"
-    }
-  ]
-}{
-  "name": "Custom Banner",
-  "settings": [
-    {
-      "type": "text",
-      "id": "subheading_top",
-      "label": "Top Subheading",
-      "default": "Find the ideal gift for your loved ones."
-    },
-    {
-      "type": "text",
-      "id": "button_top_text",
-      "label": "Top Button Text",
-      "default": "CHOOSE GIFT"
-    },
-    {
-      "type": "url",
-      "id": "button_top_url",
-      "label": "Top Button Link"
-    },
-    {
-      "type": "image_picker",
-      "id": "top_image",
-      "label": "Upper Full-Width Image"
-    },
-    {
-      "type": "text",
-      "id": "hero_title",
-      "label": "Hero Title",
-      "default": "The Gift Guide"
-    },
-    {
-      "type": "textarea",
-      "id": "hero_description",
-      "label": "Hero Description",
-      "default": "Discover Joy: Your Ultimate Holiday Gift Destination. Explore our curated selection and find the perfect gifts to delight your loved ones this holiday season."
-    },
-    {
-      "type": "text",
-      "id": "button_main_text",
-      "label": "Main Button Text",
-      "default": "SHOP NOW"
-    },
-    {
-      "type": "url",
-      "id": "button_main_url",
-      "label": "Main Button Link"
-    },
-    {
-      "type": "image_picker",
-      "id": "bottom_image",
-      "label": "Lower Right Image"
-    },
-    {
-      "type": "text",
-      "id": "footer_strip_text",
-      "label": "Footer Strip Text",
-      "default": "SUSTAINABLE, ETHICALLY MADE CLOTHES IN SIZES XXS TO 6XL"
-    }
-  ],
-  "presets": [
-    {
-      "name": "Custom Banner"
-    }
-  ]
-}
-
-
-{% endschema %}
