@@ -195,26 +195,26 @@
   justify-content: center;
   box-sizing: border-box;
 }
-
-/* Lower Right Image Container - Frame Mask */
+/* Lower Right Image Container - Mask Frame (890px x 402px) */
 .banner-bottom-image {
   position: relative;
   width: 890px;
   height: 402px;
   flex-shrink: 0;
-  overflow: hidden; /* Clips out the bottom map/compass section beyond 402px height */
+  overflow: hidden; /* Crops out the right 550px of the image beyond the 890px boundary */
   box-sizing: border-box;
   opacity: 1;
   transform: rotate(0deg);
 }
 
-/* Image absolute placement to snap top-left crop */
+/* Image scaling to crop the right side instead of squeezing */
 .banner-bottom-image img {
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
-  height: auto; /* Preserves natural height so bottom gets clipped by overflow: hidden */
+  height: 100%; /* Fills the 402px height exactly */
+  width: auto; /* Maintains original proportions across full width */
+  max-width: none; /* Prevents Shopify themes from forcing width: 100% */
   display: block;
 }
 
