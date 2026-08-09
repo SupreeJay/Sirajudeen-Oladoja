@@ -204,6 +204,7 @@
   box-sizing: border-box;
   opacity: 1;
   transform: rotate(0deg);
+  position: relative;
 }
 
 /* Image: Handled natively via object-fit & object-position */
