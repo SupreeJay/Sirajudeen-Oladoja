@@ -282,15 +282,14 @@
 
 /* Arrow icon styling */
 .banner-hero-content .btn-shop-now .arrow {
-  position: relative;
-  z-index: 2; /* Sits above the sliding ::before background */
-  width: 25.5px;
-  height: auto;
-  stroke: #FFFFFF;
-  color: #FFFFFF;
-  display: block;
-  border: none;
-  transition: transform 0.35s ease, filter 0.35s ease, stroke 0.35s ease;
+  width: 24px;
+  height: 24px;
+  display: inline-block;
+  opacity: 1;
+  transform: rotate(0deg); /* Angle: -0 deg */
+  box-sizing: border-box;
+  z-index: 2;
+  transition: transform 0.35s ease-in-out, filter 0.35s ease-in-out;
 }
 
 /* --- HOVER STATES --- */
@@ -311,6 +310,7 @@
   stroke: #000000;
   color: #000000;
   filter: brightness(0); /* Ensures image-based arrows invert cleanly to black */
+  filter: brightness(0) invert(1);
 }
 
 
