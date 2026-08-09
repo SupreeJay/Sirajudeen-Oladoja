@@ -158,6 +158,7 @@
 
 /* Upper Full-Width Image */
 /* Upper Full-Width Image Container */
+/* Upper Full-Width Image Container */
 .banner-top-image {
   width: 100%;
   max-width: 1440px;
@@ -174,7 +175,6 @@
   object-fit: contain; /* Prevents cropping by fitting the entire image inside the 390px height */
   display: block;
 }
-
 /* Lower Split Row */
 .banner-bottom-row {
   display: flex;
