@@ -213,32 +213,104 @@
   transform: rotate(0deg);
   box-sizing: border-box;
 }
-.banner-hero-content .hero_description {
-  width: 483px;
-  height: 84px;
+.banner-hero-content .hero-description {
+  max-width: 483px; /* Prevents overflow while allowing responsive shrinking */
+  width: 100%;
   font-family: 'Jost', sans-serif;
-  font-style: normal;
-  font-weight: 400; /* Regular */
   font-size: 20px;
-  line-height: 140%; /* 28px height per line */
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1.4; /* Set to 140% for uniform vertical spacing between wrapped lines */
   letter-spacing: 0px;
-  color: #000000;
-  margin: 0;
-  padding: 0;
+  color: #000000; /* Converted from Figma text background fill */
   opacity: 1;
-  transform: rotate(0deg);
+  text-align: left;
+  white-space: normal; /* Enables proper text wrapping */
+  word-wrap: break-word;
   box-sizing: border-box;
+  border: 3px solid blue; /* Debugging border to visualize text container */
 }
+
 .banner-hero-content .btn-shop-now {
+  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: 12px;
   width: 220px;
   height: 50px;
   box-sizing: border-box;
   text-decoration: none;
   opacity: 1;
-  transform: rotate(0deg);
+  background-color: #000000; /* Initial dark background */
+  color: #FFFFFF;
+  cursor: pointer;
+  border: none;
+  text-transform: uppercase;
+  overflow: hidden; /* Keeps the animated overlay contained within the button border */
+}
+
+/* Sliding background layer (Yellow) */
+.banner-hero-content .btn-shop-now::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #FFF544; /* Hover yellow background */
+  z-index: 1;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Text styling */
+.banner-hero-content .btn-shop-now > span:first-child {
+  position: relative;
+  z-index: 2; /* Sits above the sliding ::before background */
+  font-family: 'Jost', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 20.48px;
+  letter-spacing: 0px;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  transition: color 0.35s ease;
+}
+
+/* Arrow icon styling */
+.banner-hero-content .btn-shop-now .arrow {
+  position: relative;
+  z-index: 2; /* Sits above the sliding ::before background */
+  width: 25.5px;
+  height: auto;
+  stroke: #FFFFFF;
+  color: #FFFFFF;
+  display: block;
+  border: none;
+  transition: transform 0.35s ease, filter 0.35s ease, stroke 0.35s ease;
+}
+
+/* --- HOVER STATES --- */
+
+/* 1. Trigger background slide fill */
+.banner-hero-content .btn-shop-now:hover::before {
+  transform: scaleX(1);
+}
+
+/* 2. Transition text to black */
+.banner-hero-content .btn-shop-now:hover > span:first-child {
+  color: #000000;
+}
+
+/* 3. Shift arrow horizontally & change stroke/color to black */
+.banner-hero-content .btn-shop-now:hover .arrow {
+  transform: translateX(6px);
+  stroke: #000000;
+  color: #000000;
+  filter: brightness(0); /* Ensures image-based arrows invert cleanly to black */
 }
 
 
