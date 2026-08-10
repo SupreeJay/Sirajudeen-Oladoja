@@ -405,6 +405,9 @@ justify-content:flex-start;
   box-sizing: border-box;
   border: 4px solid indigo;
 }
+.custom-banner-section .banner-header .top-announcement,.custom-banner-section .banner-header .btn-choose-gift{
+  display: none;
+}
 
 .mobile-hero-wrapper{
   width: 375px;
