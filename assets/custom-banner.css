@@ -452,11 +452,15 @@ content: '';
 .mobile-hero-wrapper .mobile-hero-top-text{
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content:center;
   align-items: center;
   width: 375px;
   height: 157px;
   border: 4px solid orange;
+}
+
+.mobile-hero-wrapper .mobile-hero-top-text .hero-title{
+  border: 4px solid blue;
 }
 
 
