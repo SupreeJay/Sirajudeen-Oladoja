@@ -11,7 +11,7 @@
 button,
 input,
 select,
-textarea {
+textarea,div,a,span, img {
   font-family: inherit !important;
 }
 
