@@ -421,6 +421,7 @@ content: '';
     box-sizing: border-box;
     flex-shrink: 0;
     cursor: pointer;
+    font-weight:bolder;
     /* Middle 2px bar using CSS background gradient */
     background: linear-gradient(#000000, #000000) no-repeat center / 100% 2px;
   }
