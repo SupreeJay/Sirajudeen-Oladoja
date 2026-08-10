@@ -1,12 +1,22 @@
 {%- unless settings.type_body_font.system? -%}
-  {{ settings.type_body_font | font_url | preload_tag: as: 'font', type: 'font/woff2', fetchpriority: 'low' }}
+  {{ settings.type_body_font | font_url | preload_tag: as: 'font', type: 'font/ttf', fetchpriority: 'low' }}
 {%- endunless -%}
 {%- unless settings.type_subheading_font.system? -%}
-  {{ settings.type_subheading_font | font_url | preload_tag: as: 'font', type: 'font/woff2', fetchpriority: 'low' }}
+  {{ settings.type_subheading_font | font_url | preload_tag: as: 'font', type: 'font/ttf', fetchpriority: 'low' }}
 {%- endunless -%}
 {%- unless settings.type_heading_font.system? -%}
-  {{ settings.type_heading_font | font_url | preload_tag: as: 'font', type: 'font/woff2', fetchpriority: 'low' }}
+  {{ settings.type_heading_font | font_url | preload_tag: as: 'font', type: 'font/ttf', fetchpriority: 'low' }}
 {%- endunless -%}
 {%- unless settings.type_accent_font.system? -%}
-  {{ settings.type_accent_font | font_url | preload_tag: as: 'font', type: 'font/woff2', fetchpriority: 'low' }}
+  {{ settings.type_accent_font | font_url | preload_tag: as: 'font', type: 'font/ttf', fetchpriority: 'low' }}
 {%- endunless -%}
+
+<style>
+  @font-face {
+    font-family: 'Jost';
+    src: url("{{ 'Jost-VariableFont_wght.ttf' | asset_url }}") format('truetype');
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
+  }
+</style>
