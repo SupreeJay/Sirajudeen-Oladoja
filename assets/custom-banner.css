@@ -511,11 +511,16 @@ content: '';
   }
 
  .mobile-hero-wrapper .mobile-hero-shop-bg-container .btn-shop-now{
-  display: inline-flex;
+display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 193px;
-  height: 45px;
+  
+  /* Factoring in "Hug contents" */
+  width: fit-content;
+  height: fit-content;
+  min-width: 193px;
+  min-height: 45px;
+  
   gap: 10px;
   position: absolute;
   top: 337px;
@@ -527,8 +532,6 @@ content: '';
   border: none;
   cursor: pointer;
   box-sizing: border-box;
-  color: #FFFFFF;
-  text-transform: uppercase;
 }
 
  .mobile-hero-wrapper .mobile-hero-shop-bg-container .btn-shop-now > span:first-child {
