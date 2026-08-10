@@ -495,9 +495,17 @@ content: '';
   color: #000000;
   margin: 0;
   box-sizing: border-box;
-  border: 4px solid blue;
   text-wrap: wrap;
  }
+  .mobile-hero-wrapper .mobile-hero-shop-bg-container{
+    width:375px;
+    height: 264px;
+    background-image: url('assets/Hero-Background.svg'); /* Replace with your image path */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover; 
+  border: 4px solid brown;
+  }
 
 
 
