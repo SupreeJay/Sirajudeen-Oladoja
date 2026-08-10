@@ -43,16 +43,16 @@ textarea {
 }
 
 .brand-title {
-  font-family: 'Jost', sans-serif;
+font-family: 'Jost', sans-serif !important;
   font-size: 20px;
-font-weight: 500;
-  letter-spacing: 1.5px;
+  font-weight: 500; /* Lowered from 700 to match the lighter weight in RealFont */
+  letter-spacing: 4px; /* Increased from 1.5px to achieve wide character spacing */
   text-transform: uppercase;
   color: #000000;
   white-space: nowrap;
-  width: 151.44px;
-  height: 19px;
-  transform: rotate(0deg); /* Angle: 0 deg */
+  width: auto; /* Changed from fixed 151.44px so wide tracking doesn't truncate */
+  height: auto;
+  transform: rotate(0deg);
   opacity: 1;
   display: flex;
   align-items: center;
