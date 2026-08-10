@@ -424,6 +424,14 @@ content: '';
     /* Middle 2px bar using CSS background gradient */
     background: linear-gradient(#000000, #000000) no-repeat center / 100% 2px;
   }
+  .banner-header .brand-title{
+    width: 151.44px;
+  height: 19px;
+  transform: rotate(0deg);
+  opacity: 1;
+  color: #000000;
+  box-sizing: border-box;
+  }
 
 .mobile-hero-wrapper{
   width: 375px;
