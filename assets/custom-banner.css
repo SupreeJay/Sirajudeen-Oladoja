@@ -410,16 +410,19 @@ justify-content:flex-start;
 }
 /* Adding The Hamburger Menu Icon */
 .banner-header::before {
-    content: '';
+content: '';
     display: block;
     width: 18px;
     height: 10px;
+    opacity: 1;
+    transform: rotate(0deg);
     border-top: 2px solid #000000;
     border-bottom: 2px solid #000000;
     box-sizing: border-box;
     flex-shrink: 0;
-    background: linear-gradient(#000 0 0) no-repeat center/100% 2px; /* Middle line */
     cursor: pointer;
+    /* Middle 2px bar using CSS background gradient */
+    background: linear-gradient(#000000, #000000) no-repeat center / 100% 2px;
   }
 
 .mobile-hero-wrapper{
