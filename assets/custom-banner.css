@@ -17,6 +17,7 @@ textarea,div,a,span, img {
 
 /* --- MAIN CONTAINER --- */
 .custom-banner-section {
+   font-family: 'Jost', sans-serif;
   max-width: 1440px; /* Fill width up to max container constraint */
   margin: 0 auto;
   box-sizing: border-box;
@@ -32,6 +33,7 @@ textarea,div,a,span, img {
 }
 /* --- HEADER BAR --- */
 .banner-header {
+   font-family: 'Jost', sans-serif;
   width: 100%;
   max-width: 1440px;
   height: 64px;
