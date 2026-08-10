@@ -51,7 +51,7 @@ font-family: 'Jost', sans-serif !important;
   color: #000000;
   white-space: nowrap;
   width: auto; /* Changed from fixed 151.44px so wide tracking doesn't truncate */
-  height: auto;
+  line-height: 19px; /* Adjusted to match the font size and weight */
   transform: rotate(0deg);
   opacity: 1;
   display: flex;
