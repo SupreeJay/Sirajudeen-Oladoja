@@ -1,10 +1,9 @@
  @import url('https://fonts.googleapis.com/css2?family=Jost:wght@400;600;700&display=swap');
 
 
- *,
-*::before,
-*::after {
-  font-family: 'Jost', sans-serif !important;
+:root {
+  --font-body-family: 'Jost', sans-serif !important;
+  --font-heading-family: 'Jost', sans-serif !important;
 }
 
 /* Force form elements to inherit the font */
@@ -12,7 +11,7 @@ button,
 input,
 select,
 textarea {
-  font-family: inherit !important;
+   font-family: 'Jost', sans-serif !important;
 }
 /* --- MAIN CONTAINER --- */
 .custom-banner-section {
