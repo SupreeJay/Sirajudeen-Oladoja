@@ -30,12 +30,12 @@
           mobileTopTextDiv.appendChild(titleClone);
         }
 
-        // Extract Description from Liquid markup
-        const originalDescription = bannerSection.querySelector('.hero-description');
-        if (originalDescription) {
-          const descriptionClone = originalDescription.cloneNode(true);
-          mobileTopTextDiv.appendChild(descriptionClone);
-        }
+          // Create title element and set the text content directly
+          const newTitle = document.createElement('div');
+          newTitle.className = 'hero-description-mobile';
+          newTitle.textContent = 'Discover Joy: Your Ultimate Holiday Gift Destination.'; // Your direct text here
+
+          mobileTopTextDiv.appendChild(newTitle);
 
         // 3. Child Div 2: Bottom Container (Shop Now with Background Image)
         const mobileShopBgDiv = document.createElement('div');

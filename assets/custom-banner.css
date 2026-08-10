@@ -477,6 +477,27 @@ content: '';
   margin: 0;
   box-sizing: border-box;
 }
+ .mobile-hero-wrapper .mobile-hero-top-text .hero-description-mobile{
+  width: 340px;
+  height: 42px;
+  position: absolute;
+  top: 103px;
+  left: 16.78px;
+  transform: rotate(0deg);
+  opacity: 1;
+  font-family: 'Jost', sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 16px;
+  line-height: 130%;
+  letter-spacing: 0px;
+  text-align: center;
+  color: #000000;
+  margin: 0;
+  box-sizing: border-box;
+  border: 4px solid blue;
+  text-wrap: wrap;
+ }
 
 
 
