@@ -408,6 +408,19 @@ justify-content:flex-start;
 .custom-banner-section .banner-header .top-announcement,.custom-banner-section .banner-header .btn-choose-gift{
   display: none;
 }
+/* Adding The Hamburger Menu Icon */
+.banner-header::before {
+    content: '';
+    display: block;
+    width: 18px;
+    height: 10px;
+    border-top: 2px solid #000000;
+    border-bottom: 2px solid #000000;
+    box-sizing: border-box;
+    flex-shrink: 0;
+    background: linear-gradient(#000 0 0) no-repeat center/100% 2px; /* Middle line */
+    cursor: pointer;
+  }
 
 .mobile-hero-wrapper{
   width: 375px;
@@ -443,7 +456,7 @@ justify-content:flex-start;
 
 }*/
 
-custom-banner-section .banner-top-image, custom-banner-section .banner-bottom-row {
+.custom-banner-section .banner-top-image, .custom-banner-section .banner-bottom-row {
   display: none;
 }
 }
