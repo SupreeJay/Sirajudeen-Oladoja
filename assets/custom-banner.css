@@ -498,6 +498,10 @@ content: '';
   text-wrap: wrap;
  }
   .mobile-hero-wrapper .mobile-hero-shop-bg-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
     width: 686px;
     height: 264px;
     background-image: url('./Hero-Background.svg'); /* Replace with your image path */
@@ -506,7 +510,26 @@ content: '';
   background-size:contain; 
   }
 
-
+ .mobile-hero-wrapper .mobile-hero-shop-bg-container .btn-shop-now{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 193px;
+  height: 45px;
+  gap: 10px;
+  position: absolute;
+  top: 337px;
+  left: 90.78px;
+  transform: rotate(0deg);
+  opacity: 1;
+  padding: 13px 20px;
+  background-color: #000000;
+  border: none;
+  cursor: pointer;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  text-transform: uppercase;
+}
 
 .custom-banner-section .banner-footer{
   display: flex;
