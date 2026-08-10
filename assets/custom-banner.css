@@ -498,7 +498,7 @@ content: '';
   text-wrap: wrap;
  }
   .mobile-hero-wrapper .mobile-hero-shop-bg-container{
-    width:375px;
+    width: 686px;
     height: 264px;
     background-image: url('./Hero-Background.svg'); /* Replace with your image path */
   background-position: center;
