@@ -531,6 +531,20 @@ content: '';
   text-transform: uppercase;
 }
 
+ .mobile-hero-wrapper .mobile-hero-shop-bg-container .btn-shop-now > span:first-child {
+  position: relative;
+  z-index: 2; /* Sits above the sliding ::before background */
+  font-family: 'Jost', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 20.48px;
+  letter-spacing: 0px;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  transition: color 0.35s ease;
+}
+
 .custom-banner-section .banner-footer{
   display: flex;
   align-items: center;
