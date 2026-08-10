@@ -442,7 +442,24 @@ content: '';
   background-color: #FFFFFF;
   box-sizing: border-box;
   border: 4px solid green;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0px;
 }
+
+.mobile-hero-wrapper .mobile-hero-top-text{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  width: 375px;
+  height: 157px;
+  border: 4px solid orange;
+}
+
+
 
 .custom-banner-section .banner-footer{
   display: flex;
