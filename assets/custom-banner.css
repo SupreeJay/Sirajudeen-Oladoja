@@ -500,7 +500,7 @@ content: '';
   .mobile-hero-wrapper .mobile-hero-shop-bg-container{
     width:375px;
     height: 264px;
-    background-image: url('assets/Hero-Background.svg'); /* Replace with your image path */
+    background-image: url('./Hero-Background.svg'); /* Replace with your image path */
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover; 
