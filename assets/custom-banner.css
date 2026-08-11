@@ -540,6 +540,9 @@ content: '';
   text-transform: uppercase;
   overflow: hidden; 
   isolation: isolate; 
+  position:fixed;
+  top: 337px;
+  left:91px;
 }
 /* Button Text */
 .btn-shop-now  span {
