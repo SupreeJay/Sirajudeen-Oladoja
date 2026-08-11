@@ -42,6 +42,26 @@ textarea {
   box-sizing: border-box;
 }
 
+.hamburger-btn {
+  display: none;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 24px;
+  height: 18px;
+  z-index: 10;
+}
+
+.hamburger-bar {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: #000000;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
 
 .brand-title {
   width: 151.5px; /* Rounded from 151.444px */
@@ -527,7 +547,22 @@ content: '';
   left: -140px;
   }
 
+.hamburger-btn {
+    display: flex;
+  }
 
+  /* Morphing hamburger lines into an 'X' when active */
+  .hamburger-btn.is-active .hamburger-bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+
+  .hamburger-btn.is-active .hamburger-bar:nth-child(2) {
+    opacity: 0;
+  }
+
+  .hamburger-btn.is-active .hamburger-bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
 
 .btn-shop-now {
   width: fit-content;
