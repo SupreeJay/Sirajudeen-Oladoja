@@ -657,13 +657,24 @@ font-family: 'Jost', sans-serif;
   justify-content: center;
 }
 .btn-choose-gift-toggle{
-  width:244px;
-  height:44px;
-  background-color: #FFF544;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
+  position: relative;
+  display: inline-flex;
   align-items: center;
+ justify-content:center;
+  gap: 20px;
+  width: 207px;
+  height: 44px;
+  padding: 0;
+  background-color: #FFF544; /* Initial yellow background */
+  text-decoration: none;
+  overflow: hidden;
+  border: none;
+  cursor: pointer;
+  z-index: 1;
+  opacity: 1;
+  box-sizing: border-box;
+  color: #000000;
+  isolation: isolate;
 }
 .btn-choose-gift-toggle  span{
 width: 102px;
@@ -679,14 +690,13 @@ font-family: 'Jost', sans-serif;
 }
 
   .btn-choose-gift-toggle .arrow-icon-mobile-toggle{
-  width: 28.29px; /* Rounded to two decimal places and added unit */
-  height: 0px;
-  position: absolute;
-  top: 21.55px;
-  left: 189.78px;
-  transform: rotate(0deg);
+  position: relative;
+  width: 24px;
+  height: 24px;
+  display: inline-block;
   opacity: 1;
-  border-top: 1.5px solid #000000; /* Standard way to render a 0px height horizontal line */
   box-sizing: border-box;
+  z-index: 2;
+  transition: transform 0.35s ease-in-out, filter 0.35s ease-in-out;
   }
 }
