@@ -425,6 +425,17 @@ justify-content:flex-start;
 .custom-banner-section .banner-header .top-announcement,.custom-banner-section .banner-header .btn-choose-gift{
   display: none;
 }
+
+#bannerHeader {
+  position: relative;
+  width: 375.44px;
+  height: 65px;
+  padding: 23px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  box-sizing: border-box;
+}
 /* Adding The Hamburger Menu Icon */
 #bannerHeader::before {
     content: "";
