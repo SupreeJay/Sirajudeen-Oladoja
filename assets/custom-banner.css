@@ -564,13 +564,11 @@ display: inline-flex;
   justify-content: center;
   width: 375px;
   height: 34px;
-  gap: 375px;
   transform: rotate(0deg);
   opacity: 1;
   padding: 10px 50px;
   background-color: #F5F5F5;
   box-sizing: border-box;
-  border: 4px solid blue;
 }
 
 .custom-banner-section .banner-footer .footer_tagline{
@@ -578,7 +576,7 @@ display: inline-flex;
   max-width: 100%;
   min-width: 288px;
   height: 14px;
-  background-color: #000000;
+  color: #000000;
   opacity: 1;
   box-sizing: border-box;
   font-family: 'Jost', sans-serif;
@@ -590,9 +588,6 @@ display: inline-flex;
   text-align: center;
   color: #ffffff; 
   white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  border: 2px solid red;
 }
 
 /* This will be for the newly created element
