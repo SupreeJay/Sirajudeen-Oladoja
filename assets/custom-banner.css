@@ -556,13 +556,13 @@ content: '';
   color: #fff;
   white-space: nowrap;
   transition: color 0.35s ease-in-out;
-  z-index: 2;
+  z-index: 200;
 }
 
 /* Arrow Icon */
 .btn-shop-now  .arrow-icon {
   position: relative;
-  z-index: 2;
+  z-index: 200;
   width: 25.5px;
   height: auto;
   display: inline-block;
