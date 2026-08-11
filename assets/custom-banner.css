@@ -649,10 +649,8 @@ font-family: 'Jost', sans-serif;
   line-height: 13.42px;
   letter-spacing: 0px;
   text-align: center;
-  background-color: #000000;
-  color: #ffffff; /* Added white text for contrast against black background */
-  
-  /* Vertical alignment for block/flex text containers */
+  color: #000000;
+
   display: flex;
   align-items: center;
   justify-content: center;
@@ -680,7 +678,7 @@ font-family: 'Jost', sans-serif;
 }
 
   .btn-choose-gift-toggle .arrow-icon-mobile-toggle{
-    width: 28.29px; /* Rounded to two decimal places and added unit */
+  width: 28.29px; /* Rounded to two decimal places and added unit */
   height: 0px;
   position: absolute;
   top: 21.55px;
