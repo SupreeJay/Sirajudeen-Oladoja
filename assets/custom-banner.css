@@ -442,6 +442,13 @@ content: '';
     /* Middle 2px bar using CSS background gradient */
     background: linear-gradient(#000000, #000000) no-repeat center / 100% 2px;
   }
+  #bannerHeader.is-active::before {
+    height: 18px;
+    top: 23.5px;
+    background: 
+      linear-gradient(45deg, transparent 42%, #000 42%, #000 58%, transparent 58%),
+      linear-gradient(-45deg, transparent 42%, #000 42%, #000 58%, transparent 58%);
+  }
   .banner-header .brand-title{
     width: 151.44px;
   height: 19px;
