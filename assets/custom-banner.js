@@ -7,13 +7,14 @@
     const isMobile = window.innerWidth <= MOBILE_BREAKPOINT;
     const bannerSection = document.getElementById('customBannerSection');
     const bannerHeader = document.getElementById('bannerHeader');
+    const footerTagline = document.getElementById('footerTagline');
 
-    if (!bannerSection || !bannerHeader) return;
+    if (!bannerSection || !bannerHeader || !footerTagline) return;
 
     let mobileHeroContent = bannerSection.querySelector('.mobile-hero-wrapper');
 
     if (isMobile) {
-      // Create element only if it doesn't already exist
+      footerTagline.innerText = 'SUSTAINABLE, ETHICALLY MADE ACTIVEWEAR'; // Clear the footer tagline on mobile
       if (!mobileHeroContent) {
         // 1. Create main wrapper container
         mobileHeroContent = document.createElement('div');
