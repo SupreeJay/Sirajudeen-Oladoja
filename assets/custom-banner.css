@@ -575,7 +575,8 @@ display: inline-flex;
 
 .custom-banner-section .banner-footer .footer_tagline{
   /* Box Dimensions */
-  width: 288px;
+  max-width: 100%;
+  min-width: 288px;
   height: 14px;
   background-color: #000000;
   opacity: 1;
