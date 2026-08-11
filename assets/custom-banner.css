@@ -540,6 +540,7 @@ content: '';
  top: 337px;
  left: 90.78px;
  border: 2px solid green;
+ z-index: 100;
 }
 /* Button Text */
 .btn-shop-now  span:first-child {
