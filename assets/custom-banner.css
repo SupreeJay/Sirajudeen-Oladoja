@@ -556,6 +556,8 @@ display: inline-flex;
   text-transform: uppercase;
   color: #FFFFFF;
   transition: color 0.35s ease;
+  width: 119px;
+  height: 19px;
 }
 
 .custom-banner-section .banner-footer{
