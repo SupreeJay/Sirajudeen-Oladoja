@@ -560,7 +560,7 @@ content: '';
 }
 
 /* Arrow Icon */
-.btn-shop-now  .arrow-icon {
+.btn-shop-now  .arrow {
   position: relative;
   z-index: 2;
   width: 25.5px;
