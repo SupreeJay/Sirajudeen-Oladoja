@@ -118,7 +118,7 @@ textarea {
 }
 
 /* Button Text */
-.btn-choose-gift span:first-child {
+.btn-choose-gift span {
   position: relative;
   font-family: 'Jost', sans-serif;
   font-weight: 400;
@@ -153,7 +153,7 @@ textarea {
 }
 
 /* 2. Transition text to white */
-.btn-choose-gift:hover span:first-child {
+.btn-choose-gift:hover span {
   color: #FFFFFF;
 }
 
@@ -283,7 +283,7 @@ textarea {
 }
 
 /* Text styling */
-.banner-hero-content .btn-shop-now > span:first-child {
+.banner-hero-content .btn-shop-now > span {
   position: relative;
   z-index: 2; /* Sits above the sliding ::before background */
   font-family: 'Jost', sans-serif;
@@ -319,7 +319,7 @@ textarea {
 }
 
 /* 2. Transition text to black */
-.banner-hero-content .btn-shop-now:hover > span:first-child {
+.banner-hero-content .btn-shop-now:hover > span {
   color: #000000;
 }
 
@@ -544,7 +544,7 @@ content: '';
   isolation: isolate; 
 }
 /* Button Text */
-.btn-shop-now  span:first-child {
+.btn-shop-now  span {
   position: relative;
   font-family: 'Jost', sans-serif;
   font-weight: 400;
