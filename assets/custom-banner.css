@@ -561,15 +561,17 @@ content: '';
 
 /* Arrow Icon */
 .btn-shop-now  .arrow-icon {
-  position: relative;
+position: relative;
   z-index: 220;
   width: 25.5px;
   height: auto;
   display: inline-block;
   opacity: 1;
-  fill: #ffffff;
   box-sizing: border-box;
-  filter: brightness(0) invert(1);
+
+  /* ✅ Use fill only - REMOVE filter */
+  fill: #ffffff; 
+
   transition: transform 0.35s ease-in-out, fill 0.35s ease-in-out;
 }
 
