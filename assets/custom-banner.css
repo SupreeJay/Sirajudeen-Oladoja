@@ -571,7 +571,7 @@ display: inline-flex;
   box-sizing: border-box;
 }
 
-.custom-banner-section .banner-footer .footer_tagline{
+.footer_tagline{
   /* Box Dimensions */
   max-width: 100%;
   min-width: 288px;
