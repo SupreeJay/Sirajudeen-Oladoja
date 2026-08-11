@@ -15,11 +15,14 @@
       loading: 'eager'
     }}
   {%- else -%}
-    {{ 'LogoFont.svg' | asset_url | image_tag: 
-      class: 'brand-logo-img', 
-      alt: shop.name, 
-      loading: 'eager' 
-    }}
+    <img 
+      src="{{ 'LogoFont.svg' | asset_url }}" 
+      class="brand-logo-img" 
+      alt="{{ shop.name }}" 
+      loading="eager"
+      width="151" 
+      height="19"
+    >
   {%- endif -%}
 </div>
     
