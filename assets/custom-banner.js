@@ -74,42 +74,47 @@
      2. HAMBURGER (::before) CLICK EVENT LISTENER
      ======================================================== */
 function setupHeaderClick() {
-  const hamburgerBtn = document.getElementById('hamburgerBtn');
   const header = document.getElementById('bannerHeader');
-  const bannerModal = document.getElementById('bannerModal');
 
-  if (!hamburgerBtn || !header) return;
+  if (!header) return;
 
-  hamburgerBtn.addEventListener('click', (event) => {
-    event.stopPropagation(); // Prevents click bubbling
+  header.addEventListener('click', (event) => {
+    const rect = header.getBoundingClientRect();
+    alert('Hamburger Menu Cliked')
+    
+    // Calculate exact click position relative to the header element
+    const clickX = event.clientX - rect.left;
+    const clickY = event.clientY - rect.top;
 
-    // Toggle active state on header & button
-    const isActive = hamburgerBtn.classList.toggle('is-active');
-    header.classList.toggle('is-active', isActive);
+    // Get exact computed values of ::before pseudo-element
+    const beforeStyle = window.getComputedStyle(header, '::before');
+    
+    if (beforeStyle.content === 'none') return;
 
-    // Toggle visibility of the modal
-    if (bannerModal) {
-      bannerModal.classList.toggle('is-visible', isActive);
-    }
-  });
+    // Parse computed values or fallback to known pixel values
+    const beforeTop = parseFloat(beforeStyle.top) || 0;
+    const beforeLeft = parseFloat(beforeStyle.left) || 0;
+    const beforeWidth = parseFloat(beforeStyle.width) || 30;  // Adjust if your icon width is different
+    const beforeHeight = parseFloat(beforeStyle.height) || 30; // Adjust if your icon height is different
 
-  // Close modal when clicking outside
-  document.addEventListener('click', (event) => {
-    const targetNode = event.target;
+    // Check if the click occurred strictly inside the ::before bounding area
+    const isInsideBefore = 
+      clickX >= beforeLeft && 
+      clickX <= (beforeLeft + beforeWidth) &&
+      clickY >= beforeTop && 
+      clickY <= (beforeTop + beforeHeight);
 
-    // Use runtime instanceof check for standard JavaScript
-    if (
-      bannerModal &&
-      targetNode instanceof Node &&
-      !hamburgerBtn.contains(targetNode) &&
-      !bannerModal.contains(targetNode)
-    ) {
-      hamburgerBtn.classList.remove('is-active');
-      header.classList.remove('is-active');
-      bannerModal.classList.remove('is-visible');
+    if (isInsideBefore) {
+      header.classList.toggle('is-active');
+      
+      const bannerModal = document.getElementById('bannerModal');
+      if (bannerModal) {
+        bannerModal.classList.toggle('is-visible', header.classList.contains('is-active'));
+      }
     }
   });
 }
+
   /* ========================================================
      3. INITIALIZATION & EVENT LISTENERS
      ======================================================== */
