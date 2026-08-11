@@ -516,7 +516,10 @@ content: '';
     background-image: url('./Hero-Background.svg'); /* Replace with your image path */
   background-position: center;
   background-repeat: no-repeat;
-  background-size:contain; 
+  background-size:contain;
+  position:fixed;
+  top: 157px;
+  left: -140px;
   }
 
 
