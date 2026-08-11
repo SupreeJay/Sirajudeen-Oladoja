@@ -3,6 +3,9 @@
 
   const MOBILE_BREAKPOINT = 768;
 
+  /* ========================================================
+     1. MOBILE HERO SETUP
+     ======================================================== */
   function setupMobileHeroElement() {
     const isMobile = window.innerWidth <= MOBILE_BREAKPOINT;
     const bannerSection = document.getElementById('customBannerSection');
@@ -14,13 +17,14 @@
     let mobileHeroContent = bannerSection.querySelector('.mobile-hero-wrapper');
 
     if (isMobile) {
-      footerTagline.innerText = 'SUSTAINABLE, ETHICALLY MADE ACTIVEWEAR'; // Clear the footer tagline on mobile
+      footerTagline.innerText = 'SUSTAINABLE, ETHICALLY MADE ACTIVEWEAR';
+
       if (!mobileHeroContent) {
-        // 1. Create main wrapper container
+        // Create main wrapper container
         mobileHeroContent = document.createElement('div');
         mobileHeroContent.className = 'mobile-hero-wrapper';
 
-        // 2. Child Div 1: Text-Only Container (Hero Title & Hero Description)
+        // Child Div 1: Top Text Container
         const mobileTopTextDiv = document.createElement('div');
         mobileTopTextDiv.className = 'mobile-hero-top-text';
 
@@ -31,30 +35,27 @@
           mobileTopTextDiv.appendChild(titleClone);
         }
 
-          // Create title element and set the text content directly
-          const newTitle = document.createElement('div');
-          newTitle.className = 'hero-description-mobile';
-          newTitle.textContent = 'Discover Joy: Your Ultimate Holiday Gift Destination.'; // Your direct text here
+        // Create mobile description
+        const newTitle = document.createElement('div');
+        newTitle.className = 'hero-description-mobile';
+        newTitle.textContent = 'Discover Joy: Your Ultimate Holiday Gift Destination.';
+        mobileTopTextDiv.appendChild(newTitle);
 
-          mobileTopTextDiv.appendChild(newTitle);
-
-        // 3. Child Div 2: Bottom Container (Shop Now with Background Image)
+        // Child Div 2: Bottom Shop Now Container
         const mobileShopBgDiv = document.createElement('div');
         mobileShopBgDiv.className = 'mobile-hero-shop-bg-container';
 
-  
-        // Extract Shop Now button from Liquid markup
         const originalShopBtn = bannerSection.querySelector('.btn-shop-now');
         if (originalShopBtn) {
           const shopBtnClone = originalShopBtn.cloneNode(true);
           mobileShopBgDiv.appendChild(shopBtnClone);
         }
 
-        // Assemble the two child divs into the mobile hero container
+        // Assemble child divs into mobile hero
         mobileHeroContent.appendChild(mobileTopTextDiv);
         mobileHeroContent.appendChild(mobileShopBgDiv);
 
-        // Insert as 2nd child of custom-banner-section (immediately after #bannerHeader)
+        // Insert immediately after #bannerHeader
         if (bannerHeader.nextSibling) {
           bannerSection.insertBefore(mobileHeroContent, bannerHeader.nextSibling);
         } else {
@@ -62,20 +63,64 @@
         }
       }
     } else {
-      // Remove dynamic element when returning to desktop screen size
+      // Remove dynamic element when returning to desktop view
       if (mobileHeroContent) {
         mobileHeroContent.remove();
       }
     }
   }
 
-  // Initialize on load and on window resize
-  if (document.readyState === 'interactive' || document.readyState === 'complete') {
+  /* ========================================================
+     2. HAMBURGER (::before) CLICK EVENT LISTENER
+     ======================================================== */
+  function setupHeaderClick() {
+    const header = document.getElementById('bannerHeader');
+
+    if (!header) return;
+
+    header.addEventListener('click', (event) => {
+      alert('Header clicked!'); // Debugging alert
+      const clickedElement = document.elementFromPoint(event.clientX, event.clientY);
+      const beforeStyle = window.getComputedStyle(header, '::before');
+
+      if (clickedElement === header && beforeStyle.content !== 'none') {
+        const rect = header.getBoundingClientRect();
+        const clickX = event.clientX - rect.left;
+        const clickY = event.clientY - rect.top;
+
+        const beforeTop = parseFloat(beforeStyle.top) || 0;
+        const beforeLeft = parseFloat(beforeStyle.left) || 0;
+        const beforeWidth = parseFloat(beforeStyle.width) || 0;
+        const beforeHeight = parseFloat(beforeStyle.height) || 0;
+
+        const isInsideBefore = 
+          clickX >= beforeLeft && 
+          clickX <= (beforeLeft + beforeWidth) &&
+          clickY >= beforeTop && 
+          clickY <= (beforeTop + beforeHeight);
+
+        if (isInsideBefore) {
+          header.classList.toggle('is-active');
+        }
+      }
+    });
+  }
+
+  /* ========================================================
+     3. INITIALIZATION & EVENT LISTENERS
+     ======================================================== */
+  function init() {
     setupMobileHeroElement();
+    setupHeaderClick();
+  }
+
+  if (document.readyState === 'interactive' || document.readyState === 'complete') {
+    init();
   } else {
-    document.addEventListener('DOMContentLoaded', setupMobileHeroElement);
+    document.addEventListener('DOMContentLoaded', init);
   }
 
   window.addEventListener('resize', setupMobileHeroElement);
   window.addEventListener('orientationchange', setupMobileHeroElement);
+
 })();

@@ -4,47 +4,47 @@
 
   
    {%-  comment %} Top Header Bar  {%-  endcomment %}
-  <div id="bannerHeader" class="banner-header">
+  <header id="bannerHeader" class="banner-header">
 
 
-<div id="brandTitle" class="brand-title">
-  {%- if section.settings.brand_image != blank -%}
-    {{ section.settings.brand_image | image_url: width: 300 | image_tag: 
-      class: 'brand-logo-img',
-      alt: section.settings.brand_image.alt | default: shop.name,
-      loading: 'eager'
-    }}
-  {%- else -%}
-    <img 
-      src="{{ 'LogoFont.svg' | asset_url }}" 
-      class="brand-logo-img" 
-      alt="{{ shop.name }}" 
-      loading="eager"
-      width="151" 
-      height="19"
-    >
-  {%- endif -%}
-</div>
-    
-
-     {%-  if section.settings.announcement_text != blank -%}
-      <div class="top-announcement">
-          {{ section.settings.announcement_text }}  
-      </div>
-     {%-  endif -%}
-
-    <a href="{{ section.settings.button_top_url | default: '#' }}" class="btn-choose-gift">
-      <span>{{ section.settings.button_top_text }}</span>
+    <div id="brandTitle" class="brand-title">
+    {%- if section.settings.brand_image != blank -%}
+      {{ section.settings.brand_image | image_url: width: 300 | image_tag: 
+        class: 'brand-logo-img',
+        alt: section.settings.brand_image.alt | default: shop.name,
+        loading: 'eager'
+      }}
+    {%- else -%}
       <img 
-        src="{{ 'arrow.svg' | asset_url }}" 
-        alt="arrow-icon" 
-        class="arrow-icon"
-        width="20"
-        height="20"
-        loading="lazy"
+        src="{{ 'LogoFont.svg' | asset_url }}" 
+        class="brand-logo-img" 
+        alt="{{ shop.name }}" 
+        loading="eager"
+        width="151" 
+        height="19"
       >
-    </a>
-  </div>
+    {%- endif -%}
+    </div>
+      
+
+      {%-  if section.settings.announcement_text != blank -%}
+        <div class="top-announcement">
+            {{ section.settings.announcement_text }}  
+        </div>
+      {%-  endif -%}
+
+      <a href="{{ section.settings.button_top_url | default: '#' }}" class="btn-choose-gift">
+        <span>{{ section.settings.button_top_text }}</span>
+        <img 
+          src="{{ 'arrow.svg' | asset_url }}" 
+          alt="arrow-icon" 
+          class="arrow-icon"
+          width="20"
+          height="20"
+          loading="lazy"
+        >
+      </a>
+  </header>
 
    {%-  comment -%} 1. Upper Image (Full Width) - Direct Child  {%-  endcomment -%}
   <div class="banner-top-image">
@@ -128,6 +128,32 @@
       </div>
      {%-  endif -%}
   </div>
+
+  <div class="mobile-banner-overlay">
+    {%- if section.settings.announcement_text != blank -%}
+      <p class="top-announcement">
+        {{ section.settings.announcement_text }}
+      </p>
+      {%- else -%}
+        <p class="top-announcement">
+          Find the ideal gift for your loved ones.
+        </p>
+      {%- endif -%}
+
+      <a href="{{ section.settings.button_top_url | default: '#' }}"           class="btn-choose-gift">
+        <span>{{ section.settings.button_top_text | default: 'CHOOSE GIFT' }}</span>
+        <img 
+          src="{{ 'arrow.svg' | asset_url }}" 
+          alt="arrow-icon" 
+          class="arrow-icon"
+          width="20"
+          height="20"
+          loading="lazy"
+        >
+      </a>
+
+  </div>
+
 
 </div>
 

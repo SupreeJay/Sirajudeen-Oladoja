@@ -387,6 +387,11 @@ textarea {
   width: 100%;
 }
 
+/*Hiding the display of the mobile-screen banner overlay */
+.mobile-banner-overlay{
+  display: none;
+}
+
 /*MOBILE MEDIA QUERY*/
 
 @media screen and (max-width: 768px) {
@@ -610,5 +615,27 @@ content: '';
 
 .custom-banner-section .banner-top-image, .custom-banner-section .banner-bottom-row {
   display: none;
+}
+
+.mobile-banner-overlay {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;  
+  align-items: center;
+  width: max-content;
+  height: auto;
+  position: absolute;
+  top: 65px;
+  padding: 25px 65.5px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  transform: rotate(0deg);
+  opacity: 1;
+  background-color: #F2F2F2;
+  box-sizing: border-box;
+  max-width: 391px;
+  max-height: 124px;
+  border: 3px solid red;
 }
 }
