@@ -571,6 +571,7 @@ content: '';
   /* Turns any dark img asset to pure white */
   filter: brightness(0) invert(1);
   transition: transform 0.35s ease-in-out, filter 0.35s ease-in-out;
+  color: #fff;
 }
 
 .custom-banner-section .banner-footer{
