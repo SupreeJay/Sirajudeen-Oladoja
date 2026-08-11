@@ -42,21 +42,20 @@ textarea {
   box-sizing: border-box;
 }
 
+
 .brand-title {
-font-family: 'Jost', sans-serif !important;
-  font-size: 20px;
-  font-weight: 500; /* Lowered from 700 to match the lighter weight in RealFont */
-  letter-spacing: 4px; /* Increased from 1.5px to achieve wide character spacing */
-  text-transform: uppercase;
+  width: 151.5px; /* Rounded from 151.444px */
+  height: 19px;
   color: #000000;
-  white-space: nowrap;
-  width: auto; /* Changed from fixed 151.44px so wide tracking doesn't truncate */
-  line-height: 19px; /* Adjusted to match the font size and weight */
-  transform: rotate(0deg);
   opacity: 1;
-  display: flex;
-  align-items: center;
   box-sizing: border-box;
+}
+
+.brand-title img.brand-logo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
 }
 
 

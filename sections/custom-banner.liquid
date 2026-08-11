@@ -3,19 +3,28 @@
 <div id="customBannerSection" class="custom-banner-section">
 
   
-  {% comment %} Top Header Bar {% endcomment %}
+   {%-  comment %} Top Header Bar  {%-  endcomment %}
   <div id="bannerHeader" class="banner-header">
 
 
-    <div id="brandTitle" class="brand-title">
-      {{ section.settings.brand_text }}
-    </div>
+<div id="brandTitle" class="brand-title">
+  {%- if section.settings.brand_image != blank -%}
+    {{ section.settings.brand_image | image_url: width: 300 | image_tag: 
+      class: 'brand-logo-img',
+      alt: section.settings.brand_image.alt | default: shop.name,
+      loading: 'eager'
+    }}
+  {%- else -%}
+    {{ 'LogoFont.svg' | asset_url | image_tag: class: 'brand-logo-img', alt: shop.name, loading: 'eager' }}
+  {%- endif -%}
+</div>
+    
 
-    {% if section.settings.announcement_text != blank %}
+     {%-  if section.settings.announcement_text != blank -%}
       <div class="top-announcement">
-        {{ section.settings.announcement_text }}
+          {{ section.settings.announcement_text }}  
       </div>
-    {% endif %}
+     {%-  endif -%}
 
     <a href="{{ section.settings.button_top_url | default: '#' }}" class="btn-choose-gift">
       <span>{{ section.settings.button_top_text }}</span>
@@ -30,9 +39,9 @@
     </a>
   </div>
 
-  {% comment %} 1. Upper Image (Full Width) - Direct Child {% endcomment %}
+   {%-  comment -%} 1. Upper Image (Full Width) - Direct Child  {%-  endcomment -%}
   <div class="banner-top-image">
-    {% if section.settings.top_image != blank %}
+     {%-  if section.settings.top_image != blank -%}
       <img 
         src="{{ section.settings.top_image | image_url: width: 2000 }}" 
         alt="{{ section.settings.top_image.alt | default: 'Hero Top Graphic' | escape }}" 
@@ -40,7 +49,7 @@
         height="{{ section.settings.top_image.height }}"
         loading="eager"
       >
-    {% else %}
+     {%-  else -%}
       <img 
         src="{{ 'Hero-Background.svg' | asset_url }}" 
         alt="Hero Top Graphic" 
@@ -48,23 +57,23 @@
         height="390"
         loading="eager"
       >
-    {% endif %}
+     {%-  endif -%}
   </div>
 
-  {% comment %} 2. Lower Row (Left Content + Right Image) - Direct Child {% endcomment %}
+   {%-  comment -%} 2. Lower Row (Left Content + Right Image) - Direct Child  {%-  endcomment -%}
   <div class="banner-bottom-row">
     
-    {% comment %} Lower Left Text Box {% endcomment %}
+     {%-  comment -%} Lower Left Text Box  {%-  endcomment -%}
     <div class="banner-hero-content">
-      {% if section.settings.hero_title != blank %}
+       {%-  if section.settings.hero_title != blank -%}
         <h1 class="hero-title">{{ section.settings.hero_title }}</h1>
-      {% endif %}
+       {%-  endif -%}
       
-      {% if section.settings.hero_description != blank %}
+       {%-  if section.settings.hero_description != blank -%}
         <div class="hero-description">{{ section.settings.hero_description }}</div>
-      {% endif %}
+       {%-  endif -%}
 
-      {% if section.settings.button_main_text != blank %}
+       {%-  if section.settings.button_main_text != blank -%}
         <a href="{{ section.settings.button_main_url | default: '#' }}" class="btn-shop-now">
           <span>{{ section.settings.button_main_text }}</span>
             <img 
@@ -76,12 +85,12 @@
           loading="lazy"
         >
         </a>
-      {% endif %}
+       {%-  endif -%}
     </div>
 
-    {% comment %} Lower Right Image {% endcomment %}
+     {%-  comment -%} Lower Right Image  {%-  endcomment -%}
     <div id="bannerBottomImage" class="banner-bottom-image">
-      {% if section.settings.bottom_image != blank %}
+       {%-  if section.settings.bottom_image != blank -%}
         <img 
           src="{{ section.settings.bottom_image | image_url: width: 1600 }}" 
           alt="{{ section.settings.bottom_image.alt | default: 'Hero Bottom Graphic' | escape }}" 
@@ -90,7 +99,7 @@
           loading="lazy"
           id="bottomImage"
         >
-      {% else %}
+       {%-  else -%}
         <img 
           src="{{ 'Hero-Background.svg' | asset_url }}" 
           alt="Hero Bottom Graphic" 
@@ -98,19 +107,19 @@
           height="500"
           loading="lazy"
         >
-      {% endif %}
+       {%-  endif -%}
     </div>
 
   </div>
 
 
-  {% comment %} Bottom Tagline {% endcomment %}
+   {%-  comment -%} Bottom Tagline  {%-  endcomment -%}
   <div class="banner-footer">
-    {% if section.settings.footer_tagline != blank %}
+     {%-  if section.settings.footer_tagline != blank -%}
       <div class="footer-tagline">
         {{ section.settings.footer_tagline }}
       </div>
-    {% endif %}
+     {%-  endif -%}
   </div>
 
 </div>
@@ -118,7 +127,7 @@
 
 <script src="{{ 'custom-banner.js' | asset_url }}" defer="defer"></script>
 
-{% schema %}
+ {%-  schema -%}
 {
   "name": "Custom Banner",
   "settings": [
@@ -183,7 +192,11 @@
       "id": "footer_tagline",
       "label": "Footer Tagline",
       "default": "SUSTAINABLE, ETHICALLY MADE CLOTHES IN SIZES XXS TO 6XL"
-    }
+    },{
+    "type": "image_picker",
+    "id": "announcement_image",
+    "label": "Announcement Image"
+}
   ],
   "presets": [
     {
@@ -191,4 +204,4 @@
     }
   ]
 }
-{% endschema %}
+ {%-  endschema -%}
