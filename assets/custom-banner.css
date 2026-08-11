@@ -520,45 +520,54 @@ content: '';
   background-size:contain; 
   }
 
- .btn-shop-now{
-display: inline-flex;
+
+.banner-hero-content .btn-shop-now {
+  position: relative;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  
-  /* Factoring in "Hug contents" */
-  width: fit-content;
-  height: fit-content;
-  min-width: 193px;
-  min-height: 45px;
-  
-  gap: 10px;
-  position: absolute;
-  top: 337px;
-  left: 90.78px;
-  transform: rotate(0deg);
-  opacity: 1;
-  padding: 13px 20px;
-  background-color: #000000;
-  border: none;
-  cursor: pointer;
+  gap: 12px;
+  width: 220px;
+  height: 50px;
   box-sizing: border-box;
+  text-decoration: none;
+  opacity: 1;
+  background-color: #000000; /* Initial dark background */
+  color: #FFFFFF;
+  cursor: pointer;
+  border: none;
+  text-transform: uppercase;
+  overflow: hidden; /* Keeps the animated overlay contained within the button border */
+  isolation: isolate; /* Fixes color blending issues with pseudo-elements */
 }
 
- .btn-shop-now > span:first-child {
+
+/* Button Text */
+.btn-choose-gift span:first-child {
   position: relative;
-  z-index: 2; /* Sits above the sliding ::before background */
   font-family: 'Jost', sans-serif;
-  font-size: 16px;
   font-weight: 400;
   font-style: normal;
+  font-size: 16px;
   line-height: 20.48px;
   letter-spacing: 0px;
   text-transform: uppercase;
-  color: #FFFFFF;
-  transition: color 0.35s ease;
-  width: 119px;
-  height: 19px;
-  border:5px solid yellow;
+  color: #000000;
+  white-space: nowrap;
+  transition: color 0.35s ease-in-out;
+  z-index: 2;
+}
+
+/* Arrow Icon */
+.btn-choose-gift .arrow-icon {
+  position: relative;
+  width: 24px;
+  height: 24px;
+  display: inline-block;
+  opacity: 1;
+  box-sizing: border-box;
+  z-index: 2;
+  transition: transform 0.35s ease-in-out, filter 0.35s ease-in-out;
 }
 
 .custom-banner-section .banner-footer{
