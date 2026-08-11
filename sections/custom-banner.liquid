@@ -134,21 +134,26 @@
 
 <script src="{{ 'custom-banner.js' | asset_url }}" defer="defer"></script>
 
- {%-  schema -%}
+{%- schema -%}
 {
   "name": "Custom Banner",
   "settings": [
     {
-      "type": "text",
-      "id": "brand_text",
-      "label": "Brand Logo Text",
-      "default": "TISSO VISON"
+      "type": "image_picker",
+      "id": "brand_image",
+      "label": "Brand Logo Image",
+      "info": "Upload a custom logo image. If left blank, the default LogoFont.svg asset will be used."
     },
     {
       "type": "text",
       "id": "announcement_text",
       "label": "Top Announcement Text",
       "default": "Find the ideal gift for your loved ones."
+    },
+    {
+      "type": "image_picker",
+      "id": "announcement_image",
+      "label": "Announcement Image"
     },
     {
       "type": "text",
@@ -199,11 +204,7 @@
       "id": "footer_tagline",
       "label": "Footer Tagline",
       "default": "SUSTAINABLE, ETHICALLY MADE CLOTHES IN SIZES XXS TO 6XL"
-    },{
-    "type": "image_picker",
-    "id": "announcement_image",
-    "label": "Announcement Image"
-}
+    }
   ],
   "presets": [
     {
@@ -211,4 +212,4 @@
     }
   ]
 }
- {%-  endschema -%}
+{%- endschema -%}
