@@ -426,28 +426,41 @@ justify-content:flex-start;
   display: none;
 }
 /* Adding The Hamburger Menu Icon */
-.banner-header::before {
-content: '';
-    display: block;
+#bannerHeader::before {
+    content: "";
+    position: absolute;
+    top: 27.5px;
+    left: 16px;
     width: 18px;
     height: 10px;
     opacity: 1;
-    transform: rotate(0deg);
-    border-top: 2px solid #000000;
-    border-bottom: 2px solid #000000;
-    box-sizing: border-box;
-    flex-shrink: 0;
+    background: linear-gradient(
+      to bottom,
+      #000000 0px, #000000 2px,
+      transparent 2px, transparent 4px,
+      #000000 4px, #000000 6px,
+      transparent 6px, transparent 8px,
+      #000000 8px, #000000 10px
+    );
+    /* Smart Animate transition: ease-out @ 300ms */
+    transition: all 300ms ease-out;
     cursor: pointer;
-    font-weight:bolder;
-    /* Middle 2px bar using CSS background gradient */
-    background: linear-gradient(#000000, #000000) no-repeat center / 100% 2px;
+    box-sizing: border-box;
   }
+
+  /* 2. Active State: Morph to Frame 1000008091 (X Icon Specs) */
   #bannerHeader.is-active::before {
-    height: 18px;
-    top: 23.5px;
+    /* Exact Figma Specs */
+    width: 12.73px;
+    height: 13.00px;
+    top: 26px; /* Centered in padding offset */
+    left: 18.6px; /* Centered relative to original 18px position */
+    opacity: 1;
+    
+    /* Crossed line gradients using 2px stroke width (#000000) */
     background: 
-      linear-gradient(45deg, transparent 42%, #000 42%, #000 58%, transparent 58%),
-      linear-gradient(-45deg, transparent 42%, #000 42%, #000 58%, transparent 58%);
+      linear-gradient(45deg, transparent 40%, #000000 40%, #000000 60%, transparent 60%),
+      linear-gradient(-45deg, transparent 40%, #000000 40%, #000000 60%, transparent 60%);
   }
   .banner-header .brand-title{
     width: 151.44px;
