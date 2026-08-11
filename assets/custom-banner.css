@@ -664,20 +664,39 @@ font-family: 'Jost', sans-serif;
   box-sizing: border-box;
 }
 
-.btn-choose-gift-toggle  span{
-width: 102px;
-height: 21px;
-font-family: 'Jost', sans-serif;
+.mobile-banner-overlay .btn-choose-gift-toggle {
+  position: relative; /* REQUIRED for absolute ::before positioning */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  width: 244px;
+  min-height: 44px;
+  line-height: 1;
+  background-color: #FFF544;
+  text-decoration: none;
+  box-sizing: border-box;
+  overflow: hidden; /* Keeps sliding fill inside button bounds */
+}
+
+/* Base style for text span */
+.btn-choose-gift-toggle span {
+  position: relative;
+  z-index: 2; /* Keeps text above sliding pseudo-element */
+  font-family: 'Jost', sans-serif;
   font-weight: 400;
-  font-style: normal; /* Maps Figma 'Regular' to standard CSS 'normal' */
+  font-style: normal;
   font-size: 16px;
   line-height: 20.48px;
   letter-spacing: 0px;
   text-align: center;
   text-transform: uppercase;
+  color: #000000;
+  transition: color 0.35s ease-in-out;
 }
+
+/* Sliding background fill setup */
 .mobile-banner-overlay .btn-choose-gift-toggle::before {
-    transform: scaleX(1);
   content: "";
   position: absolute;
   top: -1px;
@@ -693,26 +712,31 @@ font-family: 'Jost', sans-serif;
   will-change: transform;
 }
 
+/* 1. HOVER TRIGGER: Scale up background fill */
+.mobile-banner-overlay .btn-choose-gift-toggle:hover::before {
+  transform: scaleX(1);
+}
 
-/* 2. Transition text to black */
+/* 2. HOVER TRIGGER: Change text color (e.g. to white on dark fill) */
 .mobile-banner-overlay .btn-choose-gift-toggle:hover > span {
-  color: #000000;
+  color: #FFFFFF;
 }
 
-/* 3. Shift arrow horizontally & change color to black */
-.mobile-banner-overlay .btn-choose-gift-toggle:hover .arrow-icon-mobile-toggle {
-  transform: translateX(6px);
-  filter: brightness(0); /* Clean black tint without invert */
-}
-
-.btn-choose-gift-toggle .arrow-icon-mobile-toggle{
+/* Base style for arrow icon */
+.btn-choose-gift-toggle .arrow-icon-mobile-toggle {
   position: relative;
+  z-index: 2; /* Keeps icon above sliding background */
   width: 24px;
   height: 24px;
   display: inline-block;
   opacity: 1;
   box-sizing: border-box;
-  z-index: 2;
   transition: transform 0.35s ease-in-out, filter 0.35s ease-in-out;
-  }
+}
+
+/* 3. HOVER TRIGGER: Shift arrow horizontally & lighten/invert color */
+.mobile-banner-overlay .btn-choose-gift-toggle:hover .arrow-icon-mobile-toggle {
+  transform: translateX(6px);
+  filter: brightness(0) invert(1); /* Turns dark SVG icon white on dark fill */
+}
 }
