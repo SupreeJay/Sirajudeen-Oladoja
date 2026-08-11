@@ -6,12 +6,6 @@
    {%-  comment %} Top Header Bar  {%-  endcomment %}
   <header id="bannerHeader" class="banner-header">
 
-    <button type="button" id="hamburgerBtn" class="hamburger-btn" aria-label="Toggle Menu">
-    <span class="hamburger-bar"></span>
-    <span class="hamburger-bar"></span>
-    <span class="hamburger-bar"></span>
-  </button>
-  
     <div id="brandTitle" class="brand-title">
     {%- if section.settings.brand_image != blank -%}
       {{ section.settings.brand_image | image_url: width: 300 | image_tag: 
