@@ -400,6 +400,7 @@ textarea {
   justify-content: flex-start;
   align-items: center;
   border: 2px solid red;
+  position: relative;
 }
 .custom-banner-section .banner-header{
 display: flex;
@@ -518,32 +519,30 @@ content: '';
   background-position: center;
   background-repeat: no-repeat;
   background-size:contain; 
+  position: relative;
   }
 
 
- .btn-shop-now {
-  position: relative;
+
+.btn-shop-now {
+  width: fit-content;
+  height: auto;
+  min-width: 193px;
+  min-height: 45px;
+  padding: 13px 20px;
+  gap: 10px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 12px;
-  width: 220px;
-  height: 50px;
   box-sizing: border-box;
-  text-decoration: none;
   opacity: 1;
-  background-color: #000000; /* Initial dark background */
-  color: #FFFFFF;
-  cursor: pointer;
-  border: none;
-  text-transform: uppercase;
-  overflow: hidden; /* Keeps the animated overlay contained within the button border */
-  isolation: isolate; /* Fixes color blending issues with pseudo-elements */
+ position: absolute;
+ top: 337px;
+ left: 90.78px;
+ border: 2px solid green;
 }
-
-
 /* Button Text */
-.btn-choose-gift span:first-child {
+.btn-shop-now  span:first-child {
   position: relative;
   font-family: 'Jost', sans-serif;
   font-weight: 400;
@@ -559,7 +558,7 @@ content: '';
 }
 
 /* Arrow Icon */
-.btn-choose-gift .arrow-icon {
+.btn-shop-now  .arrow-icon {
   position: relative;
   width: 24px;
   height: 24px;
