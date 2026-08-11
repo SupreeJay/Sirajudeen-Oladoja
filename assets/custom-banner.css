@@ -399,7 +399,6 @@ textarea {
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  border: 2px solid red;
   position: relative;
 }
 .custom-banner-section .banner-header{
@@ -453,7 +452,6 @@ content: '';
   opacity: 1;
   background-color: #FFFFFF;
   box-sizing: border-box;
-  border: 4px solid green;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
