@@ -80,33 +80,32 @@ function setupHeaderClick() {
 
   header.addEventListener('click', (event) => {
     const rect = header.getBoundingClientRect();
-    alert('Hamburger Menu Cliked')
-    
-    // Calculate exact click position relative to the header element
+
+    // Relative click coordinates inside the header
     const clickX = event.clientX - rect.left;
     const clickY = event.clientY - rect.top;
 
-    // Get exact computed values of ::before pseudo-element
-    const beforeStyle = window.getComputedStyle(header, '::before');
-    
-    if (beforeStyle.content === 'none') return;
+    // Coordinate boundaries based on layout dimensions:
+    // minX = 16px (left padding)
+    // maxX = 16px + 18px (width) = 34px
+    // minY = 23px (top padding) + 4.5px (vertical centering offset in 19px content height) = 27.5px
+    // maxY = 27.5px + 10px (height) = 37.5px
+    const minX = 16;
+    const maxX = 34;
+    const minY = 27.5;
+    const maxY = 37.5;
 
-    // Parse computed values or fallback to known pixel values
-    const beforeTop = parseFloat(beforeStyle.top) || 0;
-    const beforeLeft = parseFloat(beforeStyle.left) || 0;
-    const beforeWidth = parseFloat(beforeStyle.width) || 30;  // Adjust if your icon width is different
-    const beforeHeight = parseFloat(beforeStyle.height) || 30; // Adjust if your icon height is different
+    const isInsideHamburger = 
+      clickX >= minX && 
+      clickX <= maxX && 
+      clickY >= minY && 
+      clickY <= maxY;
 
-    // Check if the click occurred strictly inside the ::before bounding area
-    const isInsideBefore = 
-      clickX >= beforeLeft && 
-      clickX <= (beforeLeft + beforeWidth) &&
-      clickY >= beforeTop && 
-      clickY <= (beforeTop + beforeHeight);
+    if (isInsideHamburger) {
+      alert('Hamburger Menu Clicked');
 
-    if (isInsideBefore) {
       header.classList.toggle('is-active');
-      
+
       const bannerModal = document.getElementById('bannerModal');
       if (bannerModal) {
         bannerModal.classList.toggle('is-visible', header.classList.contains('is-active'));
@@ -114,7 +113,6 @@ function setupHeaderClick() {
     }
   });
 }
-
   /* ========================================================
      3. INITIALIZATION & EVENT LISTENERS
      ======================================================== */
