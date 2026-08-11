@@ -620,14 +620,13 @@ content: '';
 .mobile-banner-overlay {
   display: flex;
   flex-direction: column;
-  justify-content:space-evenly;  
+  justify-content:center;  
   align-items: center;
   width: max-content;
   height: auto;
   position: absolute;
   top: 65px;
   padding: 25px 65.5px;
-  gap: 16px;
   transform: rotate(0deg);
   opacity: 1;
   background-color: #F2F2F2;
