@@ -83,7 +83,7 @@ textarea {
   position: relative;
   display: inline-flex;
   align-items: center;
- justify-content:space-evenly;
+ justify-content:center;
   gap: 10px;
   width: 207px;
   height: 44px;
