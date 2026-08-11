@@ -561,14 +561,15 @@ content: '';
 
 /* Arrow Icon */
 .btn-shop-now  .arrow-icon {
-display: inline-block;
-  width: 20px;
-  height: 20px;
+  position: relative;
+  z-index: 2;
+  width: 25.5px;
+  height: auto;
+  display: inline-block;
+  opacity: 1;
   box-sizing: border-box;
-
-  /* Turns the dark SVG asset pure white */
+  /* Turns any dark img asset to pure white */
   filter: brightness(0) invert(1);
-  
   transition: transform 0.35s ease-in-out, filter 0.35s ease-in-out;
 }
 
