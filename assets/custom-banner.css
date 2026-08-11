@@ -591,6 +591,7 @@ display: inline-flex;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  border: 2px solid red;
 }
 
 /* This will be for the newly created element
