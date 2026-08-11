@@ -520,7 +520,7 @@ content: '';
   background-size:contain; 
   }
 
- .mobile-hero-wrapper .mobile-hero-shop-bg-container .btn-shop-now{
+ .btn-shop-now{
 display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -544,7 +544,7 @@ display: inline-flex;
   box-sizing: border-box;
 }
 
- .mobile-hero-wrapper .mobile-hero-shop-bg-container .btn-shop-now > span:first-child {
+ .btn-shop-now > span:first-child {
   position: relative;
   z-index: 2; /* Sits above the sliding ::before background */
   font-family: 'Jost', sans-serif;
@@ -558,6 +558,7 @@ display: inline-flex;
   transition: color 0.35s ease;
   width: 119px;
   height: 19px;
+  border:5px solid yellow;
 }
 
 .custom-banner-section .banner-footer{
