@@ -627,8 +627,6 @@ content: '';
   position: absolute;
   top: 65px;
   padding: 25px 65.5px;
-  display: flex;
-  flex-direction: column;
   gap: 16px;
   transform: rotate(0deg);
   opacity: 1;
@@ -656,23 +654,16 @@ font-family: 'Jost', sans-serif;
   justify-content: center;
 }
 .mobile-banner-overlay .btn-choose-gift-toggle{
-  display:flex;
+  display: flex;
   align-items: center;
- justify-content:center;
+  justify-content: center;
   gap: 20px;
   width: 244px;
-  height: 44px;
-  padding: 0;
-  background-color: #FFF544; 
+  height: 44px; /* or padding: 12px 0 */
+  line-height: 1; /* Reset line height */
+  background-color: #FFF544;
   text-decoration: none;
-  overflow: hidden;
-  border: none;
-  cursor: pointer;
-  z-index: 1;
-  opacity: 1;
   box-sizing: border-box;
-  color: #000000;
-  isolation: isolate;
 }
 
 .btn-choose-gift-toggle  span{
