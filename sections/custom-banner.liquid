@@ -131,21 +131,21 @@
 
   <div class="mobile-banner-overlay">
     {%- if section.settings.announcement_text != blank -%}
-      <p class="top-announcement">
+      <p class="top-announcement-toggle">
         {{ section.settings.announcement_text }}
       </p>
       {%- else -%}
-        <p class="top-announcement">
+        <p class="top-announcement-toggle">
           Find the ideal gift for your loved ones.
         </p>
       {%- endif -%}
 
-      <a href="{{ section.settings.button_top_url | default: '#' }}"           class="btn-choose-gift">
+      <a href="{{ section.settings.button_top_url | default: '#' }}"           class="btn-choose-gift-toggle">
         <span>{{ section.settings.button_top_text | default: 'CHOOSE GIFT' }}</span>
         <img 
           src="{{ 'arrow.svg' | asset_url }}" 
           alt="arrow-icon" 
-          class="arrow-icon"
+          class="arrow-icon-mobile-toggle"
           width="20"
           height="20"
           loading="lazy"
