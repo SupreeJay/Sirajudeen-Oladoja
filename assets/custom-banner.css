@@ -571,7 +571,7 @@ display: inline-flex;
   box-sizing: border-box;
 }
 
-.footer_tagline{
+.banner-footer .footer-tagline{
   /* Box Dimensions */
   max-width: 100%;
   min-width: 288px;
@@ -589,16 +589,6 @@ display: inline-flex;
   color: #ffffff; 
   white-space: nowrap;
 }
-
-/* This will be for the newly created element
-{width: 375px;
-  height: 421px;
-  transform: rotate(0deg);
-  opacity: 1;
-  background-color: #FFFFFF;
-  box-sizing: border-box;}
-
-}*/
 
 .custom-banner-section .banner-top-image, .custom-banner-section .banner-bottom-row {
   display: none;
