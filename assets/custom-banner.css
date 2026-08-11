@@ -561,18 +561,15 @@ content: '';
 
 /* Arrow Icon */
 .btn-shop-now  .arrow-icon {
-position: relative;
-  z-index: 220;
-  width: 25.5px;
-  height: auto;
-  display: inline-block;
-  opacity: 1;
+display: inline-block;
+  width: 20px;
+  height: 20px;
   box-sizing: border-box;
 
-  /* ✅ Use fill only - REMOVE filter */
-  fill: #ffffff; 
-
-  transition: transform 0.35s ease-in-out, fill 0.35s ease-in-out;
+  /* Turns the dark SVG asset pure white */
+  filter: brightness(0) invert(1);
+  
+  transition: transform 0.35s ease-in-out, filter 0.35s ease-in-out;
 }
 
 .custom-banner-section .banner-footer{

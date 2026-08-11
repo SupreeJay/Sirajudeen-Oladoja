@@ -83,14 +83,14 @@
        {%-  if section.settings.button_main_text != blank -%}
         <a href="{{ section.settings.button_main_url | default: '#' }}" class="btn-shop-now">
           <span>{{ section.settings.button_main_text }}</span>
-            <img 
+          <img 
           src="{{ 'arrow.svg' | asset_url }}" 
           alt="arrow-icon" 
           class="arrow"
           width="20"
           height="20"
           loading="lazy"
-        >
+        />
         </a>
        {%-  endif -%}
     </div>
