@@ -246,14 +246,14 @@ textarea {
 
 .banner-hero-content .btn-shop-now {
   position: relative;
-  display:flex;
+  display: inline-flex;
   align-items: center;
-  gap: 12px;
+ justify-content:center;
+  gap: 20px;
   width: 220px;
   height: 50px;
   box-sizing: border-box;
   text-decoration: none;
-  justify-content:space-around;
   opacity: 1;
   background-color: #000000; /* Initial dark background */
   color: #FFFFFF;
