@@ -656,15 +656,14 @@ font-family: 'Jost', sans-serif;
   justify-content: center;
 }
 .mobile-banner-overlay .btn-choose-gift-toggle{
-  position: relative;
-  display: inline-flex;
+  display:flex;
   align-items: center;
  justify-content:center;
   gap: 20px;
   width: 244px;
   height: 44px;
   padding: 0;
-  background-color: #FFF544; /* Initial yellow background */
+  background-color: #FFF544; 
   text-decoration: none;
   overflow: hidden;
   border: none;
@@ -689,7 +688,7 @@ font-family: 'Jost', sans-serif;
   text-transform: uppercase;
 }
 
-  .btn-choose-gift-toggle .arrow-icon-mobile-toggle{
+.btn-choose-gift-toggle .arrow-icon-mobile-toggle{
   position: relative;
   width: 24px;
   height: 24px;
