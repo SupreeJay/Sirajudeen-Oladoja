@@ -15,7 +15,11 @@
       loading: 'eager'
     }}
   {%- else -%}
-    {{ 'LogoFont.svg' | asset_url | image_tag: class: 'brand-logo-img', alt: shop.name, loading: 'eager' }}
+    {{ 'LogoFont.svg' | asset_url | image_tag: 
+      class: 'brand-logo-img', 
+      alt: shop.name, 
+      loading: 'eager' 
+    }}
   {%- endif -%}
 </div>
     
