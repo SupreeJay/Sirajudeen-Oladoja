@@ -407,6 +407,8 @@ textarea {
   align-items: center;
   position: relative;
   z-index: 1000;
+  height: fit-content;
+  scroll-margin-top:124px ;
 }
 .custom-banner-section .banner-header{
 display: flex;
