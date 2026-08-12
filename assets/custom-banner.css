@@ -426,36 +426,39 @@ justify-content:flex-start;
 .custom-banner-section .banner-header .top-announcement,.custom-banner-section .banner-header .btn-choose-gift{
   display: none;
 }
-/* Adding The Hamburger Menu Icon */
+
+/* 1. Default Crisp Hamburger State */
 .banner-header::before {
-content: "";
-    display: block; /* Participates as a flex item */
-    width: 18px;
-    height: 10px;
-    margin-right: 16px; /* Maintains flex gap to next item if gap isn't supported */
-    opacity: 1;
-    background: linear-gradient(
-      to bottom,
-      #000000 0px, #000000 2px,
-      transparent 2px, transparent 4px,
-      #000000 4px, #000000 6px,
-      transparent 6px, transparent 8px,
-      #000000 8px, #000000 10px
-    );
-    transition: all 300ms ease-out;
-    cursor: pointer;
-    box-sizing: border-box;
-  }
-/* 2. Active 'X' State (Maintains Flexbox Alignment) */
-  #bannerHeader.is-active::before {
-    width: 12.73px;
-    height: 13.00px;
-    /* NO top/left overrides here - align-items: center keeps it perfectly centered */
-    background: 
-      linear-gradient(45deg, transparent 40%, #000000 40%, #000000 60%, transparent 60%),
-      linear-gradient(-45deg, transparent 40%, #000000 40%, #000000 60%, transparent 60%);
-  }
-  
+  content: "";
+  display: block;
+  width: 18px;
+  height: 10px;
+  margin-right: 16px;
+  opacity: 1;
+  /* Fixed pixel stops for sharp 1.5px lines */
+  background: linear-gradient(
+    to bottom,
+    #000000 0px, #000000 1.5px,
+    transparent 1.5px, transparent 4.25px,
+    #000000 4.25px, #000000 5.75px,
+    transparent 5.75px, transparent 8.5px,
+    #000000 8.5px, #000000 10px
+  );
+  transition: all 300ms ease-out;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+/* 2. Crisp Active 'X' State */
+#bannerHeader.is-active::before {
+  width: 13px;
+  height: 13px;
+  /* Precise pixel gradients to eliminate edge blur/extra thickness */
+  background: 
+    linear-gradient(45deg, transparent calc(50% - 1px), #000000 calc(50% - 1px), #000000 calc(50% + 1px), transparent calc(50% + 1px)),
+    linear-gradient(-45deg, transparent calc(50% - 1px), #000000 calc(50% - 1px), #000000 calc(50% + 1px), transparent calc(50% + 1px));
+  background-repeat: no-repeat;
+}
   .banner-header .brand-title{
     width: 151.44px;
   height: 19px;
