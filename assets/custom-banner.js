@@ -1,11 +1,6 @@
 (function () {
   'use strict';
-
   const MOBILE_BREAKPOINT = 768;
-
-  /* ========================================================
-     1. MOBILE HERO SETUP
-     ======================================================== */
   function setupMobileHeroElement() {
     const isMobile = window.innerWidth <= MOBILE_BREAKPOINT;
     const bannerSection = document.getElementById('customBannerSection');
@@ -69,10 +64,7 @@
       }
     }
   }
-
-  /* ========================================================
-     2. HAMBURGER (::before) CLICK EVENT LISTENER
-     ======================================================== */
+  
 function setupHeaderClick() {
   const header = document.getElementById('bannerHeader');
 
@@ -159,21 +151,16 @@ function setupHeaderClick() {
     }
   });
 }
-  /* ========================================================
-     3. INITIALIZATION & EVENT LISTENERS
-     ======================================================== */
+
 function init() {
     setupMobileHeroElement();
     setupHeaderClick();
   }
-
   if (document.readyState === 'interactive' || document.readyState === 'complete') {
     init();
   } else {
     document.addEventListener('DOMContentLoaded', init);
   }
-
   window.addEventListener('resize', setupMobileHeroElement);
   window.addEventListener('orientationchange', setupMobileHeroElement);
-
 })();

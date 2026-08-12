@@ -1,9 +1,8 @@
 {{ 'custom-banner.css' | asset_url | stylesheet_tag }}
 
+
 <div id="customBannerSection" class="custom-banner-section">
 
-  
-   {%-  comment %} Top Header Bar  {%-  endcomment %}
   <header id="bannerHeader" class="banner-header">
 
     <div id="brandTitle" class="brand-title">
@@ -45,7 +44,6 @@
       </a>
   </header>
 
-   {%-  comment -%} 1. Upper Image (Full Width) - Direct Child  {%-  endcomment -%}
   <div class="banner-top-image">
      {%-  if section.settings.top_image != blank -%}
       <img 
@@ -68,17 +66,13 @@
 
    {%-  comment -%} 2. Lower Row (Left Content + Right Image) - Direct Child  {%-  endcomment -%}
   <div class="banner-bottom-row">
-    
-     {%-  comment -%} Lower Left Text Box  {%-  endcomment -%}
     <div class="banner-hero-content">
        {%-  if section.settings.hero_title != blank -%}
         <h1 class="hero-title">{{ section.settings.hero_title }}</h1>
        {%-  endif -%}
-      
        {%-  if section.settings.hero_description != blank -%}
         <div class="hero-description">{{ section.settings.hero_description }}</div>
        {%-  endif -%}
-
        {%-  if section.settings.button_main_text != blank -%}
         <a href="{{ section.settings.button_main_url | default: '#' }}" class="btn-shop-now">
           <span>{{ section.settings.button_main_text }}</span>
@@ -93,8 +87,6 @@
         </a>
        {%-  endif -%}
     </div>
-
-     {%-  comment -%} Lower Right Image  {%-  endcomment -%}
     <div id="bannerBottomImage" class="banner-bottom-image">
        {%-  if section.settings.bottom_image != blank -%}
         <img 
@@ -127,7 +119,6 @@
       </div>
      {%-  endif -%}
   </div>
-
   <div class="mobile-banner-overlay">
     {%- if section.settings.announcement_text != blank -%}
       <p class="top-announcement-toggle">
@@ -152,10 +143,7 @@
       </a>
 
   </div>
-
-
 </div>
-
 
 <script src="{{ 'custom-banner.js' | asset_url }}" defer="defer"></script>
 
