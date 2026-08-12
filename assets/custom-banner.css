@@ -396,24 +396,21 @@ textarea {
 /*MOBILE MEDIA QUERY*/
 
 @media screen and (max-width: 768px) {
-/* 1. Fix the Parent Container */
-.custom-banner-section {
+.custom-banner-section{
   width: 375.44px;
-  height: auto;
-  min-height: 520px;
-  max-height: none;
+  max-height: 520px;
+  transform: rotate(0deg);
+  opacity: 1;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
   position: relative;
 }
-
-/* 2. Banner Header & Toggleable Box Shadow */
-.custom-banner-section .banner-header {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
+.custom-banner-section .banner-header{
+display: flex;
+flex-direction: row;
+justify-content:flex-start;
   align-items: center;
   width: 375.44px;
   height: 65px;
@@ -422,17 +419,9 @@ textarea {
   opacity: 1;
   padding: 23px 112px 23px 16px;
   background-color: #F7F7F7;
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.15);
   box-sizing: border-box;
   position: relative;
-  /* Default: No drop shadow, with smooth transition */
-  box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0);
-  transition: box-shadow 300ms ease-out;
-  z-index: 100; /* Keeps header & shadow above the overlay */
-}
-
-/* Drop shadow applied ONLY when menu is active/toggled */
-.custom-banner-section .banner-header.is-active {
-  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.15);
 }
 .custom-banner-section .banner-header .top-announcement,.custom-banner-section .banner-header .btn-choose-gift{
   display: none;
@@ -480,6 +469,8 @@ textarea {
 .mobile-hero-wrapper {
   width: 375px;
   height: 421px;
+  transform: rotate(0deg);
+  opacity: 1;
   background-color: #FFFFFF;
   box-sizing: border-box;
   display: flex;
@@ -487,15 +478,8 @@ textarea {
   justify-content: flex-start;
   align-items: center;
   gap: 0px;
-  
-  /* Smooth margin transition matching your menu timing */
-  margin-top: 0px;
-  transition: margin-top 300ms ease-out;
-}
-
-/* Shifted State: Pushes hero wrapper AND expands the parent container */
-.mobile-hero-wrapper.is-shifted {
-  margin-top: 124px; /* Matches the overlay height */
+  /* Smooth shift transition matching the 300ms menu timing */
+  transition: transform 300ms ease-out;
 }
 
 .mobile-hero-wrapper .mobile-hero-top-text{
@@ -616,21 +600,21 @@ textarea {
   transition: transform 0.35s ease-in-out, filter 0.35s ease-in-out;
 }
 
-/* Footer: Remains in standard flow (NO transform needed) */
 .custom-banner-section .banner-footer {
   display: flex;
   align-items: center;
   justify-content: center;
   width: 375px;
   height: 34px;
+  transform: rotate(0deg);
+  opacity: 1;
   padding: 10px 50px;
   background-color: #F5F5F5;
   box-sizing: border-box;
+
+  /* Smooth shift transition matching the 300ms menu timing */
+  transition: transform 300ms ease-out;
 }
-
-
-
-
 .mobile-hero-wrapper.is-shifted,
 .custom-banner-section .banner-footer.is-shifted {
   transform: translateY(124px);
