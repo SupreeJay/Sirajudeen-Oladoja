@@ -398,7 +398,6 @@ textarea {
 @media screen and (max-width: 768px) {
 .custom-banner-section{
   width: 375.44px;
-  max-height: 520px;
   transform: rotate(0deg);
   opacity: 1;
   display: flex;
