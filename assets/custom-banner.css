@@ -632,26 +632,39 @@ justify-content:flex-start;
 .custom-banner-section .banner-top-image, .custom-banner-section .banner-bottom-row {
   display: none;
 }
-/*The Content that shows when the menu button is clicked*/
 
+/*The Content that shows when the menu button is clicked*/
 .mobile-banner-overlay {
   display: flex;
   flex-direction: column;
-  justify-content:center;  
+  justify-content: center;
   align-items: center;
-  width: max-content;
+  width: 100%;
+  max-width: 391px;
   height: auto;
+  max-height: 124px;
   position: absolute;
   top: 65px;
+  left: 0;
   padding: 25px 65.5px;
-  transform: rotate(0deg);
-  opacity: 1;
   background-color: #F2F2F2;
   box-sizing: border-box;
-  max-width: 391px;
-  max-height: 124px;
-  background-color: #F2F2F2;
+  z-index: 99;
+  /* Visibility & Animation Control */
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 300ms ease-out, visibility 300ms ease-out;
 }
+
+/* Active state triggered by JavaScript */
+.mobile-banner-overlay.is-visible {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+
 .top-announcement-toggle{
 width:260px;
 height:14px;

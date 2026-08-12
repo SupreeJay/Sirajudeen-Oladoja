@@ -87,14 +87,7 @@ function setupHeaderClick() {
 
     const isActive = header.classList.contains('is-active');
 
-    // Dynamic bounding coordinates based on state:
-    // Hamburger State (18px x 10px):
-    // minX = 16px (left padding), maxX = 34px (16 + 18)
-    // minY = 27.5px (flex-centered vertically in 65px box), maxY = 37.5px
-
-    // Active 'X' State (12.73px x 13px) + slight tap padding for mobile:
-    // minX = 14px, maxX = 31px
-    // minY = 24px, maxY = 41px
+    // Dynamic bounding coordinates based on state
     const minX = isActive ? 14 : 16;
     const maxX = isActive ? 31 : 34;
     const minY = isActive ? 24 : 27.5;
@@ -107,29 +100,44 @@ function setupHeaderClick() {
       clickY <= maxY;
 
     if (isInsideIcon) {
-      // Toggling 'is-active' triggers the CSS transition from Hamburger to 'X'
+      // Toggle header state
       const nextActiveState = header.classList.toggle('is-active');
 
+      // Toggle modal drawer
       const bannerModal = document.getElementById('bannerModal');
       if (bannerModal) {
         bannerModal.classList.toggle('is-visible', nextActiveState);
       }
+
+      // Toggle mobile banner overlay
+      const bannerOverlay = document.querySelector('.mobile-banner-overlay');
+      if (bannerOverlay) {
+        bannerOverlay.classList.toggle('is-visible', nextActiveState);
+      }
     }
   });
 
-  // Close modal when tapping outside the header or modal area
+  // Close modal and overlay when tapping outside
   document.addEventListener('click', (event) => {
     const bannerModal = document.getElementById('bannerModal');
+    const bannerOverlay = document.querySelector('.mobile-banner-overlay');
     const targetNode = event.target;
 
     if (
-      bannerModal &&
       targetNode instanceof Node &&
       !header.contains(targetNode) &&
-      !bannerModal.contains(targetNode)
+      (!bannerModal || !bannerModal.contains(targetNode)) &&
+      (!bannerOverlay || !bannerOverlay.contains(targetNode))
     ) {
       header.classList.remove('is-active');
-      bannerModal.classList.remove('is-visible');
+
+      if (bannerModal) {
+        bannerModal.classList.remove('is-visible');
+      }
+
+      if (bannerOverlay) {
+        bannerOverlay.classList.remove('is-visible');
+      }
     }
   });
 }
