@@ -457,7 +457,7 @@ justify-content:flex-start;
     linear-gradient(-45deg, transparent calc(50% - 0.75px), #000000 calc(50% - 0.75px), #000000 calc(50% + 0.75px), transparent calc(50% + 0.75px));
   background-repeat: no-repeat;
 }
-  .banner-header .brand-title{
+.banner-header .brand-title{
     width: 151.44px;
   height: 19px;
   transform: rotate(0deg);
@@ -465,8 +465,8 @@ justify-content:flex-start;
   color: #000000;
   box-sizing: border-box;
   }
-
-.mobile-hero-wrapper{
+/* Base styles with smooth position transition */
+.mobile-hero-wrapper {
   width: 375px;
   height: 421px;
   transform: rotate(0deg);
@@ -478,6 +478,8 @@ justify-content:flex-start;
   justify-content: flex-start;
   align-items: center;
   gap: 0px;
+  /* Smooth shift transition matching the 300ms menu timing */
+  transition: transform 300ms ease-out;
 }
 
 .mobile-hero-wrapper .mobile-hero-top-text{
@@ -598,7 +600,7 @@ justify-content:flex-start;
   transition: transform 0.35s ease-in-out, filter 0.35s ease-in-out;
 }
 
-.custom-banner-section .banner-footer{
+.custom-banner-section .banner-footer {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -609,8 +611,14 @@ justify-content:flex-start;
   padding: 10px 50px;
   background-color: #F5F5F5;
   box-sizing: border-box;
-}
 
+  /* Smooth shift transition matching the 300ms menu timing */
+  transition: transform 300ms ease-out;
+}
+.mobile-hero-wrapper.is-shifted,
+.custom-banner-section .banner-footer.is-shifted {
+  transform: translateY(124px);
+}
 .banner-footer .footer-tagline{
   /* Box Dimensions */
   max-width: 100%;

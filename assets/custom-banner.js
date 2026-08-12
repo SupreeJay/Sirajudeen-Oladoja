@@ -81,7 +81,7 @@ function setupHeaderClick() {
   header.addEventListener('click', (event) => {
     const rect = header.getBoundingClientRect();
 
-    // Click coordinates relative to #bannerHeader
+    // Relative click coordinates inside header
     const clickX = event.clientX - rect.left;
     const clickY = event.clientY - rect.top;
 
@@ -100,27 +100,40 @@ function setupHeaderClick() {
       clickY <= maxY;
 
     if (isInsideIcon) {
-      // Toggle header state
+      // 1. Toggle header icon state
       const nextActiveState = header.classList.toggle('is-active');
 
-      // Toggle modal drawer
+      // 2. Toggle modal
       const bannerModal = document.getElementById('bannerModal');
       if (bannerModal) {
         bannerModal.classList.toggle('is-visible', nextActiveState);
       }
 
-      // Toggle mobile banner overlay
+      // 3. Toggle overlay
       const bannerOverlay = document.querySelector('.mobile-banner-overlay');
       if (bannerOverlay) {
         bannerOverlay.classList.toggle('is-visible', nextActiveState);
       }
+
+      // 4. Shift hero wrapper and footer position down
+      const heroWrapper = document.querySelector('.mobile-hero-wrapper');
+      const bannerFooter = document.querySelector('.custom-banner-section .banner-footer');
+
+      if (heroWrapper) {
+        heroWrapper.classList.toggle('is-shifted', nextActiveState);
+      }
+      if (bannerFooter) {
+        bannerFooter.classList.toggle('is-shifted', nextActiveState);
+      }
     }
   });
 
-  // Close modal and overlay when tapping outside
+  // Reset positions when tapping outside
   document.addEventListener('click', (event) => {
     const bannerModal = document.getElementById('bannerModal');
     const bannerOverlay = document.querySelector('.mobile-banner-overlay');
+    const heroWrapper = document.querySelector('.mobile-hero-wrapper');
+    const bannerFooter = document.querySelector('.custom-banner-section .banner-footer');
     const targetNode = event.target;
 
     if (
@@ -131,13 +144,10 @@ function setupHeaderClick() {
     ) {
       header.classList.remove('is-active');
 
-      if (bannerModal) {
-        bannerModal.classList.remove('is-visible');
-      }
-
-      if (bannerOverlay) {
-        bannerOverlay.classList.remove('is-visible');
-      }
+      if (bannerModal) bannerModal.classList.remove('is-visible');
+      if (bannerOverlay) bannerOverlay.classList.remove('is-visible');
+      if (heroWrapper) heroWrapper.classList.remove('is-shifted');
+      if (bannerFooter) bannerFooter.classList.remove('is-shifted');
     }
   });
 }
