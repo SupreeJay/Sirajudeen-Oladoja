@@ -406,6 +406,7 @@ textarea {
   justify-content: flex-start;
   align-items: center;
   position: relative;
+  z-index: 1000;
 }
 .custom-banner-section .banner-header{
 display: flex;
