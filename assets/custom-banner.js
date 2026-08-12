@@ -81,7 +81,7 @@ function setupHeaderClick() {
   header.addEventListener('click', (event) => {
     const rect = header.getBoundingClientRect();
 
-    // Relative click coordinates inside header
+    // Click coordinates relative to header
     const clickX = event.clientX - rect.left;
     const clickY = event.clientY - rect.top;
 
@@ -128,20 +128,28 @@ function setupHeaderClick() {
     }
   });
 
-  // Reset positions when tapping outside
+  // Reset positions ONLY when tapping completely outside the custom banner section, modal, or overlay
   document.addEventListener('click', (event) => {
     const bannerModal = document.getElementById('bannerModal');
     const bannerOverlay = document.querySelector('.mobile-banner-overlay');
+    const bannerSection = document.querySelector('.custom-banner-section');
     const heroWrapper = document.querySelector('.mobile-hero-wrapper');
     const bannerFooter = document.querySelector('.custom-banner-section .banner-footer');
+    
     const targetNode = event.target;
 
-    if (
-      targetNode instanceof Node &&
-      !header.contains(targetNode) &&
-      (!bannerModal || !bannerModal.contains(targetNode)) &&
-      (!bannerOverlay || !bannerOverlay.contains(targetNode))
-    ) {
+    if (!(targetNode instanceof Node)) return;
+
+    // Check if the click occurred inside the header icon trigger area
+    const isHeaderClick = header.contains(targetNode);
+    // Check if the click occurred inside the overlay or modal
+    const isModalClick = bannerModal && bannerModal.contains(targetNode);
+    const isOverlayClick = bannerOverlay && bannerOverlay.contains(targetNode);
+    // Check if the click occurred inside the general banner section (hero wrapper, footer, etc.)
+    const isBannerSectionClick = bannerSection && bannerSection.contains(targetNode);
+
+    // Only close if the click was OUTSIDE all banner areas
+    if (!isHeaderClick && !isModalClick && !isOverlayClick && !isBannerSectionClick) {
       header.classList.remove('is-active');
 
       if (bannerModal) bannerModal.classList.remove('is-visible');

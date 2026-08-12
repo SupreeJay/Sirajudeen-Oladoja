@@ -396,9 +396,13 @@ textarea {
 /*MOBILE MEDIA QUERY*/
 
 @media screen and (max-width: 768px) {
-.custom-banner-section{
+/* 1. Fix the Parent Container */
+.custom-banner-section {
   width: 375.44px;
-  max-height: 520px;
+  /* Allow height to expand automatically when contents shift down */
+  height: auto;
+  min-height: 520px;
+  max-height: none; 
   transform: rotate(0deg);
   opacity: 1;
   display: flex;
@@ -407,10 +411,12 @@ textarea {
   align-items: center;
   position: relative;
 }
-.custom-banner-section .banner-header{
-display: flex;
-flex-direction: row;
-justify-content:flex-start;
+
+/* 2. Banner Header & Toggleable Box Shadow */
+.custom-banner-section .banner-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
   align-items: center;
   width: 375.44px;
   height: 65px;
@@ -419,9 +425,17 @@ justify-content:flex-start;
   opacity: 1;
   padding: 23px 112px 23px 16px;
   background-color: #F7F7F7;
-  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.15);
   box-sizing: border-box;
   position: relative;
+  /* Default: No drop shadow, with smooth transition */
+  box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0);
+  transition: box-shadow 300ms ease-out;
+  z-index: 100; /* Keeps header & shadow above the overlay */
+}
+
+/* Drop shadow applied ONLY when menu is active/toggled */
+.custom-banner-section .banner-header.is-active {
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.15);
 }
 .custom-banner-section .banner-header .top-announcement,.custom-banner-section .banner-header .btn-choose-gift{
   display: none;
