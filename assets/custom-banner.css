@@ -425,45 +425,24 @@ justify-content:flex-start;
 .custom-banner-section .banner-header .top-announcement,.custom-banner-section .banner-header .btn-choose-gift{
   display: none;
 }
-
-#bannerHeader {
-  position: relative;
-  width: 375.44px;
-  height: 65px;
-  padding: 23px 16px;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  box-sizing: border-box;
-}
 /* Adding The Hamburger Menu Icon */
-#bannerHeader::before {
-    content: "";
-    position: absolute;
-    top: 27.5px;
-    left: 16px;
+.banner-header::before {
+content: '';
+    display: block;
     width: 18px;
     height: 10px;
-    background: linear-gradient(
-      to bottom,
-      #000 0px, #000 2px,
-      transparent 2px, transparent 4px,
-      #000 4px, #000 6px,
-      transparent 6px, transparent 8px,
-      #000 8px, #000 10px
-    );
-    transition: transform 0.3s ease, background 0.3s ease;
+    opacity: 1;
+    transform: rotate(0deg);
+    border-top: 2px solid #000000;
+    border-bottom: 2px solid #000000;
+    box-sizing: border-box;
+    flex-shrink: 0;
     cursor: pointer;
+    font-weight:bolder;
+    /* Middle 2px bar using CSS background gradient */
+    background: linear-gradient(#000000, #000000) no-repeat center / 100% 2px;
   }
-
-  /* Morph to 'X' when active */
-  #bannerHeader.is-active::before {
-    height: 18px;
-    top: 23.5px;
-    background: 
-      linear-gradient(45deg, transparent 42%, #000 42%, #000 58%, transparent 58%),
-      linear-gradient(-45deg, transparent 42%, #000 42%, #000 58%, transparent 58%);
-  }
+  
   .banner-header .brand-title{
     width: 151.44px;
   height: 19px;
