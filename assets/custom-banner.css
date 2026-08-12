@@ -396,11 +396,11 @@ textarea {
 /*MOBILE MEDIA QUERY*/
 
 @media screen and (max-width: 768px) {
-.custom-banner-section {
+.custom-banner-section{
   width: 375.44px;
-  height: auto; /* Allows container to expand when content shifts */
-  min-height: 520px;
-  max-height: none; /* Removes height restriction */
+  max-height: 520px;
+  transform: rotate(0deg);
+  opacity: 1;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -408,26 +408,22 @@ textarea {
   position: relative;
   z-index: 1000;
 }
-
-
-
-.custom-banner-section .banner-header {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
+.custom-banner-section .banner-header{
+display: flex;
+flex-direction: row;
+justify-content:flex-start;
   align-items: center;
   width: 375.44px;
   height: 65px;
   gap: 78px;
+  transform: rotate(0deg);
+  opacity: 1;
   padding: 23px 112px 23px 16px;
   background-color: #F7F7F7;
   box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.15);
   box-sizing: border-box;
   position: relative;
-  z-index: 100;
 }
-
-
 .custom-banner-section .banner-header .top-announcement,.custom-banner-section .banner-header .btn-choose-gift{
   display: none;
 }
@@ -474,6 +470,8 @@ textarea {
 .mobile-hero-wrapper {
   width: 375px;
   height: 421px;
+  transform: rotate(0deg);
+  opacity: 1;
   background-color: #FFFFFF;
   box-sizing: border-box;
   display: flex;
@@ -481,19 +479,19 @@ textarea {
   justify-content: flex-start;
   align-items: center;
   gap: 0px;
-  position: relative;
-  margin-top: 0px;
-  transition: margin-top 300ms ease-out;
+  /* Smooth shift transition matching the 300ms menu timing */
+  transition: transform 300ms ease-out;
 }
-.mobile-hero-wrapper .mobile-hero-top-text {
+
+.mobile-hero-wrapper .mobile-hero-top-text{
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content:center;
   align-items: center;
   width: 375px;
   height: 157px;
-  position: relative;
 }
+
 .mobile-hero-wrapper .mobile-hero-top-text .hero-title{
   width: 197px;
   height: 30px;
@@ -557,21 +555,21 @@ textarea {
   min-height: 45px;
   padding: 13px 20px;
   gap: 5px;
-  display: flex;
+  display:flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content:space-around;
   box-sizing: border-box;
   opacity: 1;
-  z-index: 100;
-  background-color: #000000;
+ z-index: 100;
+ background-color: #000000; 
   color: #FFFFFF;
   cursor: pointer;
   text-transform: uppercase;
-  overflow: hidden;
-  isolation: isolate;
-  position: absolute;
+  overflow: hidden; 
+  isolation: isolate; 
+  position:fixed;
   top: 337px;
-  left: 91px;
+  left:91px;
 }
 /* Button Text */
 .btn-shop-now  span {
@@ -609,13 +607,18 @@ textarea {
   justify-content: center;
   width: 375px;
   height: 34px;
+  transform: rotate(0deg);
+  opacity: 1;
   padding: 10px 50px;
   background-color: #F5F5F5;
   box-sizing: border-box;
+
+  /* Smooth shift transition matching the 300ms menu timing */
+  transition: transform 300ms ease-out;
 }
 .mobile-hero-wrapper.is-shifted,
 .custom-banner-section .banner-footer.is-shifted {
-transform: none;
+  transform: translateY(124px);
 }
 .banner-footer .footer-tagline{
   /* Box Dimensions */
