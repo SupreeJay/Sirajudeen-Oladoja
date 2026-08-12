@@ -81,42 +81,62 @@ function setupHeaderClick() {
   header.addEventListener('click', (event) => {
     const rect = header.getBoundingClientRect();
 
-    // Relative click coordinates inside the header
+    // Click coordinates relative to #bannerHeader
     const clickX = event.clientX - rect.left;
     const clickY = event.clientY - rect.top;
 
-    // Coordinate boundaries based on layout dimensions:
-    // minX = 16px (left padding)
-    // maxX = 16px + 18px (width) = 34px
-    // minY = 23px (top padding) + 4.5px (vertical centering offset in 19px content height) = 27.5px
-    // maxY = 27.5px + 10px (height) = 37.5px
-    const minX = 16;
-    const maxX = 34;
-    const minY = 27.5;
-    const maxY = 37.5;
+    const isActive = header.classList.contains('is-active');
 
-    const isInsideHamburger = 
+    // Dynamic bounding coordinates based on state:
+    // Hamburger State (18px x 10px):
+    // minX = 16px (left padding), maxX = 34px (16 + 18)
+    // minY = 27.5px (flex-centered vertically in 65px box), maxY = 37.5px
+
+    // Active 'X' State (12.73px x 13px) + slight tap padding for mobile:
+    // minX = 14px, maxX = 31px
+    // minY = 24px, maxY = 41px
+    const minX = isActive ? 14 : 16;
+    const maxX = isActive ? 31 : 34;
+    const minY = isActive ? 24 : 27.5;
+    const maxY = isActive ? 41 : 37.5;
+
+    const isInsideIcon = 
       clickX >= minX && 
       clickX <= maxX && 
       clickY >= minY && 
       clickY <= maxY;
 
-    if (isInsideHamburger) {
-      alert('Hamburger Menu Clicked');
-
-      header.classList.toggle('is-active');
+    if (isInsideIcon) {
+      // Toggling 'is-active' triggers the CSS transition from Hamburger to 'X'
+      const nextActiveState = header.classList.toggle('is-active');
 
       const bannerModal = document.getElementById('bannerModal');
       if (bannerModal) {
-        bannerModal.classList.toggle('is-visible', header.classList.contains('is-active'));
+        bannerModal.classList.toggle('is-visible', nextActiveState);
       }
+    }
+  });
+
+  // Close modal when tapping outside the header or modal area
+  document.addEventListener('click', (event) => {
+    const bannerModal = document.getElementById('bannerModal');
+    const targetNode = event.target;
+
+    if (
+      bannerModal &&
+      targetNode instanceof Node &&
+      !header.contains(targetNode) &&
+      !bannerModal.contains(targetNode)
+    ) {
+      header.classList.remove('is-active');
+      bannerModal.classList.remove('is-visible');
     }
   });
 }
   /* ========================================================
      3. INITIALIZATION & EVENT LISTENERS
      ======================================================== */
-  function init() {
+function init() {
     setupMobileHeroElement();
     setupHeaderClick();
   }
