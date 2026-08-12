@@ -102,6 +102,7 @@ function setupHeaderClick() {
       clickY <= maxY;
 
     if (isInsideHamburger) {
+      alert('Hamburger Menu Clicked');
 
       header.classList.toggle('is-active');
 
