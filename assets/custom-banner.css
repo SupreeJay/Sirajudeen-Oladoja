@@ -399,12 +399,9 @@ textarea {
 /* 1. Fix the Parent Container */
 .custom-banner-section {
   width: 375.44px;
-  /* Allow height to expand automatically when contents shift down */
   height: auto;
   min-height: 520px;
-  max-height: none; 
-  transform: rotate(0deg);
-  opacity: 1;
+  max-height: none;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -483,8 +480,6 @@ textarea {
 .mobile-hero-wrapper {
   width: 375px;
   height: 421px;
-  transform: rotate(0deg);
-  opacity: 1;
   background-color: #FFFFFF;
   box-sizing: border-box;
   display: flex;
@@ -492,8 +487,15 @@ textarea {
   justify-content: flex-start;
   align-items: center;
   gap: 0px;
-  /* Smooth shift transition matching the 300ms menu timing */
-  transition: transform 300ms ease-out;
+  
+  /* Smooth margin transition matching your menu timing */
+  margin-top: 0px;
+  transition: margin-top 300ms ease-out;
+}
+
+/* Shifted State: Pushes hero wrapper AND expands the parent container */
+.mobile-hero-wrapper.is-shifted {
+  margin-top: 124px; /* Matches the overlay height */
 }
 
 .mobile-hero-wrapper .mobile-hero-top-text{
@@ -614,21 +616,21 @@ textarea {
   transition: transform 0.35s ease-in-out, filter 0.35s ease-in-out;
 }
 
+/* Footer: Remains in standard flow (NO transform needed) */
 .custom-banner-section .banner-footer {
   display: flex;
   align-items: center;
   justify-content: center;
   width: 375px;
   height: 34px;
-  transform: rotate(0deg);
-  opacity: 1;
   padding: 10px 50px;
   background-color: #F5F5F5;
   box-sizing: border-box;
-
-  /* Smooth shift transition matching the 300ms menu timing */
-  transition: transform 300ms ease-out;
 }
+
+
+
+
 .mobile-hero-wrapper.is-shifted,
 .custom-banner-section .banner-footer.is-shifted {
   transform: translateY(124px);
