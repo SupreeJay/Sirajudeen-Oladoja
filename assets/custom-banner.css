@@ -338,7 +338,7 @@ textarea {
 
 
 @media screen and (max-width: 768px) {
-.custom-banner-section{
+.custom-banner-section {
   width: 375.44px;
   transform: rotate(0deg);
   opacity: 1;
@@ -348,13 +348,17 @@ textarea {
   align-items: center;
   position: relative;
   z-index: 1000;
-  height: fit-content;
-  scroll-margin-top:124px ;
+  /* Ensure container height grows naturally with its content */
+  height: auto;
+  min-height: fit-content;
+  overflow: visible;
+  scroll-margin-top: 124px;
 }
-.custom-banner-section .banner-header{
-display: flex;
-flex-direction: row;
-justify-content:flex-start;
+
+.custom-banner-section .banner-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
   align-items: center;
   width: 375.44px;
   height: 65px;
@@ -366,16 +370,22 @@ justify-content:flex-start;
   box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.15);
   box-sizing: border-box;
   position: relative;
+  z-index: 101; /* Ensure header sits above overlay */
 }
-.custom-banner-section .banner-header .top-announcement,.custom-banner-section .banner-header .btn-choose-gift{
+
+.custom-banner-section .banner-header .top-announcement,
+.custom-banner-section .banner-header .btn-choose-gift {
   display: none;
 }
+
 .custom-banner-section #bannerHeader.is-active::before {
-    width: 13px;
-    height: 13px;
-    background:linear-gradient(45deg, transparent calc(50% - 0.75px), #000000 calc(50% - 0.75px), #000000 calc(50% + 0.75px), transparent calc(50% + 0.75px)),linear-gradient(-45deg, transparent calc(50% - 0.75px), #000000 calc(50% - 0.75px), #000000 calc(50% + 0.75px), transparent calc(50% + 0.75px));
-    background-repeat: no-repeat;
+  width: 13px;
+  height: 13px;
+  background: linear-gradient(45deg, transparent calc(50% - 0.75px), #000000 calc(50% - 0.75px), #000000 calc(50% + 0.75px), transparent calc(50% + 0.75px)),
+              linear-gradient(-45deg, transparent calc(50% - 0.75px), #000000 calc(50% - 0.75px), #000000 calc(50% + 0.75px), transparent calc(50% + 0.75px));
+  background-repeat: no-repeat;
 }
+
 .banner-header::before {
   content: "";
   display: block;
@@ -389,19 +399,22 @@ justify-content:flex-start;
     transparent 1.5px, transparent 4.25px,
     #000000 4.25px, #000000 5.75px,
     transparent 5.75px, transparent 8.5px,
-    #000000 8.5px, #000000 10px );
+    #000000 8.5px, #000000 10px
+  );
   transition: all 300ms ease-out;
   cursor: pointer;
   box-sizing: border-box;
 }
-.banner-header .brand-title{
+
+.banner-header .brand-title {
   width: 151.44px;
   height: 19px;
   transform: rotate(0deg);
   opacity: 1;
   color: #000000;
   box-sizing: border-box;
-  }
+}
+
 .mobile-hero-wrapper {
   width: 375px;
   height: 421px;
@@ -414,18 +427,29 @@ justify-content:flex-start;
   justify-content: flex-start;
   align-items: center;
   gap: 0px;
-  /* Smooth shift transition matching the 300ms menu timing */
-  transition: transform 300ms ease-out;
+  position: relative;
+  
+  /* Smooth shift transition using margin instead of transform */
+  margin-top: 0px;
+  transition: margin-top 300ms ease-out;
 }
-.mobile-hero-wrapper .mobile-hero-top-text{
+
+/* FIX: Use margin-top shift so document flow pushes the footer down naturally */
+.mobile-hero-wrapper.is-shifted {
+  margin-top: 124px;
+}
+
+.mobile-hero-wrapper .mobile-hero-top-text {
   display: flex;
   flex-direction: column;
-  justify-content:center;
+  justify-content: center;
   align-items: center;
   width: 375px;
   height: 157px;
+  position: relative;
 }
-.mobile-hero-wrapper .mobile-hero-top-text .hero-title{
+
+.mobile-hero-wrapper .mobile-hero-top-text .hero-title {
   width: 197px;
   height: 30px;
   position: absolute;
@@ -443,7 +467,8 @@ justify-content:flex-start;
   margin: 0;
   box-sizing: border-box;
 }
- .mobile-hero-wrapper .mobile-hero-top-text .hero-description-mobile{
+
+.mobile-hero-wrapper .mobile-hero-top-text .hero-description-mobile {
   width: 340px;
   height: 42px;
   position: absolute;
@@ -462,22 +487,26 @@ justify-content:flex-start;
   margin: 0;
   box-sizing: border-box;
   text-wrap: wrap;
- }
-  .mobile-hero-wrapper .mobile-hero-shop-bg-container{
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    align-items: center;
-    width: 686px;
-    height: 264px;
-    background-image: url('./Hero-Background.svg'); /* Replace with your image path */
+}
+
+/* FIX: Changed position from 'fixed' to 'absolute' relative to .mobile-hero-wrapper */
+.mobile-hero-wrapper .mobile-hero-shop-bg-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  width: 686px;
+  height: 264px;
+  background-image: url('./Hero-Background.svg');
   background-position: center;
   background-repeat: no-repeat;
-  background-size:contain;
-  position:fixed;
+  background-size: contain;
+  position: absolute;
   top: 157px;
   left: -140px;
-  }
+}
+
+/* FIX: Changed position from 'fixed' to 'absolute' relative to .mobile-hero-wrapper */
 .btn-shop-now {
   width: fit-content;
   height: auto;
@@ -485,23 +514,24 @@ justify-content:flex-start;
   min-height: 45px;
   padding: 13px 20px;
   gap: 5px;
-  display:flex;
+  display: flex;
   align-items: center;
-  justify-content:space-around;
+  justify-content: space-around;
   box-sizing: border-box;
   opacity: 1;
- z-index: 100;
- background-color: #000000; 
+  z-index: 100;
+  background-color: #000000;
   color: #FFFFFF;
   cursor: pointer;
   text-transform: uppercase;
-  overflow: hidden; 
-  isolation: isolate; 
-  position:fixed;
+  overflow: hidden;
+  isolation: isolate;
+  position: absolute;
   top: 337px;
-  left:91px;
+  left: 91px;
 }
-.btn-shop-now  span {
+
+.btn-shop-now span {
   position: relative;
   font-family: 'Jost', sans-serif;
   font-weight: 400;
@@ -515,7 +545,8 @@ justify-content:flex-start;
   transition: color 0.35s ease-in-out;
   z-index: 200;
 }
-.btn-shop-now  .arrow {
+
+.btn-shop-now .arrow {
   position: relative;
   z-index: 2;
   width: 25.5px;
@@ -523,10 +554,10 @@ justify-content:flex-start;
   display: inline-block;
   opacity: 1;
   box-sizing: border-box;
-  /* Turns any dark img asset to pure white */
   filter: brightness(0) invert(1);
   transition: transform 0.35s ease-in-out, filter 0.35s ease-in-out;
 }
+
 .custom-banner-section .banner-footer {
   display: flex;
   align-items: center;
@@ -538,15 +569,16 @@ justify-content:flex-start;
   padding: 10px 50px;
   background-color: #F5F5F5;
   box-sizing: border-box;
+  position: relative;
+  z-index: 10;
+}
 
-  /* Smooth shift transition matching the 300ms menu timing */
-  transition: transform 300ms ease-out;
+/* FIX: Removed footer transform state. Footer moves automatically via hero wrapper margin */
+.custom-banner-section .banner-footer.is-shifted {
+  transform: none;
 }
-.mobile-hero-wrapper.is-shifted,.custom-banner-section .banner-footer.is-shifted {
-  transform: translateY(124px);
-}
-.banner-footer .footer-tagline{
-  /* Box Dimensions */
+
+.banner-footer .footer-tagline {
   max-width: 100%;
   min-width: 288px;
   height: 14px;
@@ -562,6 +594,7 @@ justify-content:flex-start;
   text-align: center;
   white-space: nowrap;
 }
+
 .custom-banner-section .mobile-banner-overlay {
   display: flex;
   flex-direction: column;
@@ -583,22 +616,24 @@ justify-content:flex-start;
   pointer-events: none;
   transition: opacity 300ms ease-out, visibility 300ms ease-out;
 }
-.custom-banner-section .banner-top-image, .custom-banner-section .banner-bottom-row {
+
+.custom-banner-section .banner-top-image, 
+.custom-banner-section .banner-bottom-row {
   display: none;
 }
-
 
 .mobile-banner-overlay.is-visible {
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
 }
-.top-announcement-toggle{
-width:260px;
-height:14px;
-font-family: 'Jost', sans-serif;
+
+.top-announcement-toggle {
+  width: 260px;
+  height: 14px;
+  font-family: 'Jost', sans-serif;
   font-weight: 400;
-  font-style: normal; /* 'Regular' mapped to standard CSS 'normal' */
+  font-style: normal;
   font-size: 16px;
   line-height: 13.42px;
   letter-spacing: 0px;
@@ -608,21 +643,9 @@ font-family: 'Jost', sans-serif;
   align-items: center;
   justify-content: center;
 }
-.mobile-banner-overlay .btn-choose-gift-toggle{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 16px;
-  width: 244px;
-  min-height: 44px; /* or padding: 12px 0 */
-  line-height: 1; /* Reset line height */
-  background-color: #FFF544;
-  text-decoration: none;
-  box-sizing: border-box;
-}
 
 .mobile-banner-overlay .btn-choose-gift-toggle {
-  position: relative; /* REQUIRED for absolute ::before positioning */
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -633,11 +656,12 @@ font-family: 'Jost', sans-serif;
   background-color: #FFF544;
   text-decoration: none;
   box-sizing: border-box;
-  overflow: hidden; /* Keeps sliding fill inside button bounds */
+  overflow: hidden;
 }
+
 .btn-choose-gift-toggle span {
   position: relative;
-  z-index: 2; /* Keeps text above sliding pseudo-element */
+  z-index: 2;
   font-family: 'Jost', sans-serif;
   font-weight: 400;
   font-style: normal;
@@ -649,6 +673,7 @@ font-family: 'Jost', sans-serif;
   color: #000000;
   transition: color 0.35s ease-in-out;
 }
+
 .mobile-banner-overlay .btn-choose-gift-toggle::before {
   content: "";
   position: absolute;
@@ -657,22 +682,25 @@ font-family: 'Jost', sans-serif;
   left: 0;
   width: 100%;
   height: calc(100% + 2px);
-  background-color: #000000; /* Dark sliding fill color */
+  background-color: #000000;
   z-index: 1;
-  transform: scaleX(0); /* Hidden by default */
+  transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
   will-change: transform;
 }
+
 .mobile-banner-overlay .btn-choose-gift-toggle:hover::before {
   transform: scaleX(1);
 }
+
 .mobile-banner-overlay .btn-choose-gift-toggle:hover > span {
   color: #FFFFFF;
 }
+
 .btn-choose-gift-toggle .arrow-icon-mobile-toggle {
   position: relative;
-  z-index: 2; /* Keeps icon above sliding background */
+  z-index: 2;
   width: 24px;
   height: 24px;
   display: inline-block;
@@ -680,8 +708,9 @@ font-family: 'Jost', sans-serif;
   box-sizing: border-box;
   transition: transform 0.35s ease-in-out, filter 0.35s ease-in-out;
 }
+
 .mobile-banner-overlay .btn-choose-gift-toggle:hover .arrow-icon-mobile-toggle {
   transform: translateX(6px);
-  filter: brightness(0) invert(1); /* Turns dark SVG icon white on dark fill */
+  filter: brightness(0) invert(1);
 }
 }
