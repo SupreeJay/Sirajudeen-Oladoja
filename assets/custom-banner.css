@@ -454,10 +454,16 @@ justify-content:flex-start;
   width: 13px;
   height: 13px;
   /* Precise pixel gradients to eliminate edge blur/extra thickness */
+ /* 2. Ultra-Thin Active 'X' State */
+#bannerHeader.is-active::before {
+  width: 13px;
+  height: 13px;
+  /* 1px stroke centered gradient */
   background: 
-    linear-gradient(45deg, transparent calc(50% - 1px), #000000 calc(50% - 1px), #000000 calc(50% + 1px), transparent calc(50% + 1px)),
-    linear-gradient(-45deg, transparent calc(50% - 1px), #000000 calc(50% - 1px), #000000 calc(50% + 1px), transparent calc(50% + 1px));
+    linear-gradient(45deg, transparent calc(50% - 0.75px), #000000 calc(50% - 0.75px), #000000 calc(50% + 0.75px), transparent calc(50% + 0.75px)),
+    linear-gradient(-45deg, transparent calc(50% - 0.75px), #000000 calc(50% - 0.75px), #000000 calc(50% + 0.75px), transparent calc(50% + 0.75px));
   background-repeat: no-repeat;
+}
 }
   .banner-header .brand-title{
     width: 151.44px;
