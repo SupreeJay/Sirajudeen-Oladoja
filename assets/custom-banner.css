@@ -449,14 +449,14 @@ justify-content:flex-start;
   box-sizing: border-box;
 }
 
-/* 2. Ultra-Thin Active 'X' State (Hairline Stroke) */
+/* 2. Medium-Weight Active 'X' State (~1px Stroke) */
 #bannerHeader.is-active::before {
   width: 13px;
   height: 13px;
-  /* 0.5px hairline stroke centered gradient */
+  /* 1px crisp stroke centered gradient */
   background: 
-    linear-gradient(45deg, transparent calc(50% - 0.25px), #000000 calc(50% - 0.25px), #000000 calc(50% + 0.25px), transparent calc(50% + 0.25px)),
-    linear-gradient(-45deg, transparent calc(50% - 0.25px), #000000 calc(50% - 0.25px), #000000 calc(50% + 0.25px), transparent calc(50% + 0.25px));
+    linear-gradient(45deg, transparent calc(50% - 0.5px), #000000 calc(50% - 0.5px), #000000 calc(50% + 0.5px), transparent calc(50% + 0.5px)),
+    linear-gradient(-45deg, transparent calc(50% - 0.5px), #000000 calc(50% - 0.5px), #000000 calc(50% + 0.5px), transparent calc(50% + 0.5px));
   background-repeat: no-repeat;
 }
   .banner-header .brand-title{
