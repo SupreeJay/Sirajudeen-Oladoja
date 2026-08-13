@@ -1,35 +1,20 @@
-
-.custom-grid-wrapper {
- /* Dimensions */
-  width: 1337px;
-  height: auto; /* Hug content */
-  min-height: 981px;
-
-  /* Spacing & Layout */
-  gap: 30px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-
-  /* Transformations & Opacity */
-  transform: rotate(0deg);/* ==========================================================================
-   1. Wrapper & Layout Constraints
+/* ==========================================================================
+   1. Wrapper & Main Container
    ========================================================================== */
 .custom-grid-wrapper {
   width: 100%;
   max-width: 1337px;
   height: auto;
   min-height: 981px;
-  gap: 30px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  box-sizing: border-box;
+  gap: 30px;
   margin-left: auto;
   margin-right: auto;
   padding: 0 16px;
+  box-sizing: border-box;
 }
 
 .grid-text-display {
@@ -44,21 +29,24 @@
 }
 
 /* ==========================================================================
-   2. Image Grid Layout
+   2. Grid Layout & Items
    ========================================================================== */
 .grid-images-container {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 16px;
   width: 100%;
+  min-height: 300px;
 }
 
 .grid-item {
   position: relative;
-  overflow: hidden;
-  aspect-ratio: 1 / 1;
   width: 100%;
+  min-height: 250px;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
   background-color: #f4f4f4;
+  border: 1px solid #000000;
 }
 
 .grid-image-wrapper {
@@ -88,7 +76,7 @@
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.9);
   border: none;
-  color: #000;
+  color: #000000;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -104,7 +92,7 @@
 }
 
 /* ==========================================================================
-   4. Modal System Structure
+   4. Modal Base System
    ========================================================================== */
 .grid-modal {
   position: fixed;
@@ -134,9 +122,6 @@
   backdrop-filter: blur(2px);
 }
 
-/* ==========================================================================
-   5. Pop-Up Card Design (Matching Mockup)
-   ========================================================================== */
 .grid-modal-content {
   position: relative;
   background: #ffffff;
@@ -158,11 +143,13 @@
   font-size: 24px;
   line-height: 1;
   cursor: pointer;
-  color: #000;
+  color: #000000;
   z-index: 3;
 }
 
-/* Header Row: Product Image & Info */
+/* ==========================================================================
+   5. Modal Inner Content & Product Details
+   ========================================================================== */
 .modal-product-header {
   display: flex;
   gap: 16px;
@@ -175,7 +162,8 @@
   flex-shrink: 0;
 }
 
-.modal-product-media img {
+.modal-product-media img,
+.modal-product-card img {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -209,7 +197,7 @@
   color: #4a4a4a;
 }
 
-/* Variant Options */
+/* Variant Groups */
 .modal-option-group {
   margin-bottom: 16px;
 }
@@ -217,11 +205,11 @@
 .option-label {
   display: block;
   font-size: 14px;
-  color: #333;
+  color: #333333;
   margin-bottom: 6px;
 }
 
-/* Color Swatches */
+/* Swatches */
 .color-swatch-container {
   display: flex;
   border: 1px solid #1a1a1a;
@@ -242,8 +230,8 @@
   text-align: center;
   padding: 10px 0;
   font-size: 15px;
-  background: #fff;
-  color: #000;
+  background: #ffffff;
+  color: #000000;
   transition: background 0.2s ease, font-weight 0.2s ease;
 }
 
@@ -256,7 +244,7 @@
   font-weight: 600;
 }
 
-/* Select Dropdown */
+/* Dropdown */
 .select-wrapper {
   position: relative;
   border: 1px solid #1a1a1a;
@@ -271,7 +259,7 @@
   appearance: none;
   outline: none;
   cursor: pointer;
-  color: #000;
+  color: #000000;
 }
 
 .select-wrapper::after {
@@ -284,7 +272,7 @@
   font-size: 14px;
 }
 
-/* Add To Cart Button */
+/* Buttons */
 .modal-add-to-cart-btn {
   width: 100%;
   background: #000000;
@@ -310,218 +298,27 @@
   stroke: #ffffff;
 }
 
-/* ==========================================================================
-   6. Media Queries & Responsive Breakpoints
-   ========================================================================== */
-/* Desktop Layout (3 Columns) */
-@media screen and (min-width: 1024px) {
-  .grid-images-container {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-/* High Desktop / Ultra-Wide (2560px and above) */
-@media screen and (min-width: 2560px) {
-  .custom-grid-wrapper {
-    max-width: 3840px;
-  }
-
-  .grid-images-container {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  .hotspot-btn {
-    width: 64px;
-    height: 64px;
-  }
-
-  .hotspot-btn svg {
-    width: 32px;
-    height: 32px;
-  }
-
-  .grid-heading {
-    font-size: 64px;
-  }
-}
-  opacity: 1;
-
-  /* Box Model */
-  box-sizing: border-box;
-  margin-left: auto;
-  margin-right: auto;
-  border: 6px solid green;
-}
-
-.grid-text-display {
-  text-align: center;
-  padding: 20px;
-}
-
-.grid-heading {
-  font-family: 'Jost', sans-serif;
-  font-size: 32px;
-  margin-bottom: 10px;
-}
-
-/* Grid Layout (Mobile Default: 2 Columns) */
-.grid-images-container {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 0;
-  width: 100%;
-  background-color: #000;
-}
-
-.grid-item {
-  position: relative;
-  overflow: hidden;
-  aspect-ratio: 1 / 1;
-  border: 1px solid #000;
-}
-
-.grid-image-wrapper {
-  position: relative;
-  width: 100%;
-  height: 100%;
-}
-
-.grid-img, 
-.placeholder-svg {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-/* Plus Hotspot Button */
-.hotspot-btn {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.9);
-  border: none;
-  color: #000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-  transition: transform 0.2s ease, background 0.2s ease;
-  z-index: 5;
-}
-
-.hotspot-btn:hover {
-  transform: translate(-50%, -50%) scale(1.15);
-  background: #ffffff;
-}
-
-/* Modal Pop-up System */
-.grid-modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 9999;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.3s ease;
-}
-
-.grid-modal.is-active {
-  opacity: 1;
-  pointer-events: auto;
-}
-
-.grid-modal-overlay {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.6);
-  backdrop-filter: blur(2px);
-}
-
-.grid-modal-content {
-  position: relative;
-  background: #ffffff;
-  padding: 30px;
-  max-width: 450px;
-  width: 90%;
-  border-radius: 8px;
-  z-index: 2;
-  text-align: center;
-}
-
-.grid-modal-close {
-  position: absolute;
-  top: 10px;
-  right: 15px;
-  background: transparent;
-  border: none;
-  font-size: 28px;
-  cursor: pointer;
-}
-
-.modal-product-card img {
-  width: 100%;
-  max-height: 250px;
-  object-fit: cover;
-  margin-bottom: 15px;
-}
-
 .modal-shop-btn {
   display: inline-block;
   margin-top: 15px;
   padding: 10px 24px;
-  background: #000;
-  color: #fff;
+  background: #000000;
+  color: #ffffff;
   text-decoration: none;
   text-transform: uppercase;
 }
-.grid-images-container {
-  display: grid !important;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 16px;
-  width: 100%;
-  min-height: 300px; /* Fallback height */
-}
 
-.grid-item {
-  position: relative;
-  width: 100%;
-  min-height: 250px;
-  background-color: #f4f4f4; /* Temporary background color to confirm visibility */
-}
-
-.grid-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
+/* ==========================================================================
+   6. Media Queries & Responsiveness
+   ========================================================================== */
+/* Standard Desktop */
 @media screen and (min-width: 1024px) {
   .grid-images-container {
     grid-template-columns: repeat(3, 1fr);
   }
 }
 
-/* Standard Desktop Layout (3 Columns) */
-@media screen and (min-width: 1024px) {
-  .grid-images-container {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-/* High Desktop / 4K Ultra-Wide (2560px and above) */
+/* Ultra-Wide Displays (2560px+) */
 @media screen and (min-width: 2560px) {
   .custom-grid-wrapper {
     max-width: 3840px;
@@ -544,6 +341,4 @@
   .grid-heading {
     font-size: 64px;
   }
-
-  
 }

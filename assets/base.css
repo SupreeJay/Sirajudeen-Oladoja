@@ -11,7 +11,8 @@ body {
   min-height: 100svh;
   font-variation-settings: 'slnt' 0;
   align-items: column;
-  justify-content: center;
+  justify-content:flex-start;
+  gap: 90px;
 }
 
 :root {
