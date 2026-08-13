@@ -13,7 +13,337 @@
   align-items: center;
 
   /* Transformations & Opacity */
-  transform: rotate(0deg);
+  transform: rotate(0deg);/* ==========================================================================
+   1. Wrapper & Layout Constraints
+   ========================================================================== */
+.custom-grid-wrapper {
+  width: 100%;
+  max-width: 1337px;
+  height: auto;
+  min-height: 981px;
+  gap: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  box-sizing: border-box;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 16px;
+}
+
+.grid-text-display {
+  text-align: center;
+  padding: 20px 0;
+}
+
+.grid-heading {
+  font-family: 'Jost', sans-serif;
+  font-size: 32px;
+  margin: 0;
+}
+
+/* ==========================================================================
+   2. Image Grid Layout
+   ========================================================================== */
+.grid-images-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  width: 100%;
+}
+
+.grid-item {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 1 / 1;
+  width: 100%;
+  background-color: #f4f4f4;
+}
+
+.grid-image-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.grid-img, 
+.placeholder-svg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ==========================================================================
+   3. Hotspot Button
+   ========================================================================== */
+.hotspot-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  transition: transform 0.2s ease, background 0.2s ease;
+  z-index: 5;
+}
+
+.hotspot-btn:hover {
+  transform: translate(-50%, -50%) scale(1.15);
+  background: #ffffff;
+}
+
+/* ==========================================================================
+   4. Modal System Structure
+   ========================================================================== */
+.grid-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.grid-modal.is-active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.grid-modal-overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(2px);
+}
+
+/* ==========================================================================
+   5. Pop-Up Card Design (Matching Mockup)
+   ========================================================================== */
+.grid-modal-content {
+  position: relative;
+  background: #ffffff;
+  padding: 24px;
+  max-width: 380px;
+  width: 90%;
+  z-index: 2;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  box-sizing: border-box;
+  text-align: left;
+}
+
+.grid-modal-close {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  background: transparent;
+  border: none;
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+  color: #000;
+  z-index: 3;
+}
+
+/* Header Row: Product Image & Info */
+.modal-product-header {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.modal-product-media {
+  width: 130px;
+  height: 140px;
+  flex-shrink: 0;
+}
+
+.modal-product-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.modal-product-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.modal-title {
+  font-size: 18px;
+  font-weight: 400;
+  margin: 0 0 8px 0;
+  color: #1a1a1a;
+  line-height: 1.2;
+}
+
+.modal-price {
+  font-size: 18px;
+  font-weight: 400;
+  margin: 0 0 10px 0;
+  color: #1a1a1a;
+}
+
+.modal-description {
+  font-size: 12px;
+  line-height: 1.4;
+  color: #4a4a4a;
+}
+
+/* Variant Options */
+.modal-option-group {
+  margin-bottom: 16px;
+}
+
+.option-label {
+  display: block;
+  font-size: 14px;
+  color: #333;
+  margin-bottom: 6px;
+}
+
+/* Color Swatches */
+.color-swatch-container {
+  display: flex;
+  border: 1px solid #1a1a1a;
+}
+
+.color-swatch-option {
+  flex: 1;
+  margin: 0;
+  cursor: pointer;
+}
+
+.color-swatch-option input {
+  display: none;
+}
+
+.swatch-btn {
+  display: block;
+  text-align: center;
+  padding: 10px 0;
+  font-size: 15px;
+  background: #fff;
+  color: #000;
+  transition: background 0.2s ease, font-weight 0.2s ease;
+}
+
+.color-swatch-option:first-child .swatch-btn,
+.swatch-btn.active {
+  border-right: 1px solid #1a1a1a;
+}
+
+.color-swatch-option input:checked + .swatch-btn {
+  font-weight: 600;
+}
+
+/* Select Dropdown */
+.select-wrapper {
+  position: relative;
+  border: 1px solid #1a1a1a;
+}
+
+.modal-select {
+  width: 100%;
+  padding: 12px 14px;
+  font-size: 15px;
+  border: none;
+  background: transparent;
+  appearance: none;
+  outline: none;
+  cursor: pointer;
+  color: #000;
+}
+
+.select-wrapper::after {
+  content: '∨';
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  font-size: 14px;
+}
+
+/* Add To Cart Button */
+.modal-add-to-cart-btn {
+  width: 100%;
+  background: #000000;
+  color: #ffffff;
+  border: none;
+  padding: 14px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  font-size: 14px;
+  letter-spacing: 1px;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: background 0.2s ease;
+}
+
+.modal-add-to-cart-btn:hover {
+  background: #222222;
+}
+
+.modal-add-to-cart-btn svg {
+  stroke: #ffffff;
+}
+
+/* ==========================================================================
+   6. Media Queries & Responsive Breakpoints
+   ========================================================================== */
+/* Desktop Layout (3 Columns) */
+@media screen and (min-width: 1024px) {
+  .grid-images-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* High Desktop / Ultra-Wide (2560px and above) */
+@media screen and (min-width: 2560px) {
+  .custom-grid-wrapper {
+    max-width: 3840px;
+  }
+
+  .grid-images-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .hotspot-btn {
+    width: 64px;
+    height: 64px;
+  }
+
+  .hotspot-btn svg {
+    width: 32px;
+    height: 32px;
+  }
+
+  .grid-heading {
+    font-size: 64px;
+  }
+}
   opacity: 1;
 
   /* Box Model */

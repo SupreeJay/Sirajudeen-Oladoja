@@ -10,7 +10,6 @@
   <div class="grid-images-container">
     {% assign active_blocks = section.blocks %}
     {% if active_blocks.size == 0 %}
-      {% comment %} Fallback loop if no blocks have been added in the Theme Editor yet {% endcomment %}
       {% assign loop_range = (1..6) %}
     {% else %}
       {% assign loop_range = active_blocks %}
@@ -31,13 +30,11 @@
         {% assign shopify_attrs = '' %}
       {% endif %}
 
-      {% comment %} Matches asset files named grid-image-1.jpg, grid-image-2.jpg, etc. {% endcomment %}
       {% assign default_asset_name = 'grid-image-' | append: forloop.index | append: '.jpg' %}
 
       <div class="grid-item" {{ shopify_attrs }}>
         <div class="grid-image-wrapper">
           {% if custom_image != blank %}
-            <!-- User edited/selected a custom image in Theme Editor -->
             <img
               src="{{ custom_image | image_url: width: 1200 }}"
               alt="{{ custom_image.alt | default: 'Grid Image' | escape }}"
@@ -47,7 +44,6 @@
               height=""
             >
           {% else %}
-            <!-- Default image loaded from theme assets folder -->
             <img
               src="{{ default_asset_name | asset_url }}"
               alt="Default Grid Look {{ forloop.index }}"
@@ -58,7 +54,7 @@
             >
           {% endif %}
 
-          <!-- Interactive Hotspot Button -->
+          <!-- Hotspot Toggle Button -->
           <button
             type="button"
             class="hotspot-btn"
@@ -89,20 +85,118 @@
 
             {% if product != blank %}
               <div class="modal-product-card">
-                <img
-                  src="{{ product.featured_image | image_url: width: 600 }}"
-                  alt="{{ product.title | escape }}"
-                  width=""
-                  height=""
-                >
-                <h3>{{ product.title }}</h3>
-                <p class="modal-price">{{ product.price | money }}</p>
-                <a href="{{ product.url }}" class="modal-shop-btn">View Product</a>
+                <!-- Top Row: Image & Key Details -->
+                <div class="modal-product-header">
+                  <div class="modal-product-media">
+                    {% if custom_image != blank %}
+                      <img src="{{ custom_image | image_url: width: 600 }}" alt="{{ product.title | escape }}" width="" height="">
+                    {% elsif product.featured_image != blank %}
+                      <img src="{{ product.featured_image | image_url: width: 600 }}" alt="{{ product.title | escape }}" height="" width="">
+                    {% else %}
+                      <img src="{{ default_asset_name | asset_url }}" alt="Default Grid Look {{ forloop.index }}" width="" height="">
+                    {% endif %}
+                  </div>
+
+                  <div class="modal-product-info">
+                    <h3 class="modal-title">{{ product.title }}</h3>
+                    <p class="modal-price">{{ product.price | money }}</p>
+                    {% if product.description != blank %}
+                      <div class="modal-description">
+                        {{ product.description | strip_html | truncatewords: 25 }}
+                      </div>
+                    {% endif %}
+                  </div>
+                </div>
+
+                <!-- Product Form & Variant Options -->
+                {% form 'product', product, class: 'modal-product-form' %}
+                  <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+
+                  {% unless product.has_only_default_variant %}
+                    {% for option in product.options_with_values %}
+                      <div class="modal-option-group">
+                        <label class="option-label">{{ option.name }}</label>
+
+                        {% assign option_name_lower = option.name | downcase %}
+                        {% if option_name_lower contains 'color' or option_name_lower contains 'colour' %}
+                          <div class="color-swatch-container">
+                            {% for value in option.values %}
+                              <label class="color-swatch-option">
+                                <input 
+                                  type="radio" 
+                                  name="options[{{ option.name | escape }}]" 
+                                  value="{{ value | escape }}" 
+                                  {% if option.selected_value == value %}checked{% endif %}
+                                >
+                                <span class="swatch-btn">{{ value }}</span>
+                              </label>
+                            {% endfor %}
+                          </div>
+                        {% else %}
+                          <div class="select-wrapper">
+                            <select name="options[{{ option.name | escape }}]" class="modal-select">
+                              <option value="" disabled>Choose your {{ option.name | downcase }}</option>
+                              {% for value in option.values %}
+                                <option value="{{ value | escape }}" {% if option.selected_value == value %}selected{% endif %}>
+                                  {{ value }}
+                                </option>
+                              {% endfor %}
+                            </select>
+                          </div>
+                        {% endif %}
+                      </div>
+                    {% endfor %}
+                  {% endunless %}
+
+                  <button type="submit" class="modal-add-to-cart-btn">
+                    <span>ADD TO CART</span>
+                    <svg width="24" height="12" viewBox="0 0 24 12" fill="none" stroke="currentColor" stroke-width="2">
+                      <line x1="0" y1="6" x2="22" y2="6"></line>
+                      <polyline points="16 1 22 6 16 11"></polyline>
+                    </svg>
+                  </button>
+                {% endform %}
               </div>
             {% else %}
-              <div class="modal-placeholder">
-                <h3>Featured Item {{ forloop.index }}</h3>
-                <p>Select a product in the theme editor to populate this quick view.</p>
+              <!-- Fallback View when no Product is attached -->
+              <div class="modal-product-card">
+                <div class="modal-product-header">
+                  <div class="modal-product-media">
+                    <img src="{{ default_asset_name | asset_url }}" alt="Default Grid Look {{ forloop.index }}" width="" height="">
+                  </div>
+                  <div class="modal-product-info">
+                    <h3 class="modal-title">Sample Product Name</h3>
+                    <p class="modal-price">980,00€</p>
+                    <div class="modal-description">
+                      This piece is crafted from premium fabric featuring detailed micro accents. Select a product in the theme editor to connect live data.
+                    </div>
+                  </div>
+                </div>
+
+                <div class="modal-option-group">
+                  <label class="option-label">Color</label>
+                  <div class="color-swatch-container">
+                    <button type="button" class="swatch-btn active">White</button>
+                    <button type="button" class="swatch-btn">Black</button>
+                  </div>
+                </div>
+
+                <div class="modal-option-group">
+                  <label class="option-label">Size</label>
+                  <div class="select-wrapper">
+                    <select class="modal-select">
+                      <option>Choose your size</option>
+                    </select>
+                  </div>
+                </div>
+
+                <button type="button" class="modal-add-to-cart-btn">
+                  <span>ADD TO CART</span>
+                  <svg width="24" height="12" viewBox="0 0 24 12" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="0" y1="6" x2="22" y2="6"></line>
+                    <polyline points="16 1 22 6 16 11"></polyline>
+                  </svg>
+                </button>
               </div>
             {% endif %}
           </div>
@@ -134,7 +228,7 @@
         {
           "type": "image_picker",
           "id": "image",
-          "label": "Select Card Image (Leave blank for default asset)"
+          "label": "Select Card Image (Leave blank for asset default)"
         },
         {
           "type": "product",
