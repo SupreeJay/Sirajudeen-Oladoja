@@ -228,6 +228,10 @@ textarea {
   overflow: hidden; /* Keeps the animated overlay contained within the button border */
   isolation: isolate; /* Fixes color blending issues with pseudo-elements */
 }
+.mobile-banner-overlay,
+.mobile-hero-wrapper {
+  display: none;
+}
 .banner-hero-content .btn-shop-now::before {
   content: "";
   position: absolute;
