@@ -8,24 +8,46 @@
   {% endif %}
 
   <div class="grid-images-container">
-    {% for block in section.blocks limit: 6 %}
-      {% comment %} Build default filename matching forloop: default-grid-1.jpg, default-grid-2.jpg, etc. {% endcomment %}
+    {% assign active_blocks = section.blocks %}
+    {% if active_blocks.size == 0 %}
+      {% comment %} Fallback loop if no blocks have been added in the Theme Editor yet {% endcomment %}
+      {% assign loop_range = (1..6) %}
+    {% else %}
+      {% assign loop_range = active_blocks %}
+    {% endif %}
+
+    {% for item in loop_range limit: 6 %}
+      {% if active_blocks.size > 0 %}
+        {% assign block = item %}
+        {% assign block_id = block.id %}
+        {% assign custom_image = block.settings.image %}
+        {% assign product = block.settings.product %}
+        {% assign shopify_attrs = block.shopify_attributes %}
+      {% else %}
+        {% assign block = null %}
+        {% assign block_id = 'default-' | append: forloop.index %}
+        {% assign custom_image = null %}
+        {% assign product = null %}
+        {% assign shopify_attrs = '' %}
+      {% endif %}
+
+      {% comment %} Matches asset files named grid-image-1.jpg, grid-image-2.jpg, etc. {% endcomment %}
       {% assign default_asset_name = 'grid-image-' | append: forloop.index | append: '.jpg' %}
 
-      <div class="grid-item" {{ block.shopify_attributes }}>
+      <div class="grid-item" {{ shopify_attrs }}>
         <div class="grid-image-wrapper">
-          {% if block.settings.image != blank %}
+          {% if custom_image != blank %}
             <!-- User edited/selected a custom image in Theme Editor -->
             <img
-              src="{{ block.settings.image | image_url: width: 1200 }}"
-              alt="{{ block.settings.image.alt | escape }}"
+              src="{{ custom_image | image_url: width: 1200 }}"
+              alt="{{ custom_image.alt | default: 'Grid Image' | escape }}"
               loading="lazy"
               class="grid-img"
               width=""
               height=""
             >
           {% else %}
-            <!-- Default image loaded from VS Code assets folder -->
+            <!-- Default image loaded from theme assets folder -->
             <img
               src="{{ default_asset_name | asset_url }}"
               alt="Default Grid Look {{ forloop.index }}"
@@ -41,7 +63,7 @@
             type="button"
             class="hotspot-btn"
             aria-label="View product details"
-            data-popup-trigger="popup-{{ block.id }}"
+            data-popup-trigger="popup-{{ block_id }}"
           >
             <svg
               width="16"
@@ -60,22 +82,26 @@
         </div>
 
         <!-- Product Modal Pop-up -->
-        <div id="popup-{{ block.id }}" class="grid-modal" aria-hidden="true">
+        <div id="popup-{{ block_id }}" class="grid-modal" aria-hidden="true">
           <div class="grid-modal-overlay" data-popup-close></div>
           <div class="grid-modal-content">
             <button class="grid-modal-close" data-popup-close aria-label="Close popup">&times;</button>
 
-            {% assign product = block.settings.product %}
             {% if product != blank %}
               <div class="modal-product-card">
-                <img src="{{ product.featured_image | image_url: width: 600 }}" alt="{{ product.title | escape }}" width="" height="">
+                <img
+                  src="{{ product.featured_image | image_url: width: 600 }}"
+                  alt="{{ product.title | escape }}"
+                  width=""
+                  height=""
+                >
                 <h3>{{ product.title }}</h3>
                 <p class="modal-price">{{ product.price | money }}</p>
                 <a href="{{ product.url }}" class="modal-shop-btn">View Product</a>
               </div>
             {% else %}
               <div class="modal-placeholder">
-                <h3>Featured Item</h3>
+                <h3>Featured Item {{ forloop.index }}</h3>
                 <p>Select a product in the theme editor to populate this quick view.</p>
               </div>
             {% endif %}
@@ -108,7 +134,7 @@
         {
           "type": "image_picker",
           "id": "image",
-          "label": "Select Card Image (Leave blank for default)"
+          "label": "Select Card Image (Leave blank for default asset)"
         },
         {
           "type": "product",
