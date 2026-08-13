@@ -1,9 +1,26 @@
-/* Base & Structural Layout */
+
 .custom-grid-wrapper {
-  width: 100%;
-  margin: 0 auto;
-  padding: 0;
+ /* Dimensions */
+  width: 1337px;
+  height: auto; /* Hug content */
+  min-height: 981px;
+
+  /* Spacing & Layout */
+  gap: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+
+  /* Transformations & Opacity */
+  transform: rotate(0deg);
+  opacity: 1;
+
+  /* Box Model */
   box-sizing: border-box;
+  margin-left: auto;
+  margin-right: auto;
+  border: 6px solid green;
 }
 
 .grid-text-display {
