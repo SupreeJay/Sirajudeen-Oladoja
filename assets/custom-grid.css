@@ -156,6 +156,33 @@
   text-decoration: none;
   text-transform: uppercase;
 }
+.grid-images-container {
+  display: grid !important;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  width: 100%;
+  min-height: 300px; /* Fallback height */
+}
+
+.grid-item {
+  position: relative;
+  width: 100%;
+  min-height: 250px;
+  background-color: #f4f4f4; /* Temporary background color to confirm visibility */
+}
+
+.grid-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+@media screen and (min-width: 1024px) {
+  .grid-images-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
 
 /* Standard Desktop Layout (3 Columns) */
 @media screen and (min-width: 1024px) {
@@ -187,4 +214,6 @@
   .grid-heading {
     font-size: 64px;
   }
+
+  
 }
