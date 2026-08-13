@@ -10,6 +10,7 @@ textarea {
    font-family: 'Jost', sans-serif !important;
 }
 .custom-banner-section {
+  z-index:2000;
   max-width: 1440px; /* Fill width up to max container constraint */
   margin: 0 auto;
   box-sizing: border-box;
