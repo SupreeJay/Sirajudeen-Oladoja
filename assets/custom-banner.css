@@ -341,6 +341,37 @@ textarea {
   display: none;
 }
 
+/* ==========================================================================
+   LAPTOP & DESKTOP SCREEN FIX (769px to 2559px)
+   ========================================================================== */
+@media screen and (min-width: 769px) and (max-width: 2559px) {
+  /* 1. Hide mobile-only elements */
+  .mobile-hero-wrapper,
+  .mobile-banner-overlay {
+    display: none !important;
+  }
+
+  /* 2. Force desktop banner elements to render and scale properly */
+  .custom-banner-section .banner-top-image {
+    display: block !important;
+    height: 390px !important;
+  }
+
+  .custom-banner-section .banner-bottom-row {
+    display: flex !important;
+    height: 402px !important;
+  }
+
+  /* 3. Contain the image zoom so it doesn't push the layout out of the view */
+  .banner-bottom-image img {
+    max-width: 100% !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    transform: none !important;
+  }
+}
+
 
 @media screen and (max-width: 768px) {
 .custom-banner-section {
