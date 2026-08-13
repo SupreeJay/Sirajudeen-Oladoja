@@ -1,344 +1,515 @@
-/* ==========================================================================
-   1. Wrapper & Main Container
-   ========================================================================== */
+
 .custom-grid-wrapper {
-  width: 100%;
-  max-width: 1337px;
-  height: auto;
-  min-height: 981px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  gap: 30px;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 0 16px;
-  box-sizing: border-box;
+width: 1337px;
+height: auto; 
+min-height: 981px;
+gap: 30px;
+display: flex;
+flex-direction: column;
+justify-content: flex-start;
+align-items: center;
+transform: rotate(0deg);
+.custom-grid-wrapper {
+width: 100%;
+max-width: 1337px;
+height: auto;
+min-height: 981px;
+gap: 30px;
+display: flex;
+flex-direction: column;
+justify-content: flex-start;
+align-items: center;
+box-sizing: border-box;
+margin-left: auto;
+margin-right: auto;
+padding: 0 16px;
 }
 
 .grid-text-display {
-  text-align: center;
-  padding: 20px 0;
+text-align: center;
+padding: 20px 0;
 }
 
 .grid-heading {
-  font-family: 'Jost', sans-serif;
-  font-size: 32px;
-  margin: 0;
+font-family: 'Jost', sans-serif;
+font-size: 32px;
+margin: 0;
 }
-
-/* ==========================================================================
-   2. Grid Layout & Items
-   ========================================================================== */
 .grid-images-container {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 16px;
-  width: 100%;
-  min-height: 300px;
+display: grid;
+grid-template-columns: repeat(2, 1fr);
+gap: 16px;
+width: 100%;
 }
 
 .grid-item {
-  position: relative;
-  width: 100%;
-  min-height: 250px;
-  aspect-ratio: 1 / 1;
-  overflow: hidden;
-  background-color: #f4f4f4;
-  border: 1px solid #000000;
+position: relative;
+overflow: hidden;
+aspect-ratio: 1 / 1;
+width: 100%;
+background-color: #f4f4f4;
 }
 
 .grid-image-wrapper {
-  position: relative;
-  width: 100%;
-  height: 100%;
+position: relative;
+width: 100%;
+height: 100%;
 }
 
 .grid-img, 
 .placeholder-svg {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
+width: 100%;
+height: 100%;
+object-fit: cover;
+display: block;
 }
 
-/* ==========================================================================
-   3. Hotspot Button
-   ========================================================================== */
 .hotspot-btn {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.9);
-  border: none;
-  color: #000000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-  transition: transform 0.2s ease, background 0.2s ease;
-  z-index: 5;
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+width: 32px;
+height: 32px;
+border-radius: 50%;
+background: rgba(255, 255, 255, 0.9);
+border: none;
+color: #000;
+display: flex;
+align-items: center;
+justify-content: center;
+cursor: pointer;
+box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+transition: transform 0.2s ease, background 0.2s ease;
+z-index: 5;
 }
 
 .hotspot-btn:hover {
-  transform: translate(-50%, -50%) scale(1.15);
-  background: #ffffff;
+transform: translate(-50%, -50%) scale(1.15);
+background: #ffffff;
 }
 
-/* ==========================================================================
-   4. Modal Base System
-   ========================================================================== */
 .grid-modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 9999;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.3s ease;
+position: fixed;
+top: 0;
+left: 0;
+width: 100vw;
+height: 100vh;
+display: flex;
+align-items: center;
+justify-content: center;
+z-index: 9999;
+opacity: 0;
+pointer-events: none;
+transition: opacity 0.3s ease;
 }
 
 .grid-modal.is-active {
-  opacity: 1;
-  pointer-events: auto;
+opacity: 1;
+pointer-events: auto;
 }
 
 .grid-modal-overlay {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.6);
-  backdrop-filter: blur(2px);
+position: absolute;
+width: 100%;
+height: 100%;
+background: rgba(0, 0, 0, 0.6);
+backdrop-filter: blur(2px);
 }
 
 .grid-modal-content {
-  position: relative;
-  background: #ffffff;
-  padding: 24px;
-  max-width: 380px;
-  width: 90%;
-  z-index: 2;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-  box-sizing: border-box;
-  text-align: left;
+position: relative;
+background: #ffffff;
+padding: 24px;
+max-width: 380px;
+width: 90%;
+z-index: 2;
+box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+box-sizing: border-box;
+text-align: left;
 }
 
 .grid-modal-close {
-  position: absolute;
-  top: 12px;
-  right: 16px;
-  background: transparent;
-  border: none;
-  font-size: 24px;
-  line-height: 1;
-  cursor: pointer;
-  color: #000000;
-  z-index: 3;
+position: absolute;
+top: 12px;
+right: 16px;
+background: transparent;
+border: none;
+font-size: 24px;
+line-height: 1;
+cursor: pointer;
+color: #000;
+z-index: 3;
 }
 
-/* ==========================================================================
-   5. Modal Inner Content & Product Details
-   ========================================================================== */
 .modal-product-header {
-  display: flex;
-  gap: 16px;
-  margin-bottom: 20px;
+display: flex;
+gap: 16px;
+margin-bottom: 20px;
 }
 
 .modal-product-media {
-  width: 130px;
-  height: 140px;
-  flex-shrink: 0;
+width: 130px;
+height: 140px;
+flex-shrink: 0;
 }
 
-.modal-product-media img,
-.modal-product-card img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
+.modal-product-media img {
+width: 100%;
+height: 100%;
+object-fit: cover;
+display: block;
 }
 
 .modal-product-info {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
+display: flex;
+flex-direction: column;
+justify-content: flex-start;
 }
 
 .modal-title {
-  font-size: 18px;
-  font-weight: 400;
-  margin: 0 0 8px 0;
-  color: #1a1a1a;
-  line-height: 1.2;
+font-size: 18px;
+font-weight: 400;
+margin: 0 0 8px 0;
+color: #1a1a1a;
+line-height: 1.2;
 }
 
 .modal-price {
-  font-size: 18px;
-  font-weight: 400;
-  margin: 0 0 10px 0;
-  color: #1a1a1a;
+font-size: 18px;
+font-weight: 400;
+margin: 0 0 10px 0;
+color: #1a1a1a;
 }
 
 .modal-description {
-  font-size: 12px;
-  line-height: 1.4;
-  color: #4a4a4a;
+font-size: 12px;
+line-height: 1.4;
+color: #4a4a4a;
 }
 
-/* Variant Groups */
+/* Variant Options */
 .modal-option-group {
-  margin-bottom: 16px;
+margin-bottom: 16px;
 }
 
 .option-label {
-  display: block;
-  font-size: 14px;
-  color: #333333;
-  margin-bottom: 6px;
+display: block;
+font-size: 14px;
+color: #333;
+margin-bottom: 6px;
 }
 
-/* Swatches */
 .color-swatch-container {
-  display: flex;
-  border: 1px solid #1a1a1a;
+display: flex;
+border: 1px solid #1a1a1a;
 }
 
 .color-swatch-option {
-  flex: 1;
-  margin: 0;
-  cursor: pointer;
+flex: 1;
+margin: 0;
+cursor: pointer;
 }
 
 .color-swatch-option input {
-  display: none;
+display: none;
 }
 
 .swatch-btn {
-  display: block;
-  text-align: center;
-  padding: 10px 0;
-  font-size: 15px;
-  background: #ffffff;
-  color: #000000;
-  transition: background 0.2s ease, font-weight 0.2s ease;
+display: block;
+text-align: center;
+padding: 10px 0;
+font-size: 15px;
+background: #fff;
+color: #000;
+transition: background 0.2s ease, font-weight 0.2s ease;
 }
 
 .color-swatch-option:first-child .swatch-btn,
 .swatch-btn.active {
-  border-right: 1px solid #1a1a1a;
+border-right: 1px solid #1a1a1a;
 }
 
 .color-swatch-option input:checked + .swatch-btn {
-  font-weight: 600;
+font-weight: 600;
 }
 
-/* Dropdown */
+/* Select Dropdown */
 .select-wrapper {
-  position: relative;
-  border: 1px solid #1a1a1a;
+position: relative;
+border: 1px solid #1a1a1a;
 }
 
 .modal-select {
-  width: 100%;
-  padding: 12px 14px;
-  font-size: 15px;
-  border: none;
-  background: transparent;
-  appearance: none;
-  outline: none;
-  cursor: pointer;
-  color: #000000;
+width: 100%;
+padding: 12px 14px;
+font-size: 15px;
+border: none;
+background: transparent;
+appearance: none;
+outline: none;
+cursor: pointer;
+color: #000;
 }
 
 .select-wrapper::after {
-  content: '∨';
-  position: absolute;
-  right: 16px;
-  top: 50%;
-  transform: translateY(-50%);
-  pointer-events: none;
-  font-size: 14px;
+content: '∨';
+position: absolute;
+right: 16px;
+top: 50%;
+transform: translateY(-50%);
+pointer-events: none;
+font-size: 14px;
 }
 
-/* Buttons */
+/* Add To Cart Button */
 .modal-add-to-cart-btn {
-  width: 100%;
-  background: #000000;
-  color: #ffffff;
-  border: none;
-  padding: 14px 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 16px;
-  font-size: 14px;
-  letter-spacing: 1px;
-  cursor: pointer;
-  margin-top: 20px;
-  transition: background 0.2s ease;
+width: 100%;
+background: #000000;
+color: #ffffff;
+border: none;
+padding: 14px 20px;
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 16px;
+font-size: 14px;
+letter-spacing: 1px;
+cursor: pointer;
+margin-top: 20px;
+transition: background 0.2s ease;
 }
 
 .modal-add-to-cart-btn:hover {
-  background: #222222;
+background: #222222;
 }
 
 .modal-add-to-cart-btn svg {
-  stroke: #ffffff;
+stroke: #ffffff;
+}
+
+@media screen and (min-width: 1024px) {
+.grid-images-container {
+grid-template-columns: repeat(3, 1fr);
+}
+}
+
+@media screen and (min-width: 2560px) {
+.custom-grid-wrapper {
+max-width: 3840px;
+}
+
+.grid-images-container {
+grid-template-columns: repeat(3, 1fr);
+}
+
+.hotspot-btn {
+width: 64px;
+height: 64px;
+}
+
+.hotspot-btn svg {
+width: 32px;
+height: 32px;
+}
+
+.grid-heading {
+font-size: 64px;
+}
+}
+opacity: 1;
+box-sizing: border-box;
+margin-left: auto;
+margin-right: auto;
+border: 6px solid green;
+}
+
+.grid-text-display {
+text-align: center;
+padding: 20px;
+}
+
+.grid-heading {
+font-family: 'Jost', sans-serif;
+font-size: 32px;
+margin-bottom: 10px;
+}
+
+.grid-images-container {
+display: grid;
+grid-template-columns: repeat(2, 1fr);
+gap: 0;
+width: 100%;
+background-color: #000;
+}
+
+.grid-item {
+position: relative;
+overflow: hidden;
+aspect-ratio: 1 / 1;
+border: 1px solid #000;
+}
+
+.grid-image-wrapper {
+position: relative;
+width: 100%;
+height: 100%;
+}
+
+.grid-img, 
+.placeholder-svg {
+width: 100%;
+height: 100%;
+object-fit: cover;
+display: block;
+}
+
+.hotspot-btn {
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+width: 32px;
+height: 32px;
+border-radius: 50%;
+background: rgba(255, 255, 255, 0.9);
+border: none;
+color: #000;
+display: flex;
+align-items: center;
+justify-content: center;
+cursor: pointer;
+box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+transition: transform 0.2s ease, background 0.2s ease;
+z-index: 5;
+}
+
+.hotspot-btn:hover {
+transform: translate(-50%, -50%) scale(1.15);
+background: #ffffff;
+}
+
+.grid-modal {
+position: fixed;
+top: 0;
+left: 0;
+width: 100vw;
+height: 100vh;
+display: flex;
+align-items: center;
+justify-content: center;
+z-index: 9999;
+opacity: 0;
+pointer-events: none;
+transition: opacity 0.3s ease;
+}
+
+.grid-modal.is-active {
+opacity: 1;
+pointer-events: auto;
+}
+
+.grid-modal-overlay {
+position: absolute;
+width: 100%;
+height: 100%;
+background: rgba(0, 0, 0, 0.6);
+backdrop-filter: blur(2px);
+}
+
+.grid-modal-content {
+position: relative;
+background: #ffffff;
+padding: 30px;
+max-width: 450px;
+width: 90%;
+border-radius: 8px;
+z-index: 2;
+text-align: center;
+}
+
+.grid-modal-close {
+position: absolute;
+top: 10px;
+right: 15px;
+background: transparent;
+border: none;
+font-size: 28px;
+cursor: pointer;
+}
+
+.modal-product-card img {
+width: 100%;
+max-height: 250px;
+object-fit: cover;
+margin-bottom: 15px;
 }
 
 .modal-shop-btn {
-  display: inline-block;
-  margin-top: 15px;
-  padding: 10px 24px;
-  background: #000000;
-  color: #ffffff;
-  text-decoration: none;
-  text-transform: uppercase;
+display: inline-block;
+margin-top: 15px;
+padding: 10px 24px;
+background: #000;
+color: #fff;
+text-decoration: none;
+text-transform: uppercase;
+}
+.grid-images-container {
+display: grid !important;
+grid-template-columns: repeat(2, 1fr);
+gap: 16px;
+width: 100%;
+min-height: 300px;
 }
 
-/* ==========================================================================
-   6. Media Queries & Responsiveness
-   ========================================================================== */
-/* Standard Desktop */
+.grid-item {
+position: relative;
+width: 100%;
+min-height: 250px;
+background-color: #f4f4f4;
+}
+
+.grid-img {
+width: 100%;
+height: 100%;
+object-fit: cover;
+display: block;
+}
+
 @media screen and (min-width: 1024px) {
-  .grid-images-container {
-    grid-template-columns: repeat(3, 1fr);
-  }
+.grid-images-container {
+grid-template-columns: repeat(3, 1fr);
+}
 }
 
-/* Ultra-Wide Displays (2560px+) */
+@media screen and (min-width: 1024px) {
+.grid-images-container {
+grid-template-columns: repeat(3, 1fr);
+}
+}
+
 @media screen and (min-width: 2560px) {
-  .custom-grid-wrapper {
-    max-width: 3840px;
-  }
+.custom-grid-wrapper {
+max-width: 3840px;
+}
 
-  .grid-images-container {
-    grid-template-columns: repeat(3, 1fr);
-  }
+.grid-images-container {
+grid-template-columns: repeat(3, 1fr);
+}
 
-  .hotspot-btn {
-    width: 64px;
-    height: 64px;
-  }
+.hotspot-btn {
+width: 64px;
+height: 64px;
+}
 
-  .hotspot-btn svg {
-    width: 32px;
-    height: 32px;
-  }
+.hotspot-btn svg {
+width: 32px;
+height: 32px;
+}
 
-  .grid-heading {
-    font-size: 64px;
-  }
+.grid-heading {
+font-size: 64px;
+}
+
+
 }
