@@ -1,0 +1,125 @@
+
+
+
+
+<div class="custom-grid-wrapper" id="custom-grid-{{ section.id }}">
+  {% if section.settings.heading != blank or section.settings.subtext != blank %}
+    <div class="grid-text-display">
+      {% if section.settings.heading != blank %}
+        <h2 class="grid-heading">{{ section.settings.heading }}</h2>
+      {% endif %}
+      {% if section.settings.subtext != blank %}
+        <div class="grid-subtext">{{ section.settings.subtext }}</div>
+      {% endif %}
+    </div>
+  {% endif %}
+
+  <!-- Grid Items Container -->
+  <div class="grid-images-container">
+    {% for block in section.blocks %}
+      <div class="grid-item" {{ block.shopify_attributes }}>
+        <div class="grid-image-wrapper">
+          {% if block.settings.image != blank %}
+            <img 
+              src="{{ block.settings.image | image_url: width: 1200 }}" 
+              alt="{{ block.settings.image.alt | escape }}" 
+              loading="lazy" 
+              class="grid-img"
+            >
+          {% else %}
+            {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+          {% endif %}
+
+          <!-- Interactive Hotspot Button -->
+          <button 
+            type="button" 
+            class="hotspot-btn" 
+            aria-label="View product details"
+            data-popup-trigger="popup-{{ block.id }}"
+          >
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="12" y1="5" x2="12" y2="19"></line>
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Product Modal Pop-up -->
+        <div id="popup-{{ block.id }}" class="grid-modal" aria-hidden="true">
+          <div class="grid-modal-overlay" data-popup-close></div>
+          <div class="grid-modal-content">
+            <button class="grid-modal-close" data-popup-close aria-label="Close popup">&times;</button>
+            
+            {% assign product = block.settings.product %}
+            {% if product != blank %}
+              <div class="modal-product-card">
+                <img src="{{ product.featured_image | image_url: width: 600 }}" alt="{{ product.title | escape }}">
+                <h3>{{ product.title }}</h3>
+                <p class="modal-price">{{ product.price | money }}</p>
+                <a href="{{ product.url }}" class="modal-shop-btn">View Product</a>
+              </div>
+            {% else %}
+              <div class="modal-placeholder">
+                <h3>Featured Item</h3>
+                <p>Select a product in the theme editor to populate this quick view.</p>
+              </div>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+<script src="{{ 'custom-grid.js' | asset_url }}" defer="defer"></script>
+
+
+{% schema %}
+{
+  "name": "Custom Grid Section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Shop The Look"
+    },
+    {
+      "type": "richtext",
+      "id": "subtext",
+      "label": "Subtext",
+      "default": "<p>Click on any item to view details.</p>"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "grid_item",
+      "name": "Grid Item",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Item Image"
+        },
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Featured Product (Pop-up Content)"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Image Grid",
+      "blocks": [
+        { "type": "grid_item" },
+        { "type": "grid_item" },
+        { "type": "grid_item" },
+        { "type": "grid_item" },
+        { "type": "grid_item" },
+        { "type": "grid_item" }
+      ]
+    }
+  ]
+}
+{% endschema %}

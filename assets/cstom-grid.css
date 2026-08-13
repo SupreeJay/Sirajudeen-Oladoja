@@ -1,0 +1,173 @@
+/* Base & Structural Layout */
+.custom-grid-wrapper {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.grid-text-display {
+  text-align: center;
+  padding: 20px;
+}
+
+.grid-heading {
+  font-family: 'Jost', sans-serif;
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+/* Grid Layout (Mobile Default: 2 Columns) */
+.grid-images-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0;
+  width: 100%;
+  background-color: #000;
+}
+
+.grid-item {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 1 / 1;
+  border: 1px solid #000;
+}
+
+.grid-image-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.grid-img, 
+.placeholder-svg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Plus Hotspot Button */
+.hotspot-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  transition: transform 0.2s ease, background 0.2s ease;
+  z-index: 5;
+}
+
+.hotspot-btn:hover {
+  transform: translate(-50%, -50%) scale(1.15);
+  background: #ffffff;
+}
+
+/* Modal Pop-up System */
+.grid-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.grid-modal.is-active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.grid-modal-overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(2px);
+}
+
+.grid-modal-content {
+  position: relative;
+  background: #ffffff;
+  padding: 30px;
+  max-width: 450px;
+  width: 90%;
+  border-radius: 8px;
+  z-index: 2;
+  text-align: center;
+}
+
+.grid-modal-close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: transparent;
+  border: none;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+.modal-product-card img {
+  width: 100%;
+  max-height: 250px;
+  object-fit: cover;
+  margin-bottom: 15px;
+}
+
+.modal-shop-btn {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 10px 24px;
+  background: #000;
+  color: #fff;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+/* Standard Desktop Layout (3 Columns) */
+@media screen and (min-width: 1024px) {
+  .grid-images-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* High Desktop / 4K Ultra-Wide (2560px and above) */
+@media screen and (min-width: 2560px) {
+  .custom-grid-wrapper {
+    max-width: 3840px;
+  }
+
+  .grid-images-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .hotspot-btn {
+    width: 64px;
+    height: 64px;
+  }
+
+  .hotspot-btn svg {
+    width: 32px;
+    height: 32px;
+  }
+
+  .grid-heading {
+    font-size: 64px;
+  }
+}
