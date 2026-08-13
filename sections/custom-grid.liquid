@@ -1,43 +1,58 @@
 {{ 'custom-grid.css' | asset_url | stylesheet_tag }}
 
 <div class="custom-grid-wrapper" id="custom-grid-{{ section.id }}">
-  {% if section.settings.heading != blank or section.settings.subtext != blank %}
+  {% if section.settings.heading != blank %}
     <div class="grid-text-display">
-      {% if section.settings.heading != blank %}
-        <h2 class="grid-heading">{{ section.settings.heading }}</h2>
-      {% endif %}
-      {% if section.settings.subtext != blank %}
-        <div class="grid-subtext">{{ section.settings.subtext }}</div>
-      {% endif %}
+      <h2 class="grid-heading">{{ section.settings.heading }}</h2>
     </div>
   {% endif %}
 
-  <!-- Grid Items Container (Configured for up to 6 Grid Cards) -->
   <div class="grid-images-container">
     {% for block in section.blocks limit: 6 %}
+      {% comment %} Build default filename matching forloop: default-grid-1.jpg, default-grid-2.jpg, etc. {% endcomment %}
+      {% assign default_asset_name = 'grid-image-' | append: forloop.index | append: '.jpg' %}
+
       <div class="grid-item" {{ block.shopify_attributes }}>
         <div class="grid-image-wrapper">
           {% if block.settings.image != blank %}
-            <img 
-              src="{{ block.settings.image | image_url: width: 1200 }}" 
-              alt="{{ block.settings.image.alt | escape }}" 
-              loading="lazy" 
+            <!-- User edited/selected a custom image in Theme Editor -->
+            <img
+              src="{{ block.settings.image | image_url: width: 1200 }}"
+              alt="{{ block.settings.image.alt | escape }}"
+              loading="lazy"
               class="grid-img"
-              width="35px"
-              height="35px"
+              width=""
+              height=""
             >
           {% else %}
-            {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+            <!-- Default image loaded from VS Code assets folder -->
+            <img
+              src="{{ default_asset_name | asset_url }}"
+              alt="Default Grid Look {{ forloop.index }}"
+              loading="lazy"
+              class="grid-img"
+              width=""
+              height=""
+            >
           {% endif %}
 
           <!-- Interactive Hotspot Button -->
-          <button 
-            type="button" 
-            class="hotspot-btn" 
+          <button
+            type="button"
+            class="hotspot-btn"
             aria-label="View product details"
             data-popup-trigger="popup-{{ block.id }}"
           >
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
               <line x1="12" y1="5" x2="12" y2="19"></line>
               <line x1="5" y1="12" x2="19" y2="12"></line>
             </svg>
@@ -49,14 +64,11 @@
           <div class="grid-modal-overlay" data-popup-close></div>
           <div class="grid-modal-content">
             <button class="grid-modal-close" data-popup-close aria-label="Close popup">&times;</button>
-            
+
             {% assign product = block.settings.product %}
             {% if product != blank %}
               <div class="modal-product-card">
-                <img src="{{ product.featured_image | image_url: width: 600 }}" alt="{{ product.title | escape }}"
-                  width="35px"
-                  height="35px"
-                >
+                <img src="{{ product.featured_image | image_url: width: 600 }}" alt="{{ product.title | escape }}" width="" height="">
                 <h3>{{ product.title }}</h3>
                 <p class="modal-price">{{ product.price | money }}</p>
                 <a href="{{ product.url }}" class="modal-shop-btn">View Product</a>
@@ -86,12 +98,6 @@
       "id": "heading",
       "label": "Heading",
       "default": "Shop The Look"
-    },
-    {
-      "type": "richtext",
-      "id": "subtext",
-      "label": "Subtext",
-      "default": "<p>Click on any item to view details.</p>"
     }
   ],
   "blocks": [
@@ -102,7 +108,7 @@
         {
           "type": "image_picker",
           "id": "image",
-          "label": "Select Card Image"
+          "label": "Select Card Image (Leave blank for default)"
         },
         {
           "type": "product",
