@@ -1,93 +1,96 @@
- @import url('https://fonts.googleapis.com/css2?family=Jost:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jost:wght@400;600;700&display=swap');
+
 :root {
   --font-body-family: 'Jost', sans-serif !important;
   --font-heading-family: 'Jost', sans-serif !important;
 }
+
 button,
 input,
 select,
 textarea {
-   font-family: 'Jost', sans-serif !important;
+  font-family: 'Jost', sans-serif !important;
 }
+
+/* ==========================================================================
+   1. Base & Laptop Styles (Default: Screens wider than 768px up to 2559px)
+   ========================================================================== */
 .custom-banner-section {
-  z-index:2000;
-  max-width: 1440px; /* Fill width up to max container constraint */
+  z-index: 2000;
+  max-width: 1440px;
+  width: 100%;
+  max-height: 878px;
   margin: 0 auto;
   box-sizing: border-box;
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  opacity: 1;
-  transform: rotate(0deg); /* Angle: 0 deg */
-  position: relative !important;
-  width: 100%;
-  max-height: 878px !important;
-  overflow: hidden !important; /* CRITICAL: Clips anything pushing past 1440px or 878px */
+  position: relative;
 }
+
+/* Hide Mobile Elements on Laptop/Desktop */
+.mobile-banner-overlay,
+.mobile-hero-wrapper {
+  display: none !important;
+}
+
+/* Header */
 .banner-header {
   width: 100%;
   max-width: 1440px;
   height: 64px;
   padding: 10px 50px;
-  opacity: 1;
   background: #F5F5F5;
   display: flex;
   justify-content: space-between;
   align-items: center;
   box-sizing: border-box;
 }
+
 .brand-title {
-  width: 151.5px; /* Rounded from 151.444px */
+  width: 151.5px;
   height: 19px;
-  color: #000000;
-  opacity: 1;
   box-sizing: border-box;
 }
+
 .brand-title img.brand-logo-img {
   width: 100%;
   height: 100%;
   object-fit: contain;
   display: block;
 }
+
 .top-announcement {
   font-family: 'Jost', sans-serif;
-  font-weight: 400;
-  font-style: normal;
   font-size: 16px;
-  line-height: 13.42px;
-  letter-spacing: 0px;
   text-align: center;
   color: #000000;
   width: 260px;
-  height: 14px;
-  opacity: 1;
-  transform: rotate(0deg); /* Angle: 0 deg */
   display: flex;
   align-items: center;
   justify-content: center;
-  box-sizing: border-box;
   white-space: nowrap;
 }
+
+/* Choose Gift Button */
 .btn-choose-gift {
   position: relative;
   display: inline-flex;
   align-items: center;
- justify-content:center;
+  justify-content: center;
   gap: 20px;
   width: 207px;
   height: 44px;
-  padding: 0;
-  background-color: #FFF544; /* Initial yellow background */
+  background-color: #FFF544;
   text-decoration: none;
   overflow: hidden;
   border: none;
   cursor: pointer;
   z-index: 1;
-  opacity: 1;
-  box-sizing: border-box;
   color: #000000;
   isolation: isolate;
 }
+
 .btn-choose-gift::before {
   content: "";
   position: absolute;
@@ -96,179 +99,163 @@ textarea {
   left: 0;
   width: 100%;
   height: calc(100% + 2px);
-  background-color: #000000; /* Dark sliding fill color */
+  background-color: #000000;
   z-index: 1;
-  transform: scaleX(0); /* Hidden by default */
+  transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
   will-change: transform;
 }
+
 .btn-choose-gift span {
   position: relative;
   font-family: 'Jost', sans-serif;
-  font-weight: 400;
-  font-style: normal;
   font-size: 16px;
-  line-height: 20.48px;
-  letter-spacing: 0px;
   text-transform: uppercase;
   color: #000000;
   white-space: nowrap;
   transition: color 0.35s ease-in-out;
   z-index: 2;
 }
+
 .btn-choose-gift .arrow-icon {
   position: relative;
   width: 24px;
   height: 24px;
   display: inline-block;
-  opacity: 1;
-  box-sizing: border-box;
   z-index: 2;
   transition: transform 0.35s ease-in-out, filter 0.35s ease-in-out;
 }
+
 .btn-choose-gift:hover::before {
   transform: scaleX(1);
 }
+
 .btn-choose-gift:hover span {
   color: #FFFFFF;
 }
+
 .btn-choose-gift:hover .arrow-icon {
   transform: translateX(6px);
   filter: brightness(0) invert(1);
 }
+
+/* Banner Top Image */
 .banner-top-image {
   position: relative;
   width: 100%;
   max-width: 1440px;
   height: 390px;
   margin: 0 auto;
-  overflow: hidden; /* Crops out anything shifted beyond the 390px boundary */
-  box-sizing: border-box;
-  opacity: 1;
-  transform: rotate(0deg);
+  overflow: hidden;
+  display: block;
 }
+
 .banner-top-image img {
   position: absolute;
   width: 100%;
   height: auto;
-  bottom: 0; /* Anchors the image to the bottom, pushing top elements up out of view */
+  bottom: 0;
   left: 0;
   display: block;
 }
+
+/* Banner Bottom Layout */
 .banner-bottom-row {
-  overflow: hidden; /* Crops out anything shifted beyond the 1440px boundary */
   display: flex;
   flex-direction: row;
   width: 100%;
   max-width: 1440px;
   margin: 0 auto;
-  gap: 0; /* Zero spacing between left and right side */
-  box-sizing: border-box;
-  height: 402px;/* Matches the height of the bottom image */
+  overflow: hidden;
+  height: 402px;
 }
-.banner-hero-content{
-    width: 550px;
+
+.banner-hero-content {
+  width: 550px;
   flex-shrink: 0;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: flex-start;
-  box-sizing: border-box;
   padding-left: 50px;
+  box-sizing: border-box;
 }
+
 .banner-hero-content .hero-title {
   width: 459px;
-  height: 70px;
   font-family: 'Jost', sans-serif;
-  font-style: normal;
-  font-weight: 500; /* Medium */
+  font-weight: 500;
   font-size: 70px;
-  line-height: 100%; /* Or 70px */
-  letter-spacing: 0px;
+  line-height: 100%;
   color: #000000;
   margin: 0;
-  padding: 0;
-  opacity: 1;
-  transform: rotate(0deg);
-  box-sizing: border-box;
 }
+
 .banner-hero-content .hero-description {
-  max-width: 483px; /* Prevents overflow while allowing responsive shrinking */
+  max-width: 483px;
   width: 100%;
   font-family: 'Jost', sans-serif;
   font-size: 20px;
-  font-weight: 400;
-  font-style: normal;
-  line-height: 1.4; /* Set to 140% for uniform vertical spacing between wrapped lines */
-  letter-spacing: 0px;
-  color: #000000; /* Converted from Figma text background fill */
-  opacity: 1;
-  text-align: left;
-  white-space: normal; /* Enables proper text wrapping */
+  line-height: 1.4;
+  color: #000000;
+  white-space: normal;
   word-wrap: break-word;
-  box-sizing: border-box; /* Debugging border to visualize text container */
 }
+
 .banner-hero-content .btn-shop-now {
   position: relative;
   display: inline-flex;
   align-items: center;
- justify-content:center;
+  justify-content: center;
   gap: 20px;
   width: 220px;
   height: 50px;
-  box-sizing: border-box;
   text-decoration: none;
-  opacity: 1;
-  background-color: #000000; /* Initial dark background */
+  background-color: #000000;
   color: #FFFFFF;
   cursor: pointer;
   border: none;
   text-transform: uppercase;
-  overflow: hidden; /* Keeps the animated overlay contained within the button border */
-  isolation: isolate; /* Fixes color blending issues with pseudo-elements */
+  overflow: hidden;
+  isolation: isolate;
 }
+
 .banner-hero-content .btn-shop-now::before {
   content: "";
   position: absolute;
-  top: -1px; /* Extended 1px up to block sub-pixel gaps */
-  bottom: -1px; /* Extended 1px down to eliminate bottom line */
+  top: -1px;
+  bottom: -1px;
   left: 0;
   width: 100%;
-  height: calc(100% + 2px); /* Ensures full coverage including borders */
-  background-color: #FFF544; /* Exact yellow color code */
+  height: calc(100% + 2px);
+  background-color: #FFF544;
   z-index: 1;
-  opacity: 1;
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-  will-change: transform; /* Forces GPU hardware acceleration for accurate rendering */
+  will-change: transform;
 }
+
 .banner-hero-content .btn-shop-now > span {
   position: relative;
-  z-index: 2; /* Sits above the sliding ::before background */
+  z-index: 2;
   font-family: 'Jost', sans-serif;
   font-size: 16px;
-  font-weight: 400;
-  font-style: normal;
-  line-height: 20.48px;
-  letter-spacing: 0px;
-  text-transform: uppercase;
   color: #FFFFFF;
   transition: color 0.35s ease;
 }
+
 .banner-hero-content .btn-shop-now .arrow {
   position: relative;
   z-index: 2;
   width: 25.5px;
   height: auto;
   display: inline-block;
-  opacity: 1;
-  box-sizing: border-box;
-  /* Turns any dark img asset to pure white */
   filter: brightness(0) invert(1);
   transition: transform 0.35s ease-in-out, filter 0.35s ease-in-out;
 }
+
 .banner-hero-content .btn-shop-now:hover::before {
   transform: scaleX(1);
 }
@@ -276,9 +263,10 @@ textarea {
 .banner-hero-content .btn-shop-now:hover > span {
   color: #000000;
 }
+
 .banner-hero-content .btn-shop-now:hover .arrow {
   transform: translateX(6px);
-  filter: brightness(0); /* Clean black tint without invert */
+  filter: brightness(0);
 }
 
 .banner-bottom-image {
@@ -287,803 +275,259 @@ textarea {
   height: 402px;
   flex-shrink: 0;
   overflow: hidden;
-  box-sizing: border-box;
-  opacity: 1;
-  transform: rotate(0deg);
 }
+
 .banner-bottom-image img {
   position: absolute;
   top: 0;
-  left: 0 !important;
-  width: 1052px !important;  /* Prioritized larger width (1052px > 965px) */
-  height: 400px !important;   /* Explicit height setting */
-  max-width: none;
-  max-height: none;
-  display: block;
-  object-fit: fill !important;
-  object-position: left top !important;
-  transform: scale(1.3) !important;
-  transform-origin: 0 0 !important; /* Anchors 1.3x zoom to the top-left corner */
+  left: 0;
+  width: 1052px;
+  height: 400px;
+  object-fit: fill;
+  object-position: left top;
+  transform: scale(1.3);
+  transform-origin: 0 0;
 }
 
+/* Footer Tagline */
 .banner-footer {
-  display: block; /* Spacing out footer contents */
+  display: block;
   width: 100%;
-  max-width: 1440px; /* Constrains full width to Figma design max */
+  max-width: 1440px;
   min-height: 34px;
-  gap: 375px;
-  padding: 10px 50px; /* Applies top/bottom 10px, left/right 50px */
+  padding: 10px 50px;
   background-color: #F5F5F5;
-  opacity: 1;
-  box-sizing: border-box;
   margin: 0 auto;
-  text-align: center; /* Centers container on screens wider than 1440px */
+  text-align: center;
 }
+
 .banner-footer .footer_tagline {
   font-family: 'Jost', sans-serif;
   font-size: 16px;
-  font-weight: 400;
-  font-style: normal;
-  line-height: 1.35; /* Normalizes line height to prevent vertical text clipping */
-  letter-spacing: 0px;
-  text-align: center;
-  color: #000000; /* Converted Figma background text fill to font color */
-  opacity: 1;
+  line-height: 1.35;
+  color: #000000;
   max-width: 451px;
   width: 100%;
+  margin: 0 auto;
 }
 
-.mobile-banner-overlay{
-  display: none;
-}
-
-
+/* ==========================================================================
+   2. Mobile Styles (Screens <= 768px)
+   ========================================================================== */
 @media screen and (max-width: 768px) {
-.custom-banner-section {
-  width: 375.44px;
-  transform: rotate(0deg);
-  opacity: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  position: relative;
-  z-index: 1000;
-  /* Ensure container height grows naturally with its content */
-  height: auto;
-  min-height: fit-content;
-  overflow: visible;
-  scroll-margin-top: 124px;
-}
-
-.custom-banner-section .banner-header {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-  width: 375.44px;
-  height: 65px;
-  gap: 78px;
-  transform: rotate(0deg);
-  opacity: 1;
-  padding: 23px 112px 23px 16px;
-  background-color: #F7F7F7;
-  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.15);
-  box-sizing: border-box;
-  position: relative;
-  z-index: 101; /* Ensure header sits above overlay */
-}
-
-.custom-banner-section .banner-header .top-announcement,
-.custom-banner-section .banner-header .btn-choose-gift {
-  display: none;
-}
-
-.custom-banner-section #bannerHeader.is-active::before {
-  width: 13px;
-  height: 13px;
-  background: linear-gradient(45deg, transparent calc(50% - 0.75px), #000000 calc(50% - 0.75px), #000000 calc(50% + 0.75px), transparent calc(50% + 0.75px)),
-              linear-gradient(-45deg, transparent calc(50% - 0.75px), #000000 calc(50% - 0.75px), #000000 calc(50% + 0.75px), transparent calc(50% + 0.75px));
-  background-repeat: no-repeat;
-}
-
-.banner-header::before {
-  content: "";
-  display: block;
-  width: 18px;
-  height: 10px;
-  margin-right: 16px;
-  opacity: 1;
-  background: linear-gradient(
-    to bottom,
-    #000000 0px, #000000 1.5px,
-    transparent 1.5px, transparent 4.25px,
-    #000000 4.25px, #000000 5.75px,
-    transparent 5.75px, transparent 8.5px,
-    #000000 8.5px, #000000 10px
-  );
-  transition: all 300ms ease-out;
-  cursor: pointer;
-  box-sizing: border-box;
-}
-
-.banner-header .brand-title {
-  width: 151.44px;
-  height: 19px;
-  transform: rotate(0deg);
-  opacity: 1;
-  color: #000000;
-  box-sizing: border-box;
-}
-
-.mobile-hero-wrapper {
-  width: 375px;
-  height: 421px;
-  transform: rotate(0deg);
-  opacity: 1;
-  background-color: #FFFFFF;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  gap: 0px;
-  position: relative;
-  
-  /* Smooth shift transition using margin instead of transform */
-  margin-top: 0px;
-  transition: margin-top 300ms ease-out;
-}
-
-/* FIX: Use margin-top shift so document flow pushes the footer down naturally */
-.mobile-hero-wrapper.is-shifted {
-  margin-top: 124px;
-}
-
-.mobile-hero-wrapper .mobile-hero-top-text {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 375px;
-  height: 157px;
-  position: relative;
-}
-
-.mobile-hero-wrapper .mobile-hero-top-text .hero-title {
-  width: 197px;
-  height: 30px;
-  position: absolute;
-  top: 49px;
-  left: 88.78px;
-  transform: rotate(0deg);
-  opacity: 1;
-  font-family: 'Jost', sans-serif;
-  font-weight: 500;
-  font-size: 30px;
-  line-height: 100%;
-  letter-spacing: 0px;
-  text-align: center;
-  color: #000000;
-  margin: 0;
-  box-sizing: border-box;
-}
-
-.mobile-hero-wrapper .mobile-hero-top-text .hero-description-mobile {
-  width: 340px;
-  height: 42px;
-  position: absolute;
-  top: 103px;
-  left: 16.78px;
-  transform: rotate(0deg);
-  opacity: 1;
-  font-family: 'Jost', sans-serif;
-  font-weight: 400;
-  font-style: normal;
-  font-size: 16px;
-  line-height: 130%;
-  letter-spacing: 0px;
-  text-align: center;
-  color: #000000;
-  margin: 0;
-  box-sizing: border-box;
-  text-wrap: wrap;
-}
-
-.mobile-hero-wrapper .mobile-hero-shop-bg-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  align-items: center;
-  width: 686px;
-  height: 264px;
-  background-image: url('./Hero-Background.svg');
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: contain;
-  position: absolute;
-  top: 157px;
-  left: -140px;
-}
-
-.btn-shop-now {
-  width: fit-content;
-  height: auto;
-  min-width: 193px;
-  min-height: 45px;
-  padding: 13px 20px;
-  gap: 5px;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  box-sizing: border-box;
-  opacity: 1;
-  z-index: 100;
-  background-color: #000000;
-  color: #FFFFFF;
-  cursor: pointer;
-  text-transform: uppercase;
-  overflow: hidden;
-  isolation: isolate;
-  position: absolute;
-  top: 337px;
-  left: 91px;
-}
-
-.btn-shop-now span {
-  position: relative;
-  font-family: 'Jost', sans-serif;
-  font-weight: 400;
-  font-style: normal;
-  font-size: 16px;
-  line-height: 20.48px;
-  letter-spacing: 0px;
-  text-transform: uppercase;
-  color: #fff;
-  white-space: nowrap;
-  transition: color 0.35s ease-in-out;
-  z-index: 200;
-}
-
-.btn-shop-now .arrow {
-  position: relative;
-  z-index: 2;
-  width: 25.5px;
-  height: auto;
-  display: inline-block;
-  opacity: 1;
-  box-sizing: border-box;
-  filter: brightness(0) invert(1);
-  transition: transform 0.35s ease-in-out, filter 0.35s ease-in-out;
-}
-
-.custom-banner-section .banner-footer {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 375px;
-  height: 34px;
-  transform: rotate(0deg);
-  opacity: 1;
-  padding: 10px 50px;
-  background-color: #F5F5F5;
-  box-sizing: border-box;
-  position: relative;
-  z-index: 10;
-}
-
-
-.custom-banner-section .banner-footer.is-shifted {
-  transform: none;
-}
-
-.banner-footer .footer-tagline {
-  max-width: 100%;
-  min-width: 288px;
-  height: 14px;
-  color: #000000;
-  opacity: 1;
-  box-sizing: border-box;
-  font-family: 'Jost', sans-serif;
-  font-size: 14px;
-  font-weight: 400;
-  font-style: normal;
-  line-height: 13.42px;
-  letter-spacing: 0px;
-  text-align: center;
-  white-space: nowrap;
-}
-
-.custom-banner-section .mobile-banner-overlay {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  max-width: 391px;
-  height: auto;
-  max-height: 124px;
-  position: absolute;
-  top: 65px;
-  left: 0;
-  padding: 25px 65.5px;
-  background-color: #F2F2F2;
-  box-sizing: border-box;
-  z-index: 99;
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-  transition: opacity 300ms ease-out, visibility 300ms ease-out;
-}
-
-.custom-banner-section .banner-top-image, 
-.custom-banner-section .banner-bottom-row {
-  display: none;
-}
-
-.mobile-banner-overlay.is-visible {
-  opacity: 1;
-  visibility: visible;
-  pointer-events: auto;
-}
-
-.top-announcement-toggle {
-  width: 260px;
-  height: 14px;
-  font-family: 'Jost', sans-serif;
-  font-weight: 400;
-  font-style: normal;
-  font-size: 16px;
-  line-height: 13.42px;
-  letter-spacing: 0px;
-  text-align: center;
-  color: #000000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.mobile-banner-overlay .btn-choose-gift-toggle {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 16px;
-  width: 244px;
-  min-height: 44px;
-  line-height: 1;
-  background-color: #FFF544;
-  text-decoration: none;
-  box-sizing: border-box;
-  overflow: hidden;
-}
-
-.btn-choose-gift-toggle span {
-  position: relative;
-  z-index: 2;
-  font-family: 'Jost', sans-serif;
-  font-weight: 400;
-  font-style: normal;
-  font-size: 16px;
-  line-height: 20.48px;
-  letter-spacing: 0px;
-  text-align: center;
-  text-transform: uppercase;
-  color: #000000;
-  transition: color 0.35s ease-in-out;
-}
-
-.mobile-banner-overlay .btn-choose-gift-toggle::before {
-  content: "";
-  position: absolute;
-  top: -1px;
-  bottom: -1px;
-  left: 0;
-  width: 100%;
-  height: calc(100% + 2px);
-  background-color: #000000;
-  z-index: 1;
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-  will-change: transform;
-}
-
-.mobile-banner-overlay .btn-choose-gift-toggle:hover::before {
-  transform: scaleX(1);
-}
-
-.mobile-banner-overlay .btn-choose-gift-toggle:hover > span {
-  color: #FFFFFF;
-}
-
-.btn-choose-gift-toggle .arrow-icon-mobile-toggle {
-  position: relative;
-  z-index: 2;
-  width: 24px;
-  height: 24px;
-  display: inline-block;
-  opacity: 1;
-  box-sizing: border-box;
-  transition: transform 0.35s ease-in-out, filter 0.35s ease-in-out;
-}
-
-.mobile-banner-overlay .btn-choose-gift-toggle:hover .arrow-icon-mobile-toggle {
-  transform: translateX(6px);
-  filter: brightness(0) invert(1);
-}
-}
-
-/* Media query targeting Large Desktop Displays (4K UHD) */
-@media screen and (min-width: 2560px) {
-  
   .custom-banner-section {
-    /* Exact Figma Dimensions */
-    width: 3840px;
-    height: 4700px;
-    gap: 240px;
-    transform: rotate(0deg);
-    opacity: 1;
-    background: rgba(255, 255, 255, 1);
-
-    /* Flex Layout Structure */
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    box-sizing: border-box;
-
-    /* Center layout on ultra-wide screens */
-    margin-left: auto;
-    margin-right: auto;
+    width: 375.44px;
+    height: auto;
+    max-height: none;
+    overflow: visible;
   }
 
-  /* Reset mobile specific shift overrides on desktop */
+  .custom-banner-section .banner-top-image, 
+  .custom-banner-section .banner-bottom-row {
+    display: none !important;
+  }
+
   .mobile-hero-wrapper {
-    margin-top: 0 !important;
+    display: flex !important;
+    width: 375px;
+    height: 421px;
+    background-color: #FFFFFF;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    margin-top: 0px;
+    transition: margin-top 300ms ease-out;
+  }
+
+  .mobile-hero-wrapper.is-shifted {
+    margin-top: 124px;
+  }
+
+  .custom-banner-section .banner-header {
+    width: 375.44px;
+    height: 65px;
+    padding: 23px 112px 23px 16px;
+    background-color: #F7F7F7;
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.15);
+    z-index: 101;
+  }
+
+  .custom-banner-section .banner-header .top-announcement,
+  .custom-banner-section .banner-header .btn-choose-gift {
+    display: none;
+  }
+
+  .banner-header::before {
+    content: "";
+    display: block;
+    width: 18px;
+    height: 10px;
+    margin-right: 16px;
+    background: linear-gradient(
+      to bottom,
+      #000000 0px, #000000 1.5px,
+      transparent 1.5px, transparent 4.25px,
+      #000000 4.25px, #000000 5.75px,
+      transparent 5.75px, transparent 8.5px,
+      #000000 8.5px, #000000 10px
+    );
+    transition: all 300ms ease-out;
+    cursor: pointer;
+  }
+
+  .mobile-hero-wrapper .mobile-hero-top-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 375px;
+    height: 157px;
+    position: relative;
+  }
+
+  .mobile-hero-wrapper .mobile-hero-top-text .hero-title {
+    width: 197px;
+    position: absolute;
+    top: 49px;
+    left: 88.78px;
+    font-size: 30px;
+    text-align: center;
+  }
+
+  .mobile-hero-wrapper .mobile-hero-top-text .hero-description-mobile {
+    width: 340px;
+    position: absolute;
+    top: 103px;
+    left: 16.78px;
+    font-size: 16px;
+    line-height: 130%;
+    text-align: center;
+  }
+
+  .mobile-hero-wrapper .mobile-hero-shop-bg-container {
+    width: 686px;
+    height: 264px;
+    background-image: url('./Hero-Background.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: absolute;
+    top: 157px;
+    left: -140px;
   }
 
   .mobile-banner-overlay {
-    display: none !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 391px;
+    position: absolute;
+    top: 65px;
+    left: 0;
+    padding: 25px 65.5px;
+    background-color: #F2F2F2;
+    z-index: 99;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 300ms ease-out, visibility 300ms ease-out;
+  }
+
+  .mobile-banner-overlay.is-visible {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
   }
 }
 
-/*Desktop Screen Layout*/
+/* ==========================================================================
+   3. Ultra-Wide / 4K Displays (Screens >= 2560px)
+   ========================================================================== */
 @media screen and (min-width: 2560px) {
   .custom-banner-section {
     min-width: 2560px;
-    width: 100%;
     max-width: 3840px;
-    height: 2340px;
-    transform: rotate(0deg);
-    opacity: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    box-sizing: border-box;
-    margin-left: auto;
-    margin-right: auto;
+    height: auto;
+    max-height: none;
   }
-  .mobile-hero-wrapper {
-    display: none;
-    margin-top: 0 !important;
-  }
+
   .custom-banner-section .banner-header {
-    width: 100%; 
-    height: auto; 
     min-height: 170.67px;
-    gap: 720px;
-    transform: rotate(0deg);
-    opacity: 1;
     padding: 26.67px 133.33px;
-    background: rgba(245, 245, 245, 1);
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-    box-sizing: border-box;
-    position: relative;
-    z-index: 101;
   }
 
   .custom-banner-section .banner-header::before {
     display: none;
   }
-.custom-banner-section .banner-header  .brand-title .brand-logo-img {
-    width: 403.85px;
-    height: 50.67px;
-    transform: rotate(0deg);
-    opacity: 1;
-    box-sizing: border-box;
-    background: rgba(0, 0, 0, 1);
-    object-fit: contain;
-}
 
-.custom-banner-section .banner-header .top-announcement {
+  .custom-banner-section .banner-header .top-announcement {
     width: 693px;
-    height: 36px;
-    transform: rotate(0deg);
-    opacity: 1;
-    font-family: 'Jost', sans-serif;
-    font-weight: 400;
-    font-style: normal;
     font-size: 42.67px;
     line-height: 35.8px;
-    letter-spacing: 0px;
-    color: rgba(0, 0, 0, 1); 
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-sizing: border-box;}
+  }
 
-.custom-banner-section .banner-header   .btn-choose-gift {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  justify-content:center;
-  gap: 20px;
-  width: 552px;
-  height: 117.33px;
-  padding: 0;
-  background-color: #FFF544; 
-  text-decoration: none;
-  overflow: hidden;
-  border: none;
-  cursor: pointer;
-  z-index: 1;
-  opacity: 1;
-  box-sizing: border-box;
-  color: #000000;
-  isolation: isolate;
-}
-.custom-banner-section .banner-header   .btn-choose-gift::before {
-  content: "";
-  position: absolute;
-  top: -1px;
-  bottom: -1px;
-  left: 0;
-  width: 100%;
-  height: calc(100% + 2px);
-  background-color: #000000; 
-  z-index: 1;
-  transform: scaleX(0); 
-  transform-origin: left;
-  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-  will-change: transform;
-}
-.custom-banner-section .banner-header .btn-choose-gift span {
-  position: relative;
-  font-family: 'Jost', sans-serif;
-  font-weight: 400;
-  font-style: normal;
-  font-size: 42.67px;
+  .custom-banner-section .banner-header .btn-choose-gift {
+    width: 552px;
+    height: 117.33px;
+  }
+
+  .custom-banner-section .banner-header .btn-choose-gift span {
+    font-size: 42.67px;
     line-height: 54.61px;
-  letter-spacing: 0px;
-  text-transform: uppercase;
-color: rgba(0, 0, 0, 1);
-  white-space: nowrap;
-  transition: color 0.35s ease-in-out;
-  z-index: 2;
-  width: 271px;
+    width: 271px;
     height: 55px;
-}
-.custom-banner-section .banner-header .btn-choose-gift .arrow-icon {
-  position: relative;
-width: 64px;
-    height: 0px;
-  display: inline-block;
-  opacity: 1;
-  box-sizing: border-box;
-  border: 4px solid rgba(0, 0, 0, 1);
-    background: rgba(0, 0, 0, 1);
-  z-index: 2;
-  transition: transform 0.35s ease-in-out, filter 0.35s ease-in-out;
-}
-.custom-banner-section .banner-header .btn-choose-gift:hover::before {
-  transform: scaleX(1);
-}
-.custom-banner-section .banner-header .btn-choose-gift:hover span {
-  color: #FFFFFF;
-}
-.custom-banner-section .banner-header  .btn-choose-gift:hover .arrow-icon {
-  transform: translateX(6px);
-  filter: brightness(0) invert(1);
-}
+  }
 
-.banner-top-image {
-  position: relative;
-  width: 100%;
-  max-width: 3840px;
-  min-width:2560px;
-  height: 1065px;
-  margin: 0 auto;
-  overflow: hidden; 
-  box-sizing: border-box;
-  opacity: 1;
-  transform: rotate(0deg);
-}
+  .banner-top-image {
+    min-width: 2560px;
+    max-width: 3840px;
+    height: 1065px;
+  }
 
-.banner-bottom-row {
-  overflow: hidden; 
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  max-width: 1440px;
-  margin: 0 auto;
-  gap: 0; 
-  box-sizing: border-box;
-  height: 1072px;
-  width: 100%;
-  max-width: 3840px;
-  min-width:2560px;
-}
-.banner-bottom-image {
-  position: relative;
-  width: 2373.33px;
-  height: 1072px;
-  flex-shrink: 0;
-  overflow: hidden;
-  box-sizing: border-box;
-  opacity: 1;
-  transform: rotate(0deg);
-}
-.banner-bottom-image img {
-  position: absolute;
-  top: 0;
-  left: 0 !important;
-  width: 3840px !important;  
-  height: 1072px !important;  
-  max-width: none;
-  max-height: none;
-  display: block;
-  object-fit: fill !important;
-  object-position: left top !important;
-  transform: scale(1.3) !important;
-  transform-origin: 0 0 !important; 
-}
+  .banner-bottom-row {
+    min-width: 2560px;
+    max-width: 3840px;
+    height: 1072px;
+  }
 
-.banner-hero-content{
+  .banner-bottom-image {
+    width: 2373.33px;
+    height: 1072px;
+  }
+
+  .banner-bottom-image img {
+    width: 3840px !important;
+    height: 1072px !important;
+  }
+
+  .banner-hero-content {
     width: 1466.67px;
     height: 1072px;
-  flex-shrink: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: flex-start;
-  box-sizing: border-box;
-  padding-left: 50px;
-}
-.banner-hero-content .hero-title {
-  width: 1080px;
-  height: 165px;
-  font-family: 'Jost', sans-serif;
-  font-style: normal;
-  font-weight: 500; /* Medium */
-  font-size: 164.78px;
-  line-height: 100%; /* Or 70px */
-  letter-spacing: 0px;
-  color: #000000;
-  margin: 0;
-  padding: 0;
-  opacity: 1;
-  transform: rotate(0deg);
-  box-sizing: border-box;
-}
-.banner-hero-content .hero-description {
-  max-width: 1137px; 
-  width: 100%;
-  font-family: 'Jost', sans-serif;
-  font-size: 47.08px;
-  font-weight: 400;
-  font-style: normal;
-  line-height: 1.4;
-  letter-spacing: 0px;
-  color: #000000; 
-  opacity: 1;
-  text-align: left;
-  white-space: normal; 
-  word-wrap: break-word;
-  box-sizing: border-box; 
-}
-.banner-hero-content .btn-shop-now {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
- justify-content:center;
-  gap: 20px;
-  width: 517.89px;
-  height: 117.7px;
-  box-sizing: border-box;
-  text-decoration: none;
-  opacity: 1;
-  background-color: #000000; 
-  color: #FFFFFF;
-  cursor: pointer;
-  border: none;
-  text-transform: uppercase;
-  overflow: hidden; 
-  isolation: isolate;
-}
-.banner-hero-content .btn-shop-now::before {
-  content: "";
-  position: absolute;
-  top: -1px; /* Extended 1px up to block sub-pixel gaps */
-  bottom: -1px; /* Extended 1px down to eliminate bottom line */
-  left: 0;
-  width: 100%;
-  height: calc(100% + 2px); /* Ensures full coverage including borders */
-  background-color: #FFF544; /* Exact yellow color code */
-  z-index: 1;
-  opacity: 1;
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-  will-change: transform; /* Forces GPU hardware acceleration for accurate rendering */
-}
-.banner-hero-content .btn-shop-now > span {
-  position: relative;
-  z-index: 2;
-  font-family: 'Jost', sans-serif;
-  font-size: 37.66px;
-  font-weight: 400;
-  font-style: normal;
-  line-height: 48.21px;
-  letter-spacing: 0px;
-  text-transform: uppercase;
-  color: #FFFFFF;
-  transition: color 0.35s ease;
-  width: 205px;
-  height: 49px;
-}
-.banner-hero-content .btn-shop-now .arrow {
-  position: relative;
-  z-index: 2;
-  width: 60.05px;
-  height: auto;
-  display: inline-block;
-  opacity: 1;
-  box-sizing: border-box;
-  filter: brightness(0) invert(1);
-  transition: transform 0.35s ease-in-out, filter 0.35s ease-in-out;
-}
-.banner-hero-content .btn-shop-now:hover::before {
-  transform: scaleX(1);
-}
+  }
 
-.banner-hero-content .btn-shop-now:hover > span {
-  color: #000000;
-}
-.banner-hero-content .btn-shop-now:hover .arrow {
-  transform: translateX(6px);
-  filter: brightness(0); 
-}
-.banner-footer {
-  display: block; 
-  width: 100%;
-  max-width: 3840px; 
-  min-height: 89.33px;
-  gap: 1000px;
-  padding: 26.67px 133.33px;
-  background-color: #F5F5F5;
-  opacity: 1;
-  box-sizing: border-box;
-  margin: 0 auto;
-  text-align: center; 
-}
-.banner-footer .footer_tagline {
-  font-family: 'Jost', sans-serif;
-  font-size: 42.67px;
-  font-weight: 400;
-  font-style: normal;
-  line-height: 35.8; 
-  letter-spacing: 0px;
-  text-align: center;
-  color: #000000; 
-  opacity: 1;
-  max-width: 1201px;
-  width: 100%;
-  height: 36px;
-}
+  .banner-hero-content .hero-title {
+    width: 1080px;
+    font-size: 164.78px;
+  }
+
+  .banner-hero-content .hero-description {
+    max-width: 1137px;
+    font-size: 47.08px;
+  }
+
+  .banner-hero-content .btn-shop-now {
+    width: 517.89px;
+    height: 117.7px;
+  }
+
+  .banner-hero-content .btn-shop-now > span {
+    font-size: 37.66px;
+    line-height: 48.21px;
+  }
+
+  .banner-footer .footer_tagline {
+    font-size: 42.67px;
+    line-height: 1.35; /* Fixed broken unitless line-height */
+    max-width: 1201px;
+  }
 }
