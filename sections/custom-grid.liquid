@@ -1,3 +1,5 @@
+{{ 'custom-grid.css' | asset_url | stylesheet_tag }}
+
 <div class="custom-grid-wrapper" id="custom-grid-{{ section.id }}">
   {% if section.settings.heading != blank or section.settings.subtext != blank %}
     <div class="grid-text-display">
