@@ -117,42 +117,42 @@
   z-index: 5;
 }
 /* Card 1 */
-.grid-item:nth-child(1) .hotspot-btn {
+.grid-images-container .grid-item:nth-child(1) .hotspot-btn {
   top: 238px;
   left: 256.5px;
   z-index:10;
 }
 
 /* Card 2 */
-.grid-item:nth-child(2) .hotspot-btn {
+.grid-images-container .grid-item:nth-child(2) .hotspot-btn {
   top: 222px;
   left: 808.5px;
     z-index:10;
 }
 
 /* Card 3 */
-.grid-item:nth-child(3) .hotspot-btn {
+.grid-images-container .grid-item:nth-child(3) .hotspot-btn {
   top: 82px;
   left: 1167px;
     z-index:10;
 }
 
 /* Card 4 */
-.grid-item:nth-child(4) .hotspot-btn {
+.grid-images-container .grid-item:nth-child(4) .hotspot-btn {
   top: 535px;
   left: 301.5px;
     z-index:10;
 }
 
 /* Card 5 */
-.grid-item:nth-child(5) .hotspot-btn {
+.grid-images-container .grid-item:nth-child(5) .hotspot-btn {
   top: 568px;
   left: 665.5px;
     z-index:10;
 }
 
 /* Card 6 */
-.grid-item:nth-child(6) .hotspot-btn {
+.grid-images-container .grid-item:nth-child(6) .hotspot-btn {
   top: 628px;
   left: 1225.5px;
     z-index:10;
