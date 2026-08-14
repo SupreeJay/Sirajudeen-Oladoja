@@ -1,11 +1,13 @@
 /* ==========================================================================
    1. Wrapper & Main Container
    ========================================================================== */
-.custom-grid-wrapper {
+@import url('https://fonts.googleapis.com/css2?family=Lustria&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jost:wght@400;600;700&display=swap');
+
+   .custom-grid-wrapper {
   width: 100%;
   max-width: 1337px;
   height: auto;
-  min-height: 981px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -15,46 +17,75 @@
   margin-right: auto;
   padding: 0 16px;
   box-sizing: border-box;
-}
-
-.grid-text-display {
-  text-align: center;
-  padding: 20px 0;
+  transform: rotate(0deg);
+  opacity: 1;
 }
 
 .grid-heading {
-  font-family: 'Jost', sans-serif;
-  font-size: 32px;
-  margin: 0;
+  text-align: left;
+  padding: 20px 0;
+  width: 372px;
+  height: 43px;
+  box-sizing: border-box;
+  font-family: 'Lustria', serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 36px;
+  line-height: 120%; 
+  letter-spacing: 0px;
+  color: #FFFFFF; 
+  display: flex;
+  color: #000000;
+  opacity: 1;
+  transform: rotate(0deg);
 }
 
 /* ==========================================================================
    2. Grid Layout & Items
    ========================================================================== */
 .grid-images-container {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 16px;
   width: 100%;
-  min-height: 300px;
+  max-width: 1339px;
+  min-height: 908px;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: repeat(3, 433px);
+  grid-template-rows: repeat(2, 444px);
+  gap: 20px;
+  transform: rotate(0deg);
+  opacity: 1;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1339px;
+  min-height: 908px;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: repeat(3, 433px);
+  grid-template-rows: repeat(2, 444px);
+  gap: 20px;
+  transform: rotate(0deg);
+  opacity: 1;
+  margin: 0 auto; 
 }
 
 .grid-item {
-  position: relative;
-  width: 100%;
-  min-height: 250px;
-  aspect-ratio: 1 / 1;
-  overflow: hidden;
-  background-color: #f4f4f4;
-  border: 1px solid #000000;
+  width: 433px;
+  height: 444px;
+  box-sizing: border-box; 
+  border: 1.5px solid #000000;
+  opacity: 1;
+  transform: rotate(0deg);
+  object-fit: cover; 
+  display: block;
 }
 
 .grid-image-wrapper {
-  position: relative;
   width: 100%;
   height: 100%;
+  display: block;
+  object-fit: cover; 
+  border: none;
 }
-
 .grid-img, 
 .placeholder-svg {
   width: 100%;
@@ -71,8 +102,8 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 32px;
-  height: 32px;
+  width: 22px;
+  height: 22px;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.9);
   border: none;
@@ -85,10 +116,40 @@
   transition: transform 0.2s ease, background 0.2s ease;
   z-index: 5;
 }
+/* Card 1 */
+.grid-item:nth-child(1) .hotspot-btn {
+  top: 238px;
+  left: 256.5px;
+}
 
-.hotspot-btn:hover {
-  transform: translate(-50%, -50%) scale(1.15);
-  background: #ffffff;
+/* Card 2 */
+.grid-item:nth-child(2) .hotspot-btn {
+  top: 222px;
+  left: 808.5px;
+}
+
+/* Card 3 */
+.grid-item:nth-child(3) .hotspot-btn {
+  top: 82px;
+  left: 1167px;
+}
+
+/* Card 4 */
+.grid-item:nth-child(4) .hotspot-btn {
+  top: 535px;
+  left: 301.5px;
+}
+
+/* Card 5 */
+.grid-item:nth-child(5) .hotspot-btn {
+  top: 568px;
+  left: 665.5px;
+}
+
+/* Card 6 */
+.grid-item:nth-child(6) .hotspot-btn {
+  top: 628px;
+  left: 1225.5px;
 }
 
 /* ==========================================================================
